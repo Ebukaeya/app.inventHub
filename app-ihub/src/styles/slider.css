@@ -1,0 +1,51 @@
+.slideshow {
+  margin: 0 auto;
+/*   overflow: hidden; */
+  width: 100%;
+  height:200px;
+  
+}
+
+.slideshowSlider {
+  height: 100%;
+  white-space: nowrap;
+  transition: ease 1000ms;
+ 
+}
+
+.slide {
+  display: inline-block;
+  width: 95%;
+  height:200px;
+  border-radius: 40px;
+  padding: 10px;
+  border-radius: 20px;
+  margin-right: 4px;
+ 
+ 
+}
+
+/* Buttons */
+
+.slideshowDots {
+  text-align: center;
+
+  margin-top: 14px;
+}
+
+.slideshowDot {
+  display: inline-block;
+  height: 6px;
+  width: 6px;
+  border-radius: 50%;
+
+  cursor: pointer;
+  margin: 15px 7px 0px;
+
+  background-color: #afafaf;
+}
+
+.slideshowDot.active {
+  background-color: #6a0dad;
+}
+
