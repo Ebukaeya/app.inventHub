@@ -25,6 +25,7 @@ const styles = {
     height: "100%",
     display: "flex",
     alignItems: "center",
+    marginLeft: "10px"
   },
   img: {
     height: 36 + "px",
@@ -35,13 +36,17 @@ const styles = {
     boxShadow: "0px 0px 3px 0px #599aab",
   },
   spentAmoutdiv: {
-    width: "90%",
-    padding: "2px",
+    width: "70%",
+    paddingLeft: "22px",
     height: 38 + "px",
     borderRadius: 35 + "px",
     background: " rgb(232,238,248)",
     background:
       " linear-gradient(86deg, rgba(232,238,248,1) 0%, rgba(255,255,255,1) 100%)",
+    display: "flex",
+    flexDirection: "column",
+   boxSizing: "border-box",
+  
   },
   spentAmount: {
     fontSize: "0.6rem",

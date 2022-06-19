@@ -1,0 +1,73 @@
+.BottomNavWrapper {
+  position: fixed;
+  bottom: 15px;
+  left: 6vw;
+  right: 6vw;
+  height: 50px;
+  border-radius: 10px;
+  background: rgba(245, 244, 243, 0.81);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(84, 115, 133, 0.5);
+  backdrop-filter: blur(18.4px);
+  -webkit-backdrop-filter: blur(18.4px);
+  border: 1px solid rgba(245, 244, 243, 0.24);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.cart {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #bdbcb8;
+}
+
+.navDiv{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #bdbcb8;
+}
+.navDivActive{
+    color: rgb(14,73,181);
+}
+.cart > div {
+  position: absolute;
+  top: -2px;
+  right: -6px;
+  height: 16px;
+  width: 16px;
+  border-radius: 100%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  font-family: "Montserrat", sans-serif;
+}
+.cart > div > p {
+  height: 14px;
+  width: 14px;
+  background-color: rgb(255, 72, 72);
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+/* .cart > p > p {
+  background-color: red;
+  color: white;
+  font-size: 10px;
+  height: 14px;
+  width: 14px;
+  border-radius: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+} */

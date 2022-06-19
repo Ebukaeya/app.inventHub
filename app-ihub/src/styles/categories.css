@@ -1,0 +1,28 @@
+.categoriesWrapper {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 12px;
+  margin-top: 20px;
+  width: 100%;
+  overflow-x: auto;
+  white-space: nowrap;
+  
+}
+
+.categories{
+    height: 30px;
+    border: 1px solid  rgba(14,73,181,0.4);
+    color: rgb(14,73,181);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+   /*  min-width: 24px; */
+    padding: 0 13px;
+}
+
+.active{
+    background-color: rgb(14,73,181);
+    color: white;
+    border: 1px solid  rgba(14,73,181,0.1);
+}

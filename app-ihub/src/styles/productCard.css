@@ -1,0 +1,143 @@
+.Product{
+    margin-top: 20px;
+}
+
+.titleFlex{
+    display: flex;
+    justify-content: space-between;
+}
+
+.titleFlex>p:first-of-type{
+    font-size: 1rem;
+    font-weight: 700;
+    font-family: "Nunito", sans-serif;
+}
+.titleFlex>p:last-of-type{
+    margin-right: 10px;
+    color: rgb(0, 102, 255);
+    font-weight: 600;
+    margin-bottom: 20px;
+}
+.productCardWrapper{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 10px;
+    overflow-x: auto;
+    white-space: nowrap;
+    height: 135px;
+    margin-bottom: 20px;
+
+}
+
+.productCard{
+    margin-top: 2px;
+    margin-left: 3px;
+    height: 130px;
+    min-width: 110px;
+    
+}
+.productCard>div:first-of-type{
+    height: 75%;
+    box-shadow: 0px 0px 4px  rgb(214, 214, 214);
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.productCard>div:first-of-type>img{
+    height: 90%;
+    width: 90%;
+    border-radius: 10px;
+}
+.productText{
+    margin-top: 4px;
+    display: flex;
+    flex-direction: column;
+  line-height: 14px;
+}
+.productText>p:first-of-type{
+    font-size: 0.8rem;
+    font-weight: 750;
+    font-family: "Nunito", sans-serif;
+}
+.productText>p:first-of-type+div>span:first-of-type{
+    font-size: 0.7rem;
+    font-weight: 700;
+    font-family: "Montserrat", sans-serif;
+    color: rgb(138, 138, 138);
+    margin-right: 6px;
+    margin-left: 3px;
+}
+.productText>p:first-of-type+div>span:last-of-type{
+    font-size: 0.6rem;
+    color: gray;
+    font-family: "Montserrat", sans-serif;
+}
+
+
+/* store card */
+
+.storeCardWrapper{
+    margin-top: 0px;
+}
+
+.storeCard{
+    display: flex;
+    width: 100%;
+    gap: 20px;
+    height: 100px;
+
+    margin-bottom: 10px;
+}
+.storeCard>div:first-of-type{
+    width:40%;
+    height: 100%;
+
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0px 0px 4px  rgb(230, 230, 230);
+}
+.storeCard>div:first-of-type>img{
+    height: 95%;
+    width: 95%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.storeCard>div:last-of-type{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-between;
+    width:65%;
+}
+
+.storeCard>div:last-of-type>div:first-of-type{
+    max-height: 80%;
+}
+
+.storeName{
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+.storeName+p{
+    font-size: 0.7rem;
+    color: gray;
+    overflow: hidden;
+   max-height: 60%;
+   max-width: 70%;
+   display: -webkit-box;
+-webkit-line-clamp: 4;
+-webkit-box-orient: vertical;
+text-overflow: ellipsis;
+}
+.dividerLine{
+border-right: 1px solid rgb(39, 39, 39);
+height: 10px;
+width: 1px;
+background-color: aliceblue;
+display: inline-block;
+margin: 0px 10px;
+}
