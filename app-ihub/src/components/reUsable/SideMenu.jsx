@@ -50,56 +50,56 @@ const sideMenu = () => {
             </div>
           </div>
           <div>
-            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/"}>
+            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/myorder"}>
               <div className="sideBarMenus">
            
                 <MdOutlineShoppingBasket fontSize={"20px"} />
                 <p>My Order</p>
               </div>
             </Link>
-            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/"}>
+            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/mybookings"}>
               <div className="sideBarMenus">
            
                 <BsBook fontSize={"18px"} />
                 <p>My Bookings</p>
               </div>
             </Link>
-            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/"}>
+            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/stores"}>
               <div className="sideBarMenus">
            
                 <BsShop fontSize={"18px"} />
                 <p>Explore Stores</p>
               </div>
             </Link>
-            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/"}>
+            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/restaurants"}>
               <div className="sideBarMenus">
            
                 <IoFastFoodOutline fontSize={"18px"} />
                 <p>Order food</p>
               </div>
             </Link>
-            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/"}>
+            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/logistics"}>
               <div className="sideBarMenus">
            
                 <BsTruck fontSize={"18px"} />
                 <p>Find logistics</p>
               </div>
             </Link>
-            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/"}>
+            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/services"}>
               <div className="sideBarMenus">
            
                 <VscTools fontSize={"19px"} />
                 <p>Book services</p>
               </div>
             </Link>
-            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/"}>
+            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/chat"}>
               <div className="sideBarMenus">
            
                 <IoChatbubblesOutline fontSize={"19px"} />
                 <p>Chat</p>
               </div>
             </Link>
-            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/"}>
+            <Link style={{ textDecoration: "none", color: "inherit" }} to={"/settings"}>
               <div className="sideBarMenus">
            
                 <IoSettingsOutline fontSize={"18px"} />

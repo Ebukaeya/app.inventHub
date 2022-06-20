@@ -2,15 +2,16 @@ import Narbar from "./reUsable/Navbar";
 import SideMenu from "./reUsable/SideMenu";
 import SearchBar from "./reUsable/SearchBar";
 import Categories from "./reUsable/Categories";
-import { useState } from "react";
+import { useState,useEffect } from "react";
 import ProductCard from "./reUsable/ProductCard";
 import StoreCard from "./reUsable/StoresCard";
 import BottomNavigation from "./reUsable/BottomNavigation";
+import LocationFilter from "./reUsable/LocationFilter";
 
 const ExploreStores = () => {
   const [search, setSearch] = useState("");
   const [categories, setCategories] = useState("All");
-  console.log(categories);
+  const [locationFilter, setLocationFilter] = useState("nearby");
 
   const storeCategories = [
     "Grocery",
@@ -19,6 +20,10 @@ const ExploreStores = () => {
     "Baby wears",
     "Men wears",
   ];
+
+  useEffect(()=>{
+console.log(locationFilter);
+  },[locationFilter])
 
   return (
     <>
@@ -37,12 +42,15 @@ const ExploreStores = () => {
           <StoreCard />
           <StoreCard />
           <StoreCard />
-          <BottomNavigation/>
+          <BottomNavigation />
         </div>
       </div>
 
       <SideMenu />
-    
+      <LocationFilter
+        curentlocationFilter={locationFilter}
+        updateLocationFliter={setLocationFilter}
+      />
     </>
   );
 };

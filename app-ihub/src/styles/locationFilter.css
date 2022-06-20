@@ -1,0 +1,124 @@
+.filterbutton {
+  height: 70px;
+  width: 70px;
+  border-radius: 100%;
+  background-color: rgb(14, 73, 181);
+  color: white;
+  position: fixed;
+  bottom: 90px;
+  right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+.filterbutton > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.nearby {
+  font-size: 10px;
+}
+
+.filterField {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* From https://css.glass */
+  background: rgba(188, 188, 188, 0.63);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(16.9px);
+  -webkit-backdrop-filter: blur(16.9px);
+  border: 1px solid rgba(188, 188, 188, 0.24);
+}
+
+.filterField > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 25px;
+  height: 50%;
+  width: 80%;
+}
+.useLocation {
+  width: 100%;
+  height: 25%;
+  background-color: rgb(245,245,245);
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
+}
+.locationtextp {
+  font-weight: 700;
+}
+.clocationWrapper {
+  width: 100%;
+  min-height: 25%;
+  background-color: rgb(245,245,245);
+  border-radius: 12px;
+  box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.25);
+  transition: min-height 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.customLocation {
+  width: 100%;
+  height: 83.75px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchInputLo{
+  width: 80%;
+  height: 34px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: 0px 0px 4px rgba(140, 250, 232, 0.25);
+  padding: 1px 15px;
+  box-sizing: border-box;
+  font-size: 0.9rem;
+  font-family: "Nunito, sans-serif";
+}
+.searchInputLo:focus{
+  outline: none;
+}
+.searchInputLo::placeholder {
+  color: #b3b3b3;
+  font-family: "Montserrat", sans-serif;
+}
+
+.searchInputLo + button {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  width: 100px;
+  height: 30px;
+  background-color: rgb(14, 73, 181);
+  border: none;
+  color: white;
+  border-radius: 20px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.searchLoFieldWrapper{
+    width:100%;
+    text-align: center;
+}

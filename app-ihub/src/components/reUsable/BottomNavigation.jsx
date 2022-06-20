@@ -1,6 +1,7 @@
 import "../../styles/bottomNavigation.css";
 import { RiHomeFill, RiShoppingCartFill } from "react-icons/ri";
 import { BsBagFill, BsFillHeartFill } from "react-icons/bs";
+import { Link } from "react-router-dom";
 
 const BottomNavigation = () => {
 
@@ -8,18 +9,18 @@ const BottomNavigation = () => {
   return (
     <>
       <div className="BottomNavWrapper">
-        <RiHomeFill color="#bdbcb8" size={30} />
+     <Link to={"/"} className="linkreset" >   <RiHomeFill color="#bdbcb8" size={30} /></Link>
 
-        <BsBagFill color="#bdbcb8"  size={28} />
+     <Link to={"/stores"}  className="linkreset" >   <BsBagFill color="#bdbcb8"  size={28} /></Link>
 
         <div  className="cart ">
-          <RiShoppingCartFill size={30} />
+          <Link to={"/cart"}  className="linkreset"><RiShoppingCartFill size={30} /></Link>
           <div>
             <p>3</p>
           </div>
         </div>
 
-        <BsFillHeartFill color="#bdbcb8" size={28} />
+       <Link to={"/wishlist"}  className="linkreset"> <BsFillHeartFill color="#bdbcb8" size={28} /></Link>
       </div>
     </>
   );
