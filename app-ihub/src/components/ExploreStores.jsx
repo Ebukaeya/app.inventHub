@@ -12,6 +12,7 @@ const ExploreStores = () => {
   const [search, setSearch] = useState("");
   const [categories, setCategories] = useState("All");
   const [locationFilter, setLocationFilter] = useState("nearby");
+  
 
   const storeCategories = [
     "Grocery",

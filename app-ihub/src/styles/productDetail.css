@@ -1,0 +1,110 @@
+.NavBarProdP {
+  margin-top: 20px;
+  color: rgb(160, 160, 160);
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.NavBarProdP > div {
+  display: flex;
+  gap: 10px;
+}
+
+.productSliderWrapper {
+  width: 100%;
+  height: 80%;
+
+  display: flex;
+  justify-content: center;
+}
+.parentWrapper {
+  height: 210px;
+  width: 100%;
+  text-align: center;
+}
+
+.productSlider {
+  height: 100%;
+  width: 60%;
+
+  display: flex;
+  gap: 10px;
+  flex-wrap: nowrap;
+  overflow: auto;
+}
+.productSlider > img {
+  margin-left: 15px;
+  height: 95%;
+  width: 80%;
+  object-fit: cover;
+  border-radius: 10px;
+}
+.productDotindwrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+.productDotindwrapper > div {
+  height: 5px;
+  width: 5px;
+  border-radius: 100%;
+  background-color: rgb(160, 160, 160);
+}
+
+/* image viewer */
+
+.imageViewrWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* From https://css.glass */
+  background: rgba(0, 0, 0, 0.59);
+
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(14.5px);
+  -webkit-backdrop-filter: blur(14.5px);
+  border: 1px solid rgba(0, 0, 0, 0.3);
+}
+
+.imageView{
+    height:50%;
+    width:98%;
+    background-color: antiquewhite;
+    display: flex;
+    gap: 10px;
+}
+
+.imageView>img{
+    height:100%;
+    width:100%;
+    object-fit: cover;
+    
+}
+.closeImageViwer{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    color: white;
+}
+
+.productNameWrapper{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+    padding: 0px 10px;
+}
+
+.productTitle{
+    font-size: 20px;
+    font-weight: 750;
+    display: -webkit-box;
+    
+}
