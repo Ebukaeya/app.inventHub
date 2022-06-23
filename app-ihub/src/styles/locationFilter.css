@@ -25,12 +25,15 @@
 }
 
 .filterField {
-  position: absolute;
-  top: 0;
+  position: fixed;
+top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  margin: auto;
+  margin: auto;  
+  height: 100vh;
+  width: 100vw;
+ 
   background-color: aliceblue;
   display: flex;
   justify-content: center;
@@ -41,6 +44,7 @@
   backdrop-filter: blur(16.9px);
   -webkit-backdrop-filter: blur(16.9px);
   border: 1px solid rgba(188, 188, 188, 0.24);
+
 }
 
 .filterField > div {

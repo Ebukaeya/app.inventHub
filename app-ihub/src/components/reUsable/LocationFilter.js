@@ -9,11 +9,22 @@ const LocationFilter = (props) => {
   const [isFieldOpen, setIsFieldOpen] = useState(false);
   const [filter, setLocationFilter] = useState();
 
+  let body = document.querySelector("body")
+
+  
+
   const closeField = (e) => {
     if (e.target.className === "filterField") {
       setIsFieldOpen(false);
+      body.style.overflow= "auto"
+      console.log(body.style.overflow);
     }
   };
+  const openField = ()=>{
+    setIsFieldOpen(true)
+    body.style.overflow="hidden"
+    
+  }
 
   const handleSubmit = () => {
     updateLocationFliter(filter);
@@ -22,7 +33,7 @@ const LocationFilter = (props) => {
 
   return (
     <>
-      <div onClick={() => setIsFieldOpen(true)} className="filterbutton">
+      <div onClick={() => openField()} className="filterbutton">
         <div>
           <ImLocation size={24} />
           <p className="nearby">nearby</p>

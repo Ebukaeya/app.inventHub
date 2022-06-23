@@ -2,17 +2,17 @@ import Narbar from "./reUsable/Navbar";
 import SideMenu from "./reUsable/SideMenu";
 import SearchBar from "./reUsable/SearchBar";
 import Categories from "./reUsable/Categories";
-import { useState,useEffect } from "react";
+import { useState, useEffect } from "react";
 import ProductCard from "./reUsable/ProductCard";
 import StoreCard from "./reUsable/StoresCard";
 import BottomNavigation from "./reUsable/BottomNavigation";
 import LocationFilter from "./reUsable/LocationFilter";
+import { Link } from "react-router-dom";
 
 const ExploreStores = () => {
   const [search, setSearch] = useState("");
   const [categories, setCategories] = useState("All");
   const [locationFilter, setLocationFilter] = useState("nearby");
-  
 
   const storeCategories = [
     "Grocery",
@@ -22,9 +22,9 @@ const ExploreStores = () => {
     "Men wears",
   ];
 
-  useEffect(()=>{
-console.log(locationFilter);
-  },[locationFilter])
+  useEffect(() => {
+    console.log(locationFilter);
+  }, [locationFilter]);
 
   return (
     <>
@@ -38,7 +38,10 @@ console.log(locationFilter);
 
       <div className="mycontainer">
         <div className="storeCardWrapper">
-          <StoreCard />
+          <Link className="linkreset" to={"/store/storeId"}>
+            {" "}
+            <StoreCard />
+          </Link>
           <StoreCard />
           <StoreCard />
           <StoreCard />

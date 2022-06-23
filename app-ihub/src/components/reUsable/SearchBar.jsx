@@ -7,7 +7,7 @@ const style = {
     width: "80%",
     height: "70%",
     fontFamily: "nunito, sans-serif",
-    fontSize: "18px",
+    fontSize: "15px",
     backGroundColor: "blue",
     border: "none",
   },
@@ -22,6 +22,7 @@ const style = {
     boxSizing: "border-box",
     gap: "15px",
     color: "gray",
+    zIndex:"1000",
   },
 };
 

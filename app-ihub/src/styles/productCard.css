@@ -146,7 +146,6 @@
   flex-wrap: nowrap;
   gap: 10px;
   overflow-x: auto;
-  white-space: nowrap;
   padding-left: 8px;
   padding-bottom: 2px;
   margin-bottom: 20px;
@@ -163,6 +162,7 @@
   align-items: center;
   box-sizing: border-box;
   position: relative;
+  flex-shrink: 0;
 }
 .foodCarddiv > img {
   min-height: 70px;
@@ -183,17 +183,17 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  
   margin-top: 50px;
 }
 .foodName{
-  font-size: 0.8rem;
+  font-size: 0.75rem;
   font-weight: 600;
   overflow: hidden;
-  -webkit-line-clamp: 4;
+  -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   text-overflow: ellipsis;
   word-wrap: break-word;
+  
  
 }
 
@@ -201,6 +201,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+ 
 }
 
 .foodPrice >span:first-of-type{

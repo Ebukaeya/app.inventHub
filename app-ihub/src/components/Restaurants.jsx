@@ -6,10 +6,13 @@ import { useState } from "react";
 import BottomNavigation from "./reUsable/BottomNavigation";
 import Foods from "./reUsable/Foods";
 import StoreCard from "./reUsable/StoresCard";
+import LocationFilter from "./reUsable/LocationFilter";
+import { Link } from "react-router-dom";
 
 const Restaurants = (props) => {
   const [search, setSearch] = useState("");
   const [categories, setCategories] = useState("All");
+  const [locationFilter, setLocationFilter] = useState("nearby");
   console.log(categories);
 
   const storeCategories = [
@@ -38,24 +41,32 @@ const Restaurants = (props) => {
           <p>see all</p>
         </div>
         <div className="foodWrapper">
-          <Foods />
-          <Foods />
-          <Foods />
-          <Foods />
-          <Foods />
+         <Link className="linkreset" to={"/food/jbjwbu"}> <Foods /></Link>
+         <Link className="linkreset" to={"/food/jbjwbu"}> <Foods /></Link>
+         <Link className="linkreset" to={"/food/jbjwbu"}> <Foods /></Link>
+         <Link className="linkreset" to={"/food/jbjwbu"}> <Foods /></Link>
+         <Link className="linkreset" to={"/food/jbjwbu"}> <Foods /></Link>
+        
+         
         </div>
         <div className="titleFlex">
           <p>Best rated stores</p>
           <p>see all</p>
         </div>
-        <StoreCard />
-        <StoreCard />
-        <StoreCard />
-        <StoreCard />
-        <StoreCard />
+       <div style={{marginBottom:"130px"}}>
+          <StoreCard />
+          <StoreCard />
+          <StoreCard />
+          <StoreCard />
+          <StoreCard />
+       </div>
       </div>
       <BottomNavigation />
       <SideMenu />
+      <LocationFilter
+        curentlocationFilter={locationFilter}
+        updateLocationFliter={setLocationFilter}
+      />
     </>
   );
 };
