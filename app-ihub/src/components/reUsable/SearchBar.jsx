@@ -7,7 +7,7 @@ const style = {
     width: "80%",
     height: "70%",
     fontFamily: "nunito, sans-serif",
-    fontSize: "15px",
+    fontSize: "14px",
     backGroundColor: "blue",
     border: "none",
   },
@@ -26,7 +26,7 @@ const style = {
   },
 };
 
-const SearchBar = ({ controlInput }) => {
+const SearchBar = ({ controlInput, placeholder }) => {
   const [search, setSearch] = useState("");
 
   controlInput(search);
@@ -40,7 +40,7 @@ const SearchBar = ({ controlInput }) => {
             value={search}
             style={style.input}
             type="text"
-            placeholder="Search"
+            placeholder={placeholder?placeholder:"Search"}
             className="searchBar"
           />
           <BiMicrophone size={24} />

@@ -41,25 +41,41 @@ const Restaurants = (props) => {
           <p>see all</p>
         </div>
         <div className="foodWrapper">
-         <Link className="linkreset" to={"/food/jbjwbu"}> <Foods /></Link>
-         <Link className="linkreset" to={"/food/jbjwbu"}> <Foods /></Link>
-         <Link className="linkreset" to={"/food/jbjwbu"}> <Foods /></Link>
-         <Link className="linkreset" to={"/food/jbjwbu"}> <Foods /></Link>
-         <Link className="linkreset" to={"/food/jbjwbu"}> <Foods /></Link>
-        
-         
+          <Link className="linkreset" to={"/food/jbjwbu"}>
+            {" "}
+            <Foods />
+          </Link>
+          <Link className="linkreset" to={"/food/jbjwbu"}>
+            {" "}
+            <Foods />
+          </Link>
+          <Link className="linkreset" to={"/food/jbjwbu"}>
+            {" "}
+            <Foods />
+          </Link>
+          <Link className="linkreset" to={"/food/jbjwbu"}>
+            {" "}
+            <Foods />
+          </Link>
+          <Link className="linkreset" to={"/food/jbjwbu"}>
+            {" "}
+            <Foods />
+          </Link>
         </div>
         <div className="titleFlex">
           <p>Best rated stores</p>
           <p>see all</p>
         </div>
-       <div style={{marginBottom:"130px"}}>
+        <div style={{ marginBottom: "130px" }}>
+          <Link className="linkreset" to={"/restaurants/restuarantID"}>
+            {" "}
+            <StoreCard />
+          </Link>
           <StoreCard />
           <StoreCard />
           <StoreCard />
           <StoreCard />
-          <StoreCard />
-       </div>
+        </div>
       </div>
       <BottomNavigation />
       <SideMenu />

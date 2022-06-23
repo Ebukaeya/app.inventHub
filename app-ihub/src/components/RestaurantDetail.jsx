@@ -6,30 +6,12 @@ import { BsStarHalf, BsStarFill, BsPlus } from "react-icons/bs";
 import { MdWifiCalling3 } from "react-icons/md";
 import { RiMessage3Fill } from "react-icons/ri";
 import { FaLocationArrow } from "react-icons/fa";
-import SearchBar from "./reUsable/SearchBar";
 import { useState } from "react";
-import StoreProduct from "./reUsable/StoreProduct";
 import { Link } from "react-router-dom";
+import FoodMenu from "./reUsable/FoodMenu";
 
-const StoreDetails = () => {
+const RestaurantDetail = () => {
   const [search, setSearch] = useState("");
-  console.log(search);
-
-  /* window.onscroll = () => {
-    console.log("scroll");
-    let node = document.querySelector(".StickySearchbar");
-
-    if (node.style.top === "") {
-
-      //node.style.height = "90px";
-      node.style.borderBottom = "1px solid rgb(233, 233, 233);";
-    }
-
-    if (!node.style.top === "") {
-      console.log("am here");
-    }
-  }; */
-
 
   return (
     <>
@@ -43,7 +25,7 @@ const StoreDetails = () => {
         <div className="storeProfile">
           <div>
             <div className="storeImage">
-              <img src="https://res.cloudinary.com/ebuka1122/image/upload/v1655643691/samples/Ihub-Consumer-App/download_pthu7h.png" />
+              <img src="https://res.cloudinary.com/ebuka1122/image/upload/v1656021029/samples/Ihub-Consumer-App/images_zpwci4.jpg" />
             </div>
             <div>
               <div>
@@ -87,26 +69,50 @@ const StoreDetails = () => {
             <FaLocationArrow /> Location
           </div>
         </div>
-        <div className="StickySearchbar">
-          {" "}
-          <SearchBar controlInput={setSearch} />
+        <div className="StickySearchbar"> </div>
+        <div className="FoodMenu">
+          <div className="activeFoodmenu">All</div>
+          <div>Main Menu</div>
+          <div>Extra</div>
+          <div>Top ups</div>
+          <div>Drinks</div>
+          <div>Custom</div>
         </div>
-        <div style={{ marginTop: "18px" }} className="titleFlex">
-          <p>Explore products</p>
-     <p style={{ fontSize: "14px" }}>  <Link color="inherit" className="linkreset" to={"/store/storeID/2"}>See all</Link></p>
+
+        <div className="FoodRWrapper">
+       
+           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
+           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
+           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
+           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
+           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
+           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
+           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
+           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
+           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
+           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
+           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
+       
+          
         </div>
-        <StoreProduct />
-        <StoreProduct />
-        <StoreProduct />
-        <StoreProduct />
-        <StoreProduct />
-        <StoreProduct />
-        <StoreProduct />
-        <StoreProduct />
-        <StoreProduct />
       </div>
     </>
   );
 };
 
-export default StoreDetails;
+export default RestaurantDetail;
+
+/* 
+const RestaurantDetail = (props) => {
+
+
+    return(
+        <>
+
+        </>
+    )
+}
+
+
+
+export default RestaurantDetail; */
