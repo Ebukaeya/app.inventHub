@@ -1,7 +1,7 @@
 import { BiMinus } from "react-icons/bi";
-import {  BsPlus } from "react-icons/bs";
+import { BsPlus } from "react-icons/bs";
 import { useState } from "react";
-import {AiOutlineDelete} from 'react-icons/ai'
+import { AiOutlineDelete } from "react-icons/ai";
 
 const CartItem = () => {
   const [quantity, setQuantity] = useState(1);
@@ -10,7 +10,7 @@ const CartItem = () => {
     <>
       <div className="cartItemDiv">
         <div>
-            <img src="https://res.cloudinary.com/ebuka1122/image/upload/v1656114183/samples/Ihub-Consumer-App/images_ostgjp.jpg"/>
+          <img src="https://res.cloudinary.com/ebuka1122/image/upload/v1656114183/samples/Ihub-Consumer-App/images_ostgjp.jpg" />
         </div>
         <div>
           <p>Iphone 11 Pro max</p>
@@ -35,7 +35,7 @@ const CartItem = () => {
               </div>
             </div>
             <div className="DeleteItmFrmCart">
-                <AiOutlineDelete/>
+              <AiOutlineDelete />
             </div>
           </div>
         </div>
