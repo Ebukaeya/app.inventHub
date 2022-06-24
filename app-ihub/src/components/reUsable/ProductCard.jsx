@@ -9,7 +9,7 @@ const ProductCard = () => {
         <div className="Product">
           <div className="titleFlex">
             <p>Favourite products</p>
-            <p>see all</p>
+            <p>  <Link className="linkreset"  to={"/products"}>  see all</Link></p>
           </div>
           <div className="productCardWrapper">
        <Link to={"/product/18y83"} className="linkreset">  <Product/></Link>
@@ -23,7 +23,7 @@ const ProductCard = () => {
 
           <div className="titleFlex">
             <p>Best rated stores</p>
-            <p>see all</p>
+            <p><Link className="linkreset" to={"/explorestores"}>see all</Link></p>
           </div>
         </div>
       </div>

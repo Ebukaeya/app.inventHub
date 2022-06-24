@@ -38,7 +38,7 @@ const Restaurants = (props) => {
       <div className="mycontainer">
         <div style={{ marginTop: "20px" }} className="titleFlex">
           <p>Favourite products</p>
-          <p>see all</p>
+          <p><Link className="linkreset" to={"/explore-foodmenu"}>see all</Link></p>
         </div>
         <div className="foodWrapper">
           <Link className="linkreset" to={"/food/jbjwbu"}>
@@ -62,9 +62,9 @@ const Restaurants = (props) => {
             <Foods />
           </Link>
         </div>
-        <div className="titleFlex">
-          <p>Best rated stores</p>
-          <p>see all</p>
+        <div style={{ marginTop: "20px" }} className="titleFlex">
+          <p>Best rated restaurants</p>
+          <p><Link className="linkreset" to={"/explore-restaurants"}>see all</Link></p>
         </div>
         <div style={{ marginBottom: "130px" }}>
           <Link className="linkreset" to={"/restaurants/restuarantID"}>
