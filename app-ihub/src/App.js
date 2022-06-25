@@ -14,6 +14,9 @@ import ExploreStores2 from "./components/ExploreStore2";
 import SeeAllFoodMenu from "./components/SellAllFoodMenu";
 import ExploreRestaurant from "./components/ExploreRestaurants";
 import Cart from "./components/cart/Cart";
+import MyOrders from "./components/MyOrders/MyOrders";
+import OrderDetails from "./components/MyOrders/OrderDetails";
+import EachOrder from "./components/MyOrders/EachOrder";
 
 
 
@@ -34,6 +37,9 @@ function App() {
         <Route path="/store/:storeID/2" element={<StoreDetails2/>} />
         <Route path="/products" element={<SeeAllProducts/>} />
         <Route path="/cart" element={<Cart/>} />
+        <Route path="/myorder" element={<MyOrders/>} />
+        <Route path="/order-details/:orderID" element={<OrderDetails/>} />
+        <Route path="/order-details/:orderID/:productID" element={<EachOrder/>} />
         <Route path="*" element={<div>404</div>} />
       </Routes>
     </BrowserRouter> 

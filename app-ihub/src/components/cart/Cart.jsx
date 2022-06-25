@@ -42,9 +42,9 @@ const Cart = () => {
           </div>
         </div>
         <div className="cartItemWrapper">
-            <CartItem />
-            <CartItem />
-            <CartItem />
+          <CartItem />
+          <CartItem />
+          <CartItem />
         </div>
         <div className="ItemdeliveryAddress">
           <div>
