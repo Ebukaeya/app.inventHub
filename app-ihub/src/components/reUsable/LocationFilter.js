@@ -17,7 +17,7 @@ const LocationFilter = (props) => {
     if (e.target.className === "filterField") {
       setIsFieldOpen(false);
       body.style.overflow= "auto"
-      console.log(body.style.overflow);
+      
     }
   };
   const openField = ()=>{
@@ -29,6 +29,7 @@ const LocationFilter = (props) => {
   const handleSubmit = () => {
     updateLocationFliter(filter);
     setIsFieldOpen(false);
+    body.style.overflow= "auto"
   };
 
   return (

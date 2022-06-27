@@ -17,6 +17,7 @@ import Cart from "./components/cart/Cart";
 import MyOrders from "./components/MyOrders/MyOrders";
 import OrderDetails from "./components/MyOrders/OrderDetails";
 import EachOrder from "./components/MyOrders/EachOrder";
+import Profile from "./components/profile/ProfileSection";
 
 
 
@@ -40,6 +41,7 @@ function App() {
         <Route path="/myorder" element={<MyOrders/>} />
         <Route path="/order-details/:orderID" element={<OrderDetails/>} />
         <Route path="/order-details/:orderID/:productID" element={<EachOrder/>} />
+        <Route path="/profile" element={<Profile/>} />
         <Route path="*" element={<div>404</div>} />
       </Routes>
     </BrowserRouter> 

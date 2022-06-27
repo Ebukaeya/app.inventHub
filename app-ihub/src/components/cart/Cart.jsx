@@ -28,6 +28,7 @@ const Cart = () => {
 
   const handleSubmit = () => {
     setIsFieldOpen(false);
+    body.style.overflow= "auto"
   };
   return (
     <>

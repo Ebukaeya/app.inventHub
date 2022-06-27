@@ -1,0 +1,141 @@
+.profileImageDivPS {
+  width: 100%;
+  height: 160px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.profileImageDivPS > div {
+  height: 110px;
+  width: 110px;
+  border-radius: 100%;
+  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px 1px 40px 0px rgba(182, 185, 183, 0.75);
+  position: relative;
+}
+
+.profileImageDivPS > div > img {
+  height: 94%;
+  width: 94%;
+  border-radius: 100%;
+  object-fit: cover;
+}
+
+.UploadImageDiv {
+  position: absolute;
+  bottom: 0;
+  right: 6px;
+  height: 26px;
+  width: 26px;
+  border-radius: 100%;
+  background-color: #f5f5f5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  color: rgb(33, 117, 165);
+}
+.UploadImageDiv > input {
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  position: absolute;
+}
+
+.basicInfoDiv {
+  margin: 1px 10px;
+}
+.basicInfoDiv > p {
+  font-weight: 700;
+}
+
+.Infodiv {
+  margin: 20px 0;
+}
+.Infodiv > p {
+  font-size: 14px;
+}
+.Infodiv > div {
+  width: 88%;
+  height: 40px;
+  margin-top: 6px;
+  border: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+.inputDateEP > input {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.inputDateEP > input:focus {
+  outline: none;
+}
+.inputDateEP > input::-webkit-calendar-picker-indicator {
+  background-color: #f8f5f5;
+
+  border-radius: 100%;
+  padding: 10px;
+}
+div.Gender {
+  border: none;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+div.Gender > div {
+  width: 48%;
+  height: 100%;
+  border: 1px solid #e5e5e5;
+  border-radius: 6px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-size: 14px;
+  gap: 10px;
+  padding-left: 10px;
+}
+
+div.Gender > div > input {
+  margin: 0;
+}
+
+div.DeliveryAddress {
+  min-width: 40px;
+}
+.saveDivePE {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  height: 100px;
+  width: 100%;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: blur(15.4px);
+  -webkit-backdrop-filter: blur(15.4px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0px -1px 40px 0px rgba(204, 204, 204, 0.75);
+}
+
+.saveDivePE >button {
+  width: 80%;
+  height:44px;
+  background-color: #0E49B5;
+  border-radius: 20px;
+  border: none;
+  color: white;
+  font-family: "Nunito", sans-serif;
+
+}
