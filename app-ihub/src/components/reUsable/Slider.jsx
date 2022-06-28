@@ -9,7 +9,7 @@ const images = [
   "https://res.cloudinary.com/ebuka1122/image/upload/v1653951879/samples/Ihub_public/slideshow_xxt43j.png",
   "https://res.cloudinary.com/ebuka1122/image/upload/v1653952359/samples/Ihub_public/kekeslideshow_2_gdm8xz.png",
 ];
-const delay = 2500;
+const delay = 10500;
 
 function Slider() {
   const [index, setIndex] = useState(0);
