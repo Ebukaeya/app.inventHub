@@ -1,7 +1,7 @@
 import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
 import SearchBar from "./reUsable/SearchBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../styles/storeDetails2.css";
 import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
@@ -9,7 +9,13 @@ import Product2 from "./reUsable/Product2";
 
 const StoreDetails2 = () => {
   const [search, setSearch] = useState("");
-  console.log(search);
+  const [storeDetails, setStoreDetails] = useState({});
+
+  useEffect(() => {
+    setStoreDetails(JSON.parse(localStorage.getItem("storeDetails")));
+  }, []);
+  console.log(typeof storeDetails);
+
   return (
     <>
       <div className="mycontainer">
@@ -22,7 +28,7 @@ const StoreDetails2 = () => {
         <div className="xPStickyTap">
           <div className="storeTitleAndSearchDiv">
             <div>
-              <img src="https://res.cloudinary.com/ebuka1122/image/upload/v1655643691/samples/Ihub-Consumer-App/download_pthu7h.png" />
+              <img src={storeDetails.image_url} />
             </div>
             <div>
               <SearchBar
@@ -34,16 +40,10 @@ const StoreDetails2 = () => {
         </div>
         <p className="xpProducts">Explore products</p>
         <div className="Store2productWrapper">
-        <Product2 /> {/* should recieve as props brand, id, name rating size and price */}
-        <Product2 />
-        <Product2 />
-        <Product2 />
-        <Product2 />
-        <Product2 />
-        <Product2 />
-        <Product2 />
-        
-    
+          {storeDetails.product?.map((product) => (
+            <Product2 product={product} />
+          ))}
+          {/* should recieve as props brand, id, name rating size and price */}
         </div>
       </div>
     </>

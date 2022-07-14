@@ -26,8 +26,8 @@
   box-shadow: 0px 1px 8px gainsboro;
 }
 .storeImage > img {
-  width: 80%;
-  height: 100%;
+  width: 90%;
+  height: 90%;
   object-fit: cover;
   border-radius: 10px;
 }
@@ -48,8 +48,8 @@
 }
 
 .storePaddress {
-  max-width: 70%;
-  margin-right: 10px;
+  width: 70%;
+  margin-right: 16px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

@@ -45,11 +45,10 @@ const ExploreStores = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data.data.stores);
-          setStores(data.data.stores);
-          setProducts(data.data.top_products);
-          setLoading(false);
-      
+        console.log(data);
+        setStores(data.data.stores);
+        setProducts(data.data.top_products);
+        setLoading(false);
       }
     } catch (error) {
       console.log(error);
@@ -77,10 +76,14 @@ const ExploreStores = () => {
             </p>
           </div>
           <div className="productCardWrapper">
-            {products.map((product) => (
-              <Link key={product.id} to={`/product/${product.id}`} className="linkreset">
+            {products.slice(0,12).map((product) => (
+              <Link
+                key={product.id}
+                to={`/product/${product.id}`}
+                className="linkreset"
+              >
                 {" "}
-                <Product productDetail= {product}  />
+                <Product productDetail={product} />
               </Link>
             ))}
           </div>
@@ -98,14 +101,13 @@ const ExploreStores = () => {
 
       <div className="mycontainer">
         <div className="storeCardWrapper">
-          <Link className="linkreset" to={"/store/storeId"}>
-            {" "}
-            <StoreCard />
-          </Link>
-          <StoreCard />
-          <StoreCard />
-          <StoreCard />
-          <StoreCard />
+          {stores.slice(0,6).map((store) => (
+            <Link key={store.id} className="linkreset" to={`/store/${store.id}`}>
+              {" "}
+              <StoreCard store={store} />
+            </Link>
+          ))}
+
           <BottomNavigation />
         </div>
       </div>

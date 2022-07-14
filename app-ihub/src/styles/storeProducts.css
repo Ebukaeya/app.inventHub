@@ -10,18 +10,19 @@
     position: relative;
 }
 
-.storeProductWrapper>div:first-of-type{
+.simaheLinked{
     width: 30%;
     height: 100%;
     border-radius: 10px 0 0 10px;
 }
 
-.storeProductWrapper>div:first-of-type>img{
+.simaheLinkedImage{
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 10px 0 0 10px;
     border: none;
+    
 }
 
 

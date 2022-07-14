@@ -3,29 +3,43 @@ import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
 import { BsStarHalf, BsFillCartFill, BsPlus } from "react-icons/bs";
 import { FaPercent } from "react-icons/fa";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-const StoreProduct = () => {
+const StoreProduct = ({ product }) => {
   const [quantity, setQuantity] = useState(1);
 
   return (
     <>
       <div style={{ position: "relative", marginBottom: "20px" }}>
         <div className="storeProductWrapper">
-          <div>
-            <img src="https://res.cloudinary.com/ebuka1122/image/upload/v1655939583/samples/Ihub-Consumer-App/images_o9oqbm.jpg" />
-          </div>
+        
+            <div className="simaheLinked">
+           <Link to={`/product/${product.id}`}>
+                <img className="simaheLinkedImage"
+                  src={
+                    "http://ihub.toxsl.in" + product.stock.product_image[0].upload
+                  }
+                />
+           </Link>
+            </div>
+    
           <div>
             <div className="nameAndPrice">
               <div>
-                <p>Tata Salt in</p>
+                <p>{product.product_name}</p>
                 <p>
                   Size{" "}
-                  <b style={{ fontWeight: "800", marginLeft: "10px" }}>NA</b>
+                  <b style={{ fontWeight: "800", marginLeft: "10px" }}>
+                    {product.stock.size ? product.stock.size : "NA"}
+                  </b>
                 </p>
               </div>
               <div>
                 <p style={{ fontSize: "14px" }}>Kr. 400</p>
-                <p>Kr. 330</p>
+                {product.stock.offer_price !== 0 &&
+                  product.stock.offer_price < product.stock.unit_price && (
+                    <p>Kr. 330</p>
+                  )}
               </div>
             </div>
             <div className="QualityButtonSP">
@@ -51,9 +65,12 @@ const StoreProduct = () => {
             </div>
           </div>
         </div>
-        <div className="discoutIcon">
-          <FaPercent />
-        </div>
+        {product.stock.offer_price !== 0 &&
+          product.stock.offer_price < product.stock.unit_price && (
+            <div className="discoutIcon">
+              <FaPercent />
+            </div>
+          )}
       </div>
     </>
   );

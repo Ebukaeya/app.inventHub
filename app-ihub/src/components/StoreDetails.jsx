@@ -7,29 +7,45 @@ import { MdWifiCalling3 } from "react-icons/md";
 import { RiMessage3Fill } from "react-icons/ri";
 import { FaLocationArrow } from "react-icons/fa";
 import SearchBar from "./reUsable/SearchBar";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import StoreProduct from "./reUsable/StoreProduct";
 import { Link } from "react-router-dom";
+import {
+  fetchStoreDetailsUrl,
+  token,
+  fetchStoresDetailsFunc,
+} from "../api/index.js";
+import { useParams } from "react-router-dom";
 
 const StoreDetails = () => {
   const [search, setSearch] = useState("");
   console.log(search);
+  const [storeDetails, setStoreDetails] = useState({});
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  /* window.onscroll = () => {
-    console.log("scroll");
-    let node = document.querySelector(".StickySearchbar");
+  const { storeID } = useParams();
 
-    if (node.style.top === "") {
+  useEffect(() => {
+    fetchStoreDetails();
+  }, []);
 
-      //node.style.height = "90px";
-      node.style.borderBottom = "1px solid rgb(233, 233, 233);";
+  const fetchStoreDetails = async () => {
+    let { storeDetails } = await fetchStoresDetailsFunc(storeID);
+    console.log(storeDetails);
+    if (storeDetails) {
+      setStoreDetails(storeDetails);
+      setProducts(storeDetails.product);
+
+      localStorage.removeItem("storeDetails");
+
+      localStorage.setItem("storeDetails", JSON.stringify(storeDetails));
+
+      setLoading(false);
+    } else {
+      alert("No Store Found");
     }
-
-    if (!node.style.top === "") {
-      console.log("am here");
-    }
-  }; */
-
+  };
 
   return (
     <>
@@ -43,15 +59,13 @@ const StoreDetails = () => {
         <div className="storeProfile">
           <div>
             <div className="storeImage">
-              <img src="https://res.cloudinary.com/ebuka1122/image/upload/v1655643691/samples/Ihub-Consumer-App/download_pthu7h.png" />
+              <img src={storeDetails.image_url} />
             </div>
             <div>
               <div>
-                <p className="storeNameClamp">Super Grocery jrn</p>
+                <p className="storeNameClamp">{storeDetails.name}</p>
                 <div style={{ width: "100%", display: "flex" }}>
-                  <span className="storePaddress">
-                    yudi street in hhdsu jbfdj kwern
-                  </span>
+                  <span className="storePaddress">{storeDetails.address}</span>
                   <span>open</span>
                 </div>
               </div>
@@ -59,7 +73,7 @@ const StoreDetails = () => {
                 <ReactStars
                   size={16}
                   count={5}
-                  value={4}
+                  value={storeDetails.rating}
                   isHalf={true}
                   halfIcon={<BsStarHalf />}
                   filledIcon={<BsStarFill />}
@@ -68,7 +82,7 @@ const StoreDetails = () => {
             </div>
           </div>
           <div>
-            <p>20k</p>
+            <p>{storeDetails.follower}</p>
             <p>followers</p>
             <p>Follow</p>
           </div>
@@ -93,17 +107,21 @@ const StoreDetails = () => {
         </div>
         <div style={{ marginTop: "18px" }} className="titleFlex">
           <p>Explore products</p>
-     <p style={{ fontSize: "14px" }}>  <Link color="inherit" className="linkreset" to={"/store/storeID/2"}>See all</Link></p>
+          <p style={{ fontSize: "14px" }}>
+            {" "}
+            <Link
+              color="inherit"
+              className="linkreset"
+              to={`/store/${storeID}/2`}
+            >
+              See all
+            </Link>
+          </p>
         </div>
-        <StoreProduct />
-        <StoreProduct />
-        <StoreProduct />
-        <StoreProduct />
-        <StoreProduct />
-        <StoreProduct />
-        <StoreProduct />
-        <StoreProduct />
-        <StoreProduct />
+
+        {products.map((product) => (
+          <StoreProduct product={product} />
+        ))}
       </div>
     </>
   );

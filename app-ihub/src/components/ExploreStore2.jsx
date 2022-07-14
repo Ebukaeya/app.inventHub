@@ -10,11 +10,15 @@ import LocationFilter from "./reUsable/LocationFilter";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
+import { fetchStores } from "../api/index.js";
 
 const ExploreStore2 = () => {
   const [search, setSearch] = useState("");
   const [categories, setCategories] = useState("All");
   const [locationFilter, setLocationFilter] = useState("nearby");
+  const [stores, setStores] = useState([]);
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const storeCategories = [
     "Grocery",
@@ -23,6 +27,20 @@ const ExploreStore2 = () => {
     "Baby wears",
     "Men wears",
   ];
+
+  useEffect(() => {
+    fetchStoress()
+  }, []);
+
+  const fetchStoress = async() => {
+    let { stores } = await fetchStores();
+    if (stores.length > 1) {
+      setStores(stores);
+      setLoading(false);
+    } else {
+      alert("cant load stores");
+    }
+  };
 
   useEffect(() => {
     console.log(locationFilter);
@@ -47,29 +65,23 @@ const ExploreStore2 = () => {
       <div style={{ margin: "30px" }}></div>
       <div className="mycontainer">
         <div className="storeCardWrapper">
-          <Link className="linkreset" to={"/store/storeId"}>
-            {" "}
-            <StoreCard />
-          </Link>
-          <StoreCard />
-          <StoreCard />
-          <StoreCard />
-          <StoreCard />
-          <StoreCard />
-          <StoreCard />
-          <StoreCard />
-          <StoreCard />
-          
+          {stores?.map((store) => (
+            <Link
+              key={store.id}
+              className="linkreset"
+              to={`/store/${store.id}`}
+            >
+              {" "}
+              <StoreCard store={store} />
+            </Link>
+          ))}
         </div>
       </div>
 
-     
-
-          <LocationFilter
-            curentlocationFilter={locationFilter}
-            updateLocationFliter={setLocationFilter}
-          />
-
+      <LocationFilter
+        curentlocationFilter={locationFilter}
+        updateLocationFliter={setLocationFilter}
+      />
     </>
   );
 };

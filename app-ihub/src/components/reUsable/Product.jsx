@@ -1,10 +1,10 @@
 const Product = ({ productDetail }) => {
-  console.log(productDetail);
+  
 
-  console.log(typeof productDetail);
+  
 
   if (typeof productDetail === "object") {
-    console.log(productDetail.stock);
+  
   }
 
   return (

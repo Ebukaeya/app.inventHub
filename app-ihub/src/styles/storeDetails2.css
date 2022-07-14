@@ -43,13 +43,15 @@
   flex-wrap: wrap;
   margin: 0 10px;
   justify-content: space-between;
-  row-gap: 24px;
+  row-gap: 32px;
   margin-bottom: 100px;
 }
 
 .Store2Products {
-  width: 40%;
-  box-shadow: 0px 0px 60px rgb(246, 255, 255);
+  width: 44%;
+  
+  
+  
 }
 .Store2Products > div:first-of-type {
   height: 100px;
@@ -57,13 +59,18 @@
   display: flex;
   justify-content: center;
   align-items: center;margin-bottom: 6px;
+ 
+  border-radius: 4px;
 }
 .Store2ProductsImag{
   height: 100%;
-   
+   width: 100%;
   object-fit: cover;
+  border-radius: 4px;
+  box-shadow: 0px 0px 60px rgb(216, 216, 216);
 }
 .Store2Products > div:last-of-type {
+  
 }
 
 .Store2Products > div:last-of-type > p:first-of-type {
