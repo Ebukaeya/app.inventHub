@@ -1,15 +1,23 @@
-const Product = () => {
+const Product = ({ productDetail }) => {
+  console.log(productDetail);
+
+  console.log(typeof productDetail);
+
+  if (typeof productDetail === "object") {
+    console.log(productDetail.stock);
+  }
+
   return (
     <>
       <div className="productCard">
         <div>
-          <img src="https://res.cloudinary.com/ebuka1122/image/upload/v1655638854/samples/Ihub-Consumer-App/download_g34h5e.jpg" />
+          <img src={"https://ihub.toxsl.in" + productDetail?.stock.product_image[0].upload} />
         </div>
         <div className="productText">
-          <p>Coca Cola</p>
+          <p>{productDetail?.product_name}</p>
           <div>
-            <span>$ 17</span>
-            <span>per bottle</span>
+            <span>$ {productDetail?.stock.unit_price} </span>
+            <span>per {productDetail?.stock.unit.unit}</span>
           </div>
         </div>
       </div>

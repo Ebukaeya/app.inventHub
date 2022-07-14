@@ -2,7 +2,8 @@ import "../../styles/productCard.css";
 import Product from "./Product";
 import { Link } from "react-router-dom";
 
-const ProductCard = () => {
+const ProductCard = ({topProducts}) => {
+  console.log(topProducts);
   return (
     <>
       <div className="mycontainer">

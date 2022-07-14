@@ -19,7 +19,7 @@ const Product2  = ()=>{
                 {" "}
                 <img
                   className="Store2ProductsImag"
-                  src="https://res.cloudinary.com/ebuka1122/image/upload/v1655939583/samples/Ihub-Consumer-App/images_o9oqbm.jpg"
+                  src="http://ihub.toxsl.in/media/stock_images/image_kEJ4a41.jpg"
                 />
               </Link>
             </div>
