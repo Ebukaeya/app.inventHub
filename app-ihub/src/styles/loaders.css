@@ -1,0 +1,91 @@
+/* skeleton */
+
+.skeletonLoaderWrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgb(250, 250, 250);
+  padding: 20px;
+}
+
+.skeletonSearch {
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  background-color: #e7e7e7;
+}
+
+.animatedAll {
+  animation: moveColor 1s infinite ease-in-out;
+}
+
+@keyframes moveColor {
+  0% {
+    background: rgb(244, 243, 243);
+    background: linear-gradient(
+      90deg,
+      rgba(244, 243, 243, 1) 0%,
+      rgba(235, 236, 238, 1) 19%,
+      rgba(235, 236, 238, 1) 100%
+    );
+  }
+  25% {
+    background: rgb(235, 236, 238);
+    background: linear-gradient(
+      90deg,
+      rgba(235, 236, 238, 1) 5%,
+      rgba(244, 243, 243, 1) 25%,
+      rgba(235, 236, 238, 1) 49%
+    );
+  }
+  50% {
+    background: rgb(235, 236, 238);
+    background: linear-gradient(
+      90deg,
+      rgba(235, 236, 238, 1) 8%,
+      rgba(244, 243, 243, 1) 50%,
+      rgba(235, 236, 238, 1) 88%
+    );
+  }
+  75% {
+    background: rgb(235, 236, 238);
+    background: linear-gradient(
+      90deg,
+      rgba(235, 236, 238, 1) 48%,
+      rgba(244, 243, 243, 1) 75%,
+      rgba(235, 236, 238, 1) 100%
+    );
+  }
+  100% {
+    background: rgb(235,236,238);
+    background: linear-gradient(90deg, rgba(235,236,238,1) 48%, rgba(235,236,238,1) 75%, rgba(244,243,243,1) 100%);
+  }
+}
+
+.productSkeletonWrapper {
+  display: flex;
+  gap: 20px;
+  margin-top: 60px;
+}
+
+.productSkeletonWrapper > div {
+  height: 100px;
+  width: 130px;
+
+  border-radius: 10px;
+  flex-shrink: 0;
+}
+
+.storeSkeletonWrapper {
+  margin-top: 70px;
+}
+.storeSkeletonWrapper > div {
+  width: 90%;
+  height: 100px;
+  background-color: rebeccapurple;
+  margin-bottom: 30px;
+  border-radius: 4px;
+}

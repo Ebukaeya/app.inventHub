@@ -6,30 +6,48 @@ import ProductSlider from "./reUsable/ProductSlider";
 import ReactStars from "react-rating-stars-component";
 import { BsStarHalf, BsStarFill, BsPlus } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import {fetchProductsFunc} from '../api/index.js';
+import { fetchProductsFunc } from "../api/index.js";
+import { useDispatch } from "react-redux";
+import { addToCart, removeFromCart, clearCart } from "../slices/cartSlice";
 
 const ProductDetails = () => {
-  const {productID} = useParams();
+  const { productID } = useParams();
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
+  const [totalPrice, setTotalPrice] = useState(0);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    fetchProduct();
+  }, []);
 
-useEffect(()=>{
-fetchProduct()
-},[])
+  useEffect(() => {
+    setTotalPrice(product.stock?.unit_price*quantity);
+  }, [quantity, product]);
 
-const fetchProduct = async () => {
-  let {productDetails}= await fetchProductsFunc(productID);
-  if(productDetails){
-    console.log(productDetails);
-    setProduct(productDetails);
-  }else{
-    alert("product details not found");
-  }
-}
+  const fetchProduct = async () => {
+    let { productDetails } = await fetchProductsFunc(productID);
+    if (productDetails) {
+      console.log(productDetails);
+      setProduct(productDetails);
+    } else {
+      alert("product details not found");
+    }
+  };
 
-console.log(product.store?.name);
+  const addToCartFn = () => {
+    let selectedProduct = {
+      product,
+      quantity,
+      unitPrice: product.stock.unit_price,
+      totalPrice,
+    };
+
+    dispatch(addToCart(selectedProduct));
+    /* send to database */
+    console.log(totalPrice, quantity);
+  };
 
   return (
     <>
@@ -41,7 +59,7 @@ console.log(product.store?.name);
             <BiDotsVerticalRounded size={30} />
           </div>
         </div>
-        <ProductSlider productImages = {product.stock?.product_image} />
+        <ProductSlider productImages={product.stock?.product_image} />
         <div className="productNameWrapper">
           <div>
             <p className="productTitle">{product.product_name}</p>
@@ -62,20 +80,20 @@ console.log(product.store?.name);
                 halfIcon={<BsStarHalf />}
                 filledIcon={<BsStarFill />}
               />{" "}
-              
             </div>
             <p className="storeNameD"> {product.store?.name} </p>
             <div className="storeDetailwrapper">
-              <p className="storeAdressDetail">
-              {product.store?.address}
-              </p>
+              <p className="storeAdressDetail">{product.store?.address}</p>
               <span>open</span>
             </div>
           </div>
           <div>
             <p>£ {product.stock?.unit_price}</p>
 
-            { product.stock?.offer_price !==0 && product.stock?.offer_price < product.stock?.unit_price  && <p> £ 300</p>}
+            {product.stock?.offer_price !== 0 &&
+              product.stock?.offer_price < product.stock?.unit_price && (
+                <p> £ {product.stock?.offer_price}</p>
+              )}
             <div
               style={{
                 display: "flex",
@@ -86,7 +104,10 @@ console.log(product.store?.name);
               }}
             >
               <p>Size</p>{" "}
-              <p style={{ color: "black", fontWeight: "bold" }}> {product.stock?.size?product.stock?.size:"NA"}</p>
+              <p style={{ color: "black", fontWeight: "bold" }}>
+                {" "}
+                {product.stock?.size ? product.stock?.size : "NA"}
+              </p>
             </div>
           </div>
         </div>
@@ -98,11 +119,18 @@ console.log(product.store?.name);
             </div>
             <div>
               <p className="textMute">Available</p>
-              <p className="textBolder">{product?.quantity}</p>
+              <p className="textBolder">{product?.quantity - quantity}</p>
             </div>
             <div>
               <p className="textMute">Expiry</p>
-             { product.stock?.expiry_date? <p className="textBolder"> {product.stock?.expiry_date.slice(0,7)}</p>: <p className="textBolder"> NA</p>}
+              {product.stock?.expiry_date ? (
+                <p className="textBolder">
+                  {" "}
+                  {product.stock?.expiry_date.slice(0, 7)}
+                </p>
+              ) : (
+                <p className="textBolder"> NA</p>
+              )}
             </div>
           </div>
         </div>
@@ -116,13 +144,18 @@ console.log(product.store?.name);
         </div>
         <div className="centeredDiv">
           <div>
-            <p className="centeredDivp">Typically arrives in {product.stock?.delivery_time} - {parseInt(product.stock?.delivery_time)+1} days</p>
+            <p className="centeredDivp">
+              Typically arrives in {product.stock?.delivery_time} -{" "}
+              {parseInt(product.stock?.delivery_time) + 1} days
+            </p>
             <div className="billButton">
               <BiMinus
                 onClick={() => quantity >= 2 && setQuantity(quantity - 1)}
                 size={26}
               />
-              <p>{quantity}</p>
+              <p>
+                {quantity <= product?.quantity ? quantity : product?.quantity}
+              </p>
               <BsPlus onClick={() => setQuantity(quantity + 1)} size={26} />
             </div>
           </div>
@@ -130,9 +163,9 @@ console.log(product.store?.name);
 
         <div className="totalPriceDiv">
           <p>Total</p>
-          <p>£ 200</p>
+          <p>£  {totalPrice && totalPrice}</p>
         </div>
-        <div className="AddtocartButton">ADD TO CART</div>
+        <div className="AddtocartButton" onClick={addToCartFn}  >ADD TO CART</div>
       </div>
     </>
   );

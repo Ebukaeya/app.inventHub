@@ -2,15 +2,44 @@ import "../../styles/cart.css";
 import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
 import { ImCheckboxChecked } from "react-icons/im";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { BiCurrentLocation } from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
 import CartItem from "./CartItem";
+import { useSelector } from "react-redux";
 
 const Cart = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isFieldOpen, setIsFieldOpen] = useState(false);
   const [locatiion, setLocation] = useState();
+  const [checkOut, setCheckOut] = useState({
+    unitTotal: 0,
+    deliveryFee: 0,
+  });
+  const [updateTotal, setUpdateTotal] = useState(0);
+
+  const cartItems = useSelector((state) => state.cart.cartItems);
+
+  console.log(cartItems);
+
+  /* reduce the prrice on moubt and set the state */
+
+  useEffect(() => {
+    let subtotal = cartItems?.reduce(
+      (acc, curr) => {
+        return {
+          unitTotal: acc.unitTotal + curr.totalPrice,
+          deliveryFee: acc.deliveryFee + curr.product.stock.delivery_fee,
+        };
+      },
+      {
+        unitTotal: 0,
+        deliveryFee: 0,
+      }
+    );
+    console.log(subtotal);
+    setCheckOut(subtotal);
+  }, [cartItems, updateTotal]);
 
   let body = document.querySelector("body");
 
@@ -28,8 +57,9 @@ const Cart = () => {
 
   const handleSubmit = () => {
     setIsFieldOpen(false);
-    body.style.overflow= "auto"
+    body.style.overflow = "auto";
   };
+
   return (
     <>
       <div className="mycontainer">
@@ -43,9 +73,15 @@ const Cart = () => {
           </div>
         </div>
         <div className="cartItemWrapper">
-          <CartItem />
-          <CartItem />
-          <CartItem />
+          {cartItems.length > 0 &&
+            cartItems.map((item, i) => (
+              <CartItem
+                key={i}
+                item={item}
+                index={i}
+                updateTotal={setUpdateTotal}
+              />
+            ))}
         </div>
         <div className="ItemdeliveryAddress">
           <div>
@@ -59,16 +95,16 @@ const Cart = () => {
         <div className="subTotal">
           <div>
             <p>Subtotal :</p>
-            <p>Kr. 4000</p>
+            <p>Kr. {checkOut.unitTotal}</p>
           </div>
           <div>
             <p>Delivery fee :</p>
-            <p>Kr. 40</p>
+            <p>Kr. {checkOut.deliveryFee}</p>
           </div>
           <div>
             {" "}
             <p>Grand Total :</p>
-            <p>Kr. 4000</p>
+            <p>Kr. {checkOut.unitTotal + checkOut.deliveryFee}</p>
           </div>
         </div>
         <div className="termsAndArgment">

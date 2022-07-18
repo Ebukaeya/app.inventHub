@@ -3,6 +3,7 @@ import Narbar from "./reUsable/Navbar";
 import SideMenu from "./reUsable/SideMenu";
 import SearchBar from "./reUsable/SearchBar";
 import Categories from "./reUsable/Categories";
+
 import { useState, useEffect } from "react";
 import Product from "./reUsable/Product";
 import StoreCard from "./reUsable/StoresCard";
@@ -10,6 +11,7 @@ import BottomNavigation from "./reUsable/BottomNavigation";
 import LocationFilter from "./reUsable/LocationFilter";
 import { Link } from "react-router-dom";
 import { fetchStoresAndProductsUrl, token } from "../api/index.js";
+import SkeletonLoad from "./loaders/SkeletonLoad";
 
 const ExploreStores = () => {
   const [search, setSearch] = useState("");
@@ -117,6 +119,7 @@ const ExploreStores = () => {
         curentlocationFilter={locationFilter}
         updateLocationFliter={setLocationFilter}
       />
+     {loading && <SkeletonLoad/>}
     </>
   );
 };
