@@ -6,7 +6,9 @@ import { useState, useEffect } from "react";
 import { BiCurrentLocation } from "react-icons/bi";
 import { ImLocation } from "react-icons/im";
 import CartItem from "./CartItem";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { updateCartTotal } from "../../slices/cartSlice";
 
 const Cart = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -17,10 +19,14 @@ const Cart = () => {
     deliveryFee: 0,
   });
   const [updateTotal, setUpdateTotal] = useState(0);
-
   const cartItems = useSelector((state) => state.cart.cartItems);
+  const profile = useSelector((state) => state.profile.profile);
+  const cartTotal = useSelector((state) => state.cart.cartTotal);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  console.log(cartItems);
+  console.log(cartItems, profile, cartTotal);
+
 
   /* reduce the prrice on moubt and set the state */
 
@@ -40,6 +46,18 @@ const Cart = () => {
     console.log(subtotal);
     setCheckOut(subtotal);
   }, [cartItems, updateTotal]);
+ 
+  useEffect(()=>{
+  /* update the total in the store */
+  let cartTotal ={
+    subtotal: checkOut.unitTotal,
+    deliveryFee: checkOut.deliveryFee,
+    total: checkOut.unitTotal + checkOut.deliveryFee,
+  }
+  dispatch(updateCartTotal(cartTotal));
+
+  }, [checkOut])
+
 
   let body = document.querySelector("body");
 
@@ -58,6 +76,13 @@ const Cart = () => {
   const handleSubmit = () => {
     setIsFieldOpen(false);
     body.style.overflow = "auto";
+  };
+
+  const placeOrder = () => {
+    if (profile) {
+    } else {
+     navigate("/signup");
+    }
   };
 
   return (
@@ -117,7 +142,9 @@ const Cart = () => {
             and <b className="TermsandSe">Privacy Policy</b>
           </p>
         </div>
-        <div className="AddtocartButton">PLACE ORDER </div>
+        <div onClick={placeOrder} className="AddtocartButton">
+          PLACE ORDER{" "}
+        </div>
       </div>
       {isFieldOpen && (
         <div className="filterField" onClick={(e) => closeField(e)}>

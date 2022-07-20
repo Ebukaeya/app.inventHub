@@ -12,6 +12,7 @@ import LocationFilter from "./reUsable/LocationFilter";
 import { Link } from "react-router-dom";
 import { fetchStoresAndProductsUrl, token } from "../api/index.js";
 import SkeletonLoad from "./loaders/SkeletonLoad";
+import { useSelector } from "react-redux";
 
 const ExploreStores = () => {
   const [search, setSearch] = useState("");
@@ -20,6 +21,8 @@ const ExploreStores = () => {
   const [stores, setStores] = useState([]);
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
+  const profile = useSelector((state) => state.profile.profile);
+  console.log(profile);
 
   const storeCategories = [
     "Grocery",
@@ -59,7 +62,8 @@ const ExploreStores = () => {
 
   return (
     <>
-      <Narbar />
+      { profile && <Narbar />}
+      {!profile && <div style={{marginTop:"20px"}}></div>}
       <SearchBar controlInput={setSearch} />
       <Categories
         categories={storeCategories.sort((a, b) => a - b)}

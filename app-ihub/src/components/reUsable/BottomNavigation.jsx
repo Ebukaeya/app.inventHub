@@ -2,9 +2,10 @@ import "../../styles/bottomNavigation.css";
 import { RiHomeFill, RiShoppingCartFill } from "react-icons/ri";
 import { BsBagFill, BsFillHeartFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const BottomNavigation = () => {
-
+const cartCount = useSelector((state) => state.cart.cartItems.length);
 
   return (
     <>
@@ -16,9 +17,9 @@ const BottomNavigation = () => {
   
           <div  className="cart ">
             <Link to={"/cart"}  className="linkreset"><RiShoppingCartFill size={30} /></Link>
-            <div>
-              <p>3</p>
-            </div>
+           { cartCount > 0 && <div>
+              <p>{cartCount}</p>
+            </div>}
           </div>
   
          <Link to={"/wishlist"}  className="linkreset"> <BsFillHeartFill color="#bdbcb8" size={28} /></Link>

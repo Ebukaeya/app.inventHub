@@ -3,9 +3,11 @@ import { persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage"; // <-- this is the localStorage engine
 import { encryptTransform } from "redux-persist-transform-encrypt";
 import cartItemReducer from "../slices/cartSlice.js";
+import profileReducer from "../slices/profileSlice.js";
 
 const reducers = combineReducers({
   cart: cartItemReducer,
+  profile:profileReducer
 });
 
 const persistConfig = {

@@ -19,7 +19,8 @@ import OrderDetails from "./components/MyOrders/OrderDetails";
 import EachOrder from "./components/MyOrders/EachOrder";
 import Profile from "./components/profile/ProfileSection";
 import WishList from "./components/wishlist/WishList";
-
+import SignUp from "./components/signUp/signUp";
+import PaymentPage from "./components/payment/PaymentPage";
 
 
 
@@ -46,6 +47,8 @@ function App() {
         <Route path="/order-details/:orderID/:productID" element={<EachOrder/>} />
         <Route path="/profile" element={<Profile/>} />
         <Route path="/wishlist" element={ <WishList/>} />
+        <Route path="/signup" element={<SignUp/>} />
+        <Route path="/Secure_payment" element={<PaymentPage/>} />
         <Route path="*" element={<div>404</div>} />
       </Routes>
     </BrowserRouter> 

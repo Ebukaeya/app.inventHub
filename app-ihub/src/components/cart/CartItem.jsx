@@ -3,12 +3,7 @@ import { BsPlus } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import {
-  addToCart,
-  removeFromCart,
-  clearCart,
-  updateCart,
-} from "../../slices/cartSlice";
+import { removeFromCart, updateCart } from "../../slices/cartSlice";
 
 const CartItem = ({ item, index, updateTotal }) => {
   console.log(index);
