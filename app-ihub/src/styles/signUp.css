@@ -135,14 +135,143 @@
 
 .cartOverView{
     position: fixed;
-    bottom: 10px;
+    bottom: 70px;
     right: 10px;
     left: 10px;
     height: 50px;
-    background-color: rgb(49, 138, 253);
+    background-color: rgb(14,73,181);
     border-radius: 4px;
     display: flex;
     justify-content: center;
     align-items: center;
     color: white;
+    gap: 14px;
+    font-family: "Nunito", sans-serif;;
+}
+
+.cartOverView1{
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    left: 10px;
+    height: 50px;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.carOverViewMainButton{
+    background-color: rgb(14,73,181);
+    border-radius: 4px;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    gap: 14px;
+    font-family: "Nunito", sans-serif;
+    transition: width 0.3s ease-in-out;
+
+}
+
+.decraseCartOverView{
+width: 50px;
+border-radius: 50px;
+}
+
+
+
+.priceOnCheck{
+    font-size: 35px;
+    font-weight: bold;
+    color: rgb(88, 132, 228);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.cardNumberInput{
+letter-spacing: 4px;
+width: 75%;
+height: 40px;
+margin: 10px;
+border-radius: 4px;
+border: 1px solid rgb(219, 226, 230);
+padding: 10px;
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+box-sizing: border-box;
+}
+
+.cardNumberInput:focus{
+    outline: none;
+    box-shadow: 0px 1px 10px rgba(108, 152, 247, 0.2);
+}
+
+.cardNumberInput+div{
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+}
+
+.cardNumberInput+div>div{
+    width:45%;
+   
+    box-sizing: border-box;
+}
+
+.cardNumberInput+div>div>input{
+    margin: 10px;
+    width: 90%;
+    height: 40px;
+    letter-spacing: 6px;
+    border: 1px solid rgb(219, 226, 230);
+    border-radius: 4px;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.cardNumberInput+div>div>input:focus{
+    outline: none;
+    box-shadow: 0px 1px 10px rgba(108, 152, 247, 0.2);
+}
+
+.tokenAV{
+    margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tokenAV>p{
+    font-size: 14px;
+    font-weight: bold;
+    color: rgb(77, 76, 76);
+}
+
+.radioBuBase{
+    width: 70px;
+    height: 34px;
+    border-radius: 40px;
+    background-color: rgb(199, 205, 216);
+    display: flex;
+    align-items: center;
+    padding: 0 3px;
+    box-sizing: border-box;
+    justify-content: flex-end;
+}
+.radioBuBase>div{
+    width:30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: rgb(255, 255, 255);
+    transition: transform 0.5s ease-in-out;
 }

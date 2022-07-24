@@ -3,11 +3,15 @@ import Narbar from "./reUsable/Navbar";
 import Slider from "./reUsable/Slider";
 import SideMenu from "./reUsable/SideMenu";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const HomePage = () => {
+  const profile = useSelector((state) => state.profile.profile);
+
   return (
     <>
-      <Narbar />
+    { profile &&  <Narbar />}
+    {!profile && <div style={{marginTop:"30px"}}></div>}
       <div className="mycontainer">
         <div className="SliderDivWrapper">
           <Slider />
