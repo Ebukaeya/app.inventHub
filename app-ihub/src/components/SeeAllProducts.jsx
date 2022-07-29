@@ -24,7 +24,14 @@ const SeeAllProducts = () => {
   ];
 
   useEffect(() => {
-    fetchAllProducts();
+    if(localStorage.getItem("data")){
+        let data = JSON.parse(localStorage.getItem("data"))
+        setProducts(data.data.top_products);
+        setLoading(false);
+    }else{
+
+      fetchAllProducts();
+    }
   }, []);
 
   const fetchAllProducts = async () => {
@@ -37,7 +44,7 @@ const SeeAllProducts = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        localStorage.setItem("data", JSON.stringify(data));
         setProducts(data.data.top_products);
         setLoading(false);
       }

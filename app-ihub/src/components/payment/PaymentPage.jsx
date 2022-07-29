@@ -12,9 +12,15 @@ import Cardpayment from "./CardPayment";
 import { useNavigate } from "react-router-dom";
 import SwitchButton from "./SwitchButton";
 import BounceLoader from "react-spinners/ClipLoader";
+import { useSelector } from "react-redux";
 
 const PaymentPage = () => {
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+
+  const cartTotal = useSelector((state) => state.cart.cartTotal);
+
+  console.log(cartTotal);
 
   const navigation = (e) => {
     let paymentNode = Array.from(
@@ -71,7 +77,7 @@ const PaymentPage = () => {
           onClick={() =>makePayment()}
           className="cartOverView"
         >
-          Pay now {`Kr ${3000}`} <BounceLoader  color="#1CCCE9"  size={18}  loading={true}/>
+          Pay now <b>{`Kr ${cartTotal.total}`}</b>  <BounceLoader  color="#1CCCE9"  size={18}  loading={loading}/>
         </div>
       <div className="cancelPayment">
         Cancel

@@ -33,14 +33,22 @@ const ExploreStores = () => {
   ];
 
   useEffect(() => {
-    fetchStoresAndProducts();
+    if (localStorage.getItem("data")) {
+      console.log("from storage");
+      let data =    JSON.parse(localStorage.getItem("data"))
+      setStores(data.data.stores);
+      setProducts(data.data.top_products);
+      setLoading(false);
+    } else {
+      console.log("fetching data");
+      fetchStoresAndProducts();
+    }
   }, []);
 
   useEffect(() => {}, [locationFilter]);
 
   const fetchStoresAndProducts = async () => {
     const endpiont = fetchStoresAndProductsUrl;
-
     try {
       console.log(loading);
       const response = await fetch(endpiont, {
@@ -50,7 +58,7 @@ const ExploreStores = () => {
       });
       if (response.ok) {
         const data = await response.json();
-        console.log(data);
+        localStorage.setItem("data", JSON.stringify(data));
         setStores(data.data.stores);
         setProducts(data.data.top_products);
         setLoading(false);
@@ -60,10 +68,17 @@ const ExploreStores = () => {
     }
   };
 
+
+  setInterval(()=>{
+    console.log("interval");
+    fetchStoresAndProducts();
+
+  },6000000);
+
   return (
     <>
-      { profile && <Narbar />}
-      {!profile && <div style={{marginTop:"20px"}}></div>}
+      {profile && <Narbar />}
+      {!profile && <div style={{ marginTop: "20px" }}></div>}
       <SearchBar controlInput={setSearch} />
       <Categories
         categories={storeCategories.sort((a, b) => a - b)}
@@ -82,7 +97,7 @@ const ExploreStores = () => {
             </p>
           </div>
           <div className="productCardWrapper">
-            {products.slice(0,12).map((product) => (
+            {products.slice(0, 12).map((product) => (
               <Link
                 key={product.id}
                 to={`/product/${product.id}`}
@@ -107,8 +122,12 @@ const ExploreStores = () => {
 
       <div className="mycontainer">
         <div className="storeCardWrapper">
-          {stores.slice(0,6).map((store) => (
-            <Link key={store.id} className="linkreset" to={`/store/${store.id}`}>
+          {stores.slice(0, 6).map((store) => (
+            <Link
+              key={store.id}
+              className="linkreset"
+              to={`/store/${store.id}`}
+            >
               {" "}
               <StoreCard store={store} />
             </Link>
@@ -123,7 +142,7 @@ const ExploreStores = () => {
         curentlocationFilter={locationFilter}
         updateLocationFliter={setLocationFilter}
       />
-     {loading && <SkeletonLoad/>}
+      {loading && <SkeletonLoad />}
     </>
   );
 };

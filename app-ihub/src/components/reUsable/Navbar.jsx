@@ -1,3 +1,7 @@
+import { useSelector } from "react-redux";
+
+
+
 const styles = {
   container: {
     marginTop: 20 + "px",
@@ -62,6 +66,9 @@ const styles = {
 };
 
 const Narbar = () => {
+
+const user = useSelector(state => state.profile.profile);
+
   const openSideMenu = () => {
     let sideMenu = document.querySelector(".sideMenu");
     let cover = document.querySelector(".cover");
@@ -99,7 +106,7 @@ const Narbar = () => {
             </div>
             <img
               style={styles.img}
-              src="https://res.cloudinary.com/ebuka1122/image/upload/v1655499719/samples/Ihub-Consumer-App/linkpic2_nqxxhx.png"
+              src={user?.imageUrl}
             />
           </div>
           <svg

@@ -67,12 +67,14 @@ font-weight: 700;
     gap: 18px;
     justify-content: space-between;
 }
-.QualityButtonSP>div{
+.QualityButtonSP>div:first-of-type{
 display: flex;
 gap: 16px;
 align-items: center;
 justify-content: center;
 margin-left: -4px;
+width: 40%;
+
 }
 
 .minusPlus{

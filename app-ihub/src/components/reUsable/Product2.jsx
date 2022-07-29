@@ -15,7 +15,7 @@ const Product2 = ({ product }) => {
             <img
               className="Store2ProductsImag"
               src={
-                "https://ihub.toxsl.in" + product?.stock.product_image[0].upload
+                "https://ihub.toxsl.in" + product?.stock.product_image[0]?.upload
               }
             />
           </Link>
@@ -23,14 +23,14 @@ const Product2 = ({ product }) => {
         <div>
           <p>{product.stock.brand}</p>
           <p>{product.product_name}</p>
-          <ReactStars value={4} />
+          <ReactStars value={product.rating} />
           <p className="sizeSD2">
             size{" "}
             <b style={{ marginLeft: "4px", color: "black" }}>
               {product?.stock.size ? product.stock.size : "NA"}
             </b>{" "}
           </p>
-          <p>£ 400</p>
+          <p>£ {product.stock.unit_price}</p>
         </div>
       </div>
     </>

@@ -17,7 +17,6 @@ const ExploreStore2 = () => {
   const [categories, setCategories] = useState("All");
   const [locationFilter, setLocationFilter] = useState("nearby");
   const [stores, setStores] = useState([]);
-  const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
   const storeCategories = [
@@ -29,7 +28,17 @@ const ExploreStore2 = () => {
   ];
 
   useEffect(() => {
-    fetchStoress()
+    if (localStorage.getItem("data")) {
+      console.log("from storage");
+      let data =    JSON.parse(localStorage.getItem("data"))
+      setStores(data.data.stores);
+      setLoading(false);
+    } else {
+      console.log("fetching data");
+      fetchStoress()
+    }
+    
+    
   }, []);
 
   const fetchStoress = async() => {

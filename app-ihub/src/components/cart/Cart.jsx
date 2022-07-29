@@ -46,18 +46,16 @@ const Cart = () => {
     console.log(subtotal);
     setCheckOut(subtotal);
   }, [cartItems, updateTotal]);
- 
-  useEffect(()=>{
-  /* update the total in the store */
-  let cartTotal ={
-    subtotal: checkOut.unitTotal,
-    deliveryFee: checkOut.deliveryFee,
-    total: checkOut.unitTotal + checkOut.deliveryFee,
-  }
-  dispatch(updateCartTotal(cartTotal));
 
-  }, [checkOut])
-
+  useEffect(() => {
+    /* update the total in the store */
+    let cartTotal = {
+      subtotal: checkOut.unitTotal,
+      deliveryFee: checkOut.deliveryFee,
+      total: checkOut.unitTotal + checkOut.deliveryFee,
+    };
+    dispatch(updateCartTotal(cartTotal));
+  }, [checkOut]);
 
   let body = document.querySelector("body");
 
@@ -80,8 +78,9 @@ const Cart = () => {
 
   const placeOrder = () => {
     if (profile) {
+      navigate("/Secure_payment");
     } else {
-     navigate("/signup");
+      navigate("/signup");
     }
   };
 

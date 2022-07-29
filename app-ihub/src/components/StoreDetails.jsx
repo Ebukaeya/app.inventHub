@@ -27,6 +27,7 @@ const StoreDetails = () => {
   const { storeID } = useParams();
 
   useEffect(() => {
+    
     fetchStoreDetails();
   }, []);
 

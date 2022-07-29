@@ -1,5 +1,5 @@
 .cartItemWrapper {
-  height: 340px;
+  min-height: 340px;
   overflow: auto;
 }
 .ItemdeliveryAddress {
@@ -96,12 +96,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  box-shadow: 0 0 30px rgba(189, 255, 214, 0.5);
+  box-shadow: 0 0 30px rgba(214, 214, 214, 0.5);
 }
 .cartItemDiv > div:first-of-type > img {
  
     height: 90%;
+    width: 95%;
   object-fit: cover;
+  border-radius: 8px;
 }
 
 .cartItemDiv > div:last-of-type {

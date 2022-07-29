@@ -11,12 +11,12 @@ const Product = ({ productDetail }) => {
     <>
       <div className="productCard">
         <div>
-          <img src={"https://ihub.toxsl.in" + productDetail?.stock.product_image[0].upload} />
+          <img src={"https://ihub.toxsl.in" + productDetail?.stock.product_image[0]?.upload} />
         </div>
         <div className="productText">
           <p>{productDetail?.product_name}</p>
           <div>
-            <span>$ {productDetail?.stock.unit_price} </span>
+            <span>Kr {productDetail?.stock.unit_price} </span>
             <span>per {productDetail?.stock.unit.unit}</span>
           </div>
         </div>

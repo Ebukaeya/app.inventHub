@@ -2,14 +2,15 @@ import { BiMinus } from "react-icons/bi";
 import { BsPlus } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { AiOutlineDelete } from "react-icons/ai";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeFromCart, updateCart } from "../../slices/cartSlice";
 
 const CartItem = ({ item, index, updateTotal }) => {
-  console.log(index);
+  console.log(item);
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
   const dispatch = useDispatch();
+  const cartTotal = useSelector((state) => state.cart.cartTotal);
 
   useEffect(() => {
     setQuantity(item?.quantity);
@@ -19,22 +20,22 @@ const CartItem = ({ item, index, updateTotal }) => {
   useEffect(() => {
     setTotalPrice(item?.unitPrice * quantity);
     updateTotal(Math.random() * 100);
-  }, [quantity]);
+  }, [quantity, cartTotal]);
 
   /*     dispatch(updateCart({index, unitTotal: totalPrice, quantity})) */
   return (
     <>
       <div className="cartItemDiv">
         <div>
-          <img src="https://res.cloudinary.com/ebuka1122/image/upload/v1656114183/samples/Ihub-Consumer-App/images_ostgjp.jpg" />
+          <img src={item.product.stock.product_image[0]?.upload}/>
         </div>
         <div>
-          <p>Iphone 11 Pro max</p>
+          <p>{item.product.product_name}</p>
           <div>
-            <p className="CartItemStore">Super grocery store</p>{" "}
+            <p className="CartItemStore">{item.product.store.name}</p>{" "}
             <p>kr. {totalPrice}</p>
           </div>
-          <p className="deliveryfee">Delivery fee: 100</p>
+          <p className="deliveryfee">Delivery fee: <b>kr {item.product.stock.delivery_fee}</b> </p>
           <div className="QualityButtonSP cartEdit">
             <div>
               <div
@@ -85,6 +86,7 @@ const CartItem = ({ item, index, updateTotal }) => {
               <AiOutlineDelete
                 onClick={() => {
                   dispatch(removeFromCart(index));
+                  updateTotal(Math.random() * 100);
                 }}
               />
             </div>

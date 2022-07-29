@@ -17,7 +17,7 @@ const StoreProduct = ({ product }) => {
            <Link to={`/product/${product.id}`}>
                 <img className="simaheLinkedImage"
                   src={
-                    "http://ihub.toxsl.in" + product.stock.product_image[0].upload
+                    "http://ihub.toxsl.in" + product.stock.product_image[0]?.upload
                   }
                 />
            </Link>
