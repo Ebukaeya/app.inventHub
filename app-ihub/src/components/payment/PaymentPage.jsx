@@ -7,12 +7,13 @@ import {
   BsCurrencyBitcoin,
 } from "react-icons/bs";
 import { ImCheckboxChecked } from "react-icons/im";
-import { useState, useEffect,  } from "react";
+import { useState, useEffect } from "react";
 import Cardpayment from "./CardPayment";
 import { useNavigate } from "react-router-dom";
 import SwitchButton from "./SwitchButton";
 import BounceLoader from "react-spinners/ClipLoader";
 import { useSelector } from "react-redux";
+import PayStack from "./PayStack";
 
 const PaymentPage = () => {
   const navigate = useNavigate();
@@ -32,10 +33,9 @@ const PaymentPage = () => {
     e.target.classList.add("activepayment");
   };
 
-
-  const makePayment = ()=>{
+  const makePayment = () => {
     navigate("/Secure_payment/confirmation");
-  }
+  };
 
   return (
     <>
@@ -60,7 +60,7 @@ const PaymentPage = () => {
           </div>
           <div className="activepayment" onClick={(e) => navigation(e)}>
             {" "}
-            <BsCreditCard2BackFill /> Card
+            <BsCreditCard2BackFill /> Paystack
           </div>
           <div onClick={(e) => navigation(e)}>
             <BsCurrencyBitcoin /> Bitcoin
@@ -72,16 +72,14 @@ const PaymentPage = () => {
           <p> Use your accumulated voucher</p>
           <SwitchButton />
         </div>
-    
-        <div
-          onClick={() =>makePayment()}
-          className="cartOverView"
-        >
-          Pay now <b>{`Kr ${cartTotal.total}`}</b>  <BounceLoader  color="#1CCCE9"  size={18}  loading={loading}/>
+
+        <div onClick={() => makePayment()} className="cartOverView">
+          Pay now <b>{`Kr ${cartTotal.total}`}</b>{" "}
+          <BounceLoader color="#1CCCE9" size={18} loading={loading} />
         </div>
-      <div className="cancelPayment">
-        Cancel
-      </div>
+        <div className="cancelPayment">Cancel</div>
+
+        <PayStack />
       </div>
     </>
   );
