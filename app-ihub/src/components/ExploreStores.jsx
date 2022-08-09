@@ -69,11 +69,6 @@ const ExploreStores = () => {
   };
 
 
-  setInterval(()=>{
-    console.log("interval");
-   // fetchStoresAndProducts();
-
-  },6000);
 
   return (
     <>

@@ -24,6 +24,12 @@ import PaymentPage from "./components/payment/PaymentPage";
 import ConfirmedPayment from "./components/payment/ConfirmedPayment";
 
 
+setInterval(()=>{
+  console.log("interval");
+ // fetchStoresAndProducts();
+localStorage.removeItem("data");
+},600000);
+
 
 
 function App() {
