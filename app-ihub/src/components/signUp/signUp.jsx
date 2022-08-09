@@ -27,6 +27,7 @@ const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [isFormFilled, setIsFormFilled] = useState(false);
+  const [proceedToPayment, setProceedToPayment] = useState(false);
 
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
@@ -47,12 +48,12 @@ const SignUp = () => {
   };
 
   const goToNextPage = () => {
-    console.log("go to next page");
     const currentPage = document.querySelector(".signUpPage1");
     const nextPage = document.querySelector(".deliveryAddressPage2");
     const wrapper = document.querySelector("Div.signUpDivWrapper");
     currentPage.style.transform = "translateX(-100vw)";
     nextPage.style.transform = "translateX(-100vw)";
+    setProceedToPayment(true);
   };
 
   const updateUserCart = async (id) => {
@@ -110,7 +111,7 @@ const SignUp = () => {
 
   return (
     <>
-<div style={{overflow:"hidden", width:"100vw"}}>
+      <div style={{ overflow: "hidden", width: "100vw" }}>
         <div className="signUpDivWrapper">
           <div className="signUpPage1">
             <div className="mycontainer">
@@ -172,7 +173,7 @@ const SignUp = () => {
                       placeholder="Password"
                     />
                   </div>
-  
+
                   {showPassword ? (
                     <div>
                       <BsEye onClick={() => setShowPassword(false)} />
@@ -206,9 +207,9 @@ const SignUp = () => {
               </div>
             </div>
           </div>
-          <DeliveryAddress />
+          <DeliveryAddress proceed={proceedToPayment} />
         </div>
-</div>
+      </div>
     </>
   );
 };

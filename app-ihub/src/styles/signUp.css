@@ -146,7 +146,9 @@
     align-items: center;
     color: white;
     gap: 14px;
-    font-family: "Nunito", sans-serif;;
+    font-family: "Nunito", sans-serif;
+    border: none;
+    font-size: 15px;
 }
 
 .cartOverView1{
@@ -245,7 +247,7 @@ box-sizing: border-box;
 }
 
 .tokenAV{
-    margin-top: 40px;
+    margin-top: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;

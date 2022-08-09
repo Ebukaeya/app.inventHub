@@ -3,14 +3,16 @@ import { BsCreditCard2BackFill, BsDash, BsArrowRight } from "react-icons/bs";
 import { ImCheckboxChecked } from "react-icons/im";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
 
-const DeliveryAddress = () => {
+const DeliveryAddress = ({proceed}) => {
   const [address, setAddress] = useState(null);
   const [postCode, setPostCode] = useState(null);
   const [city, setCity] = useState(null);
   const [country, setCountry] = useState(null);
   const [phoneNumber, setPhoneNumber] = useState(null);
   const [resizeButton, setResizeButton] = useState(false);
+  const cartTotal = useSelector((state) => state.cart.cartTotal);
 
   const navigate = useNavigate();
 
@@ -84,13 +86,13 @@ const DeliveryAddress = () => {
             />
           </div>
 
-          {address && city && postCode && country && phoneNumber && (
+          {address && city && postCode && country && phoneNumber && proceed && (
             <div className="cartOverView1">
               <div
                 className={`carOverViewMainButton ${classname}`}
                 onClick={() => navigate("/Secure_payment")}
               >
-                {resizeButton ? <BsArrowRight /> : `Check out Kr ${3000}`}
+                {resizeButton ? <BsArrowRight /> : `Check out Kr ${ cartTotal}`}
               </div>
             </div>
           )}
