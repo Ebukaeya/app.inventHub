@@ -13,7 +13,6 @@ import { useNavigate } from "react-router-dom";
 import SwitchButton from "./SwitchButton";
 
 import { useSelector } from "react-redux";
-import PayStack from "./PayStack";
 
 const PaymentPage = () => {
  
