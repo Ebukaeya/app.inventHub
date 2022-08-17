@@ -14,10 +14,16 @@ const profileSlice = createSlice({
                 ...state,
                 profile: action.payload,
             };
+        },
+        updateProfile:(state, action)=>{
+            return {
+                ...state,
+                profile: {...state.profile, ...action.payload}
+            };
         }
     }
 })
 
 
-export const { setProfile } = profileSlice.actions;
+export const { setProfile, updateProfile } = profileSlice.actions;
 export default profileSlice.reducer;

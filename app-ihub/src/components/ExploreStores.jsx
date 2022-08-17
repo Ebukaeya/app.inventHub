@@ -22,7 +22,7 @@ const ExploreStores = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const profile = useSelector((state) => state.profile.profile);
-  console.log(profile);
+
 
   const storeCategories = [
     "Grocery",
@@ -36,6 +36,7 @@ const ExploreStores = () => {
     if (localStorage.getItem("data")) {
       console.log("from storage");
       let data =    JSON.parse(localStorage.getItem("data"))
+      console.log(data)
       setStores(data.data.stores);
       setProducts(data.data.top_products);
       setLoading(false);
@@ -56,6 +57,7 @@ const ExploreStores = () => {
           Authorization: `Token ${token}`,
         },
       });
+      console.log(response);
       if (response.ok) {
         const data = await response.json();
         localStorage.setItem("data", JSON.stringify(data));
@@ -92,7 +94,7 @@ const ExploreStores = () => {
             </p>
           </div>
           <div className="productCardWrapper">
-            {products.slice(0, 12).map((product) => (
+            {products?.slice(0, 12).map((product) => (
               <Link
                 key={product.id}
                 to={`/product/${product.id}`}

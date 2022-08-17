@@ -4,8 +4,13 @@ import{BsBook, BsTruck, BsShop} from "react-icons/bs";
 import {MdOutlineShoppingBasket} from "react-icons/md";
 import {IoSettingsOutline, IoChatbubblesOutline, IoFastFoodOutline} from "react-icons/io5";
 import {VscTools} from "react-icons/vsc";
+import { useSelector } from "react-redux";
 
-const sideMenu = () => {
+const SideMenu = () => {
+  
+  const profileImage = useSelector((state)=> state.profile.profile?.imageUrl)
+
+
   const closeSideMenu = () => {
     let sideMenu = document.querySelector(".sideMenu");
     let cover = document.querySelector(".cover");
@@ -23,7 +28,7 @@ const sideMenu = () => {
               {" "}
               <img
                 className="SidebarImage"
-                src="https://res.cloudinary.com/ebuka1122/image/upload/v1655499719/samples/Ihub-Consumer-App/linkpic2_nqxxhx.png"
+                src={profileImage}
               />
             </div>
             <p style={{ fontSize: "20px", fontWeight: "700" }}>Ebuka Eya</p>
@@ -147,4 +152,4 @@ const sideMenu = () => {
   );
 };
 
-export default sideMenu;
+export default SideMenu;

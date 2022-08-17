@@ -3,10 +3,13 @@ import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
 import { BsCamera } from "react-icons/bs";
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const Profile = () => {
   const [dateOfBirth, setDateOfBirth] = useState("");
   const [gender, setGender] = useState("");
+
+  const profile = useSelector((state) => state.profile?.profile);
 
   const handleGenderSelect = (input) => {
     let inputs = document.querySelectorAll("div.Gender>div>input");
@@ -32,7 +35,7 @@ const Profile = () => {
         </div>
         <div className="profileImageDivPS">
           <div>
-            <img src="https://res.cloudinary.com/ebuka1122/image/upload/v1656362687/samples/Ihub-Consumer-App/IMG_8622_znxk3q.jpg" />
+            <img src= {profile.imageUrl} />
             <div className="UploadImageDiv">
               <input type="file" name="file" id="file" />
               <BsCamera />
@@ -43,7 +46,7 @@ const Profile = () => {
           <p>Basic Details </p>
           <div className="Infodiv">
             <p>Full name</p>
-            <div>Ebuka Eya</div>
+            <div>{profile.fullName}</div>
           </div>
           <div className="Infodiv">
             <p>Date of birth</p>
@@ -88,7 +91,7 @@ const Profile = () => {
           </div>
           <div className="Infodiv">
             <p>Email</p>
-            <div className="inputDateEP">Eyaebuka@gmail.com</div>
+            <div className="inputDateEP">{profile.email}</div>
           </div>
           <div className="Infodiv">
             <p>Delivery Address</p>

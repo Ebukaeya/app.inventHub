@@ -1,3 +1,5 @@
+import { updateProfileAddressUrl } from "./consumerApi";
+
 /* endpionts */
 export const token = "b679e19c1a9073d73a23ae373faf6abd62378514";
 export const fetchStoresAndProductsUrl =
@@ -74,5 +76,21 @@ export const fetchProductsFunc = async (product_id) => {
   } catch (error) {
     console.log(error);
     return null;
+  }
+};
+
+/* Ihub server */
+
+export const updateProfileAddress = async (id, address) => {
+  try {
+    let response = await fetch(updateProfileAddressUrl + id, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(address),
+    });
+  } catch (error) {
+    console.log(error);
   }
 };

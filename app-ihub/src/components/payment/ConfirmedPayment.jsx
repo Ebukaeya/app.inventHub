@@ -7,15 +7,41 @@ import {
 import { ImCheckboxChecked } from "react-icons/im";
 import { Link } from "react-router-dom";
 import { clearCart } from "../../slices/cartSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import { signUpUrl, updateCartUrl } from "../../api/consumerApi";
 
 
 const ConfirmedPayment = () => {
    const dispatch = useDispatch();
+   const userID = useSelector((state)=> state.profile.profile._id)
    useEffect(()=>{
+    console.log(userID);
       dispatch(clearCart());
+      updateUserCart(userID)
    },[])
+
+   const updateUserCart = async (id) => {
+    try {
+      let response = await fetch(updateCartUrl + id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({}),
+      });
+      if (response.ok) {
+        console.log("cart updated");
+        const data = await response.json();
+        console.log("data :", data);
+      } else {
+        console.log(response);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
 
   return (
     <>

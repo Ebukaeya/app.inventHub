@@ -33,9 +33,12 @@ const SignUp = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+
+    console.log(isFormFilled, fullname, email, password, isEmailUnique, invalidEmail);
     if (fullname && email && password && isEmailUnique && !invalidEmail) {
       setIsFormFilled(true);
-    }
+      
+    }else {setIsFormFilled(false)}
   }, [fullname, email, password]);
 
   const checkEmail = () => {
@@ -142,7 +145,7 @@ const SignUp = () => {
                   <div>
                     <BsEnvelope size={16} />
                     <input
-                      onChange={(e) => setEmail(e.target.value)}
+                      onChange={(e) => {setEmail(e.target.value); setIsEmailUnique(true)}}
                       value={email}
                       className="inputFormELement"
                       type="email"

@@ -3,9 +3,12 @@ import { BsCreditCard2BackFill, BsDash, BsArrowRight } from "react-icons/bs";
 import { ImCheckboxChecked } from "react-icons/im";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { updateProfile } from "../../slices/profileSlice";
+import {updateProfileAddress} from "../../api/index";
 
 const DeliveryAddress = ({proceed}) => {
+
   const [address, setAddress] = useState(null);
   const [postCode, setPostCode] = useState(null);
   const [city, setCity] = useState(null);
@@ -13,8 +16,13 @@ const DeliveryAddress = ({proceed}) => {
   const [phoneNumber, setPhoneNumber] = useState(null);
   const [resizeButton, setResizeButton] = useState(false);
   const cartTotal = useSelector((state) => state.cart.cartTotal);
+ 
+  const profile = useSelector((state) => state.profile.profile);
+  
+  
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   let classname = resizeButton ? "decraseCartOverView" : "";
   window.addEventListener("resize", (e) => {
@@ -24,6 +32,19 @@ const DeliveryAddress = ({proceed}) => {
       setResizeButton(false);
     }
   });
+
+  const handleSubmit = ()=>{
+    let address_ = {
+      streetAddress: address,
+      postCode,
+      city,
+      country,
+      phoneNumber,
+    }
+    dispatch(updateProfile(address_));
+    updateProfileAddress(profile._id, address_)
+    navigate("/Secure_payment")
+  }
 
   return (
     <>
@@ -47,6 +68,7 @@ const DeliveryAddress = ({proceed}) => {
             <input
               value={address}
               onChange={(e) => setAddress(e.target.value)}
+              onInput={(e) => setAddress(e.target.value)}
               className="FilledInput"
               type={"text"}
             />
@@ -58,6 +80,7 @@ const DeliveryAddress = ({proceed}) => {
                   type={"text"}
                   value={city}
                   onChange={(e) => setCity(e.target.value)}
+                  onInput={(e) => setCity(e.target.value)}
                 />
               </div>
               <div>
@@ -67,6 +90,7 @@ const DeliveryAddress = ({proceed}) => {
                   type={"number"}
                   value={postCode}
                   onChange={(e) => setPostCode(e.target.value)}
+                  onInput={(e) => setPostCode(e.target.value)}
                 />
               </div>
             </div>
@@ -74,6 +98,7 @@ const DeliveryAddress = ({proceed}) => {
             <input
               value={country}
               onChange={(e) => setCountry(e.target.value)}
+              onInput={(e) => setCountry(e.target.value)}
               className="FilledInput"
               type={"text"}
             />
@@ -83,6 +108,7 @@ const DeliveryAddress = ({proceed}) => {
               type={"tel"}
               value={phoneNumber}
               onChange={(e) => setPhoneNumber(e.target.value)}
+              onInput={(e) => setPhoneNumber(e.target.value)}
             />
           </div>
 
@@ -90,9 +116,9 @@ const DeliveryAddress = ({proceed}) => {
             <div className="cartOverView1">
               <div
                 className={`carOverViewMainButton ${classname}`}
-                onClick={() => navigate("/Secure_payment")}
+                onClick={() => handleSubmit()}
               >
-                {resizeButton ? <BsArrowRight /> : `Check out Kr ${ cartTotal}`}
+                {resizeButton ? <BsArrowRight /> : `Check out Kr ${ cartTotal.total}`}
               </div>
             </div>
           )}
