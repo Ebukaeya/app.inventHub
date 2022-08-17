@@ -6,8 +6,17 @@ import {
 } from "react-icons/bs";
 import { ImCheckboxChecked } from "react-icons/im";
 import { Link } from "react-router-dom";
+import { clearCart } from "../../slices/cartSlice";
+import { useDispatch } from "react-redux";
+import { useEffect } from "react";
+
 
 const ConfirmedPayment = () => {
+   const dispatch = useDispatch();
+   useEffect(()=>{
+      dispatch(clearCart());
+   },[])
+
   return (
     <>
       <div className="mycontainer">
