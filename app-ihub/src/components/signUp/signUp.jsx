@@ -102,6 +102,7 @@ const SignUp = () => {
         console.log(data);
         setIsEmailUnique(true);
         dispatch(setProfile(data));
+        localStorage.setItem("token", data.token)
         updateUserCart(data._id);
       } else {
         setLoading(false);

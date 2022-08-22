@@ -2,14 +2,33 @@ import "../../styles/profile/profile.css";
 import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
 import { BsCamera } from "react-icons/bs";
-import { useState } from "react";
-import { useSelector } from "react-redux";
+import { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { updateProfile } from "../../slices/profileSlice";
+import {uploadImageUrl} from "../../api/consumerApi";
 
 const Profile = () => {
-  const [dateOfBirth, setDateOfBirth] = useState("");
-  const [gender, setGender] = useState("");
+  const [dateOfBirth, setDateOfBirth] = useState(null);
+  const [gender, setGender] = useState(null);
+  const [profileImage, setProfileImage] = useState(null);
+  const [profileUpdate, setProfileUpdate] = useState(false);
 
   const profile = useSelector((state) => state.profile?.profile);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    console.log(profile);
+    if (profile) {
+      setDateOfBirth(profile.dateOfBirth);
+      setGender(profile);
+    }
+  });
+
+  useEffect(() => {
+    if (dateOfBirth && gender && profileImage) {
+      setProfileUpdate(true);
+    }
+  }, [gender, dateOfBirth, profileImage]);
 
   const handleGenderSelect = (input) => {
     let inputs = document.querySelectorAll("div.Gender>div>input");
@@ -19,6 +38,47 @@ const Profile = () => {
     inputs.forEach((input) =>
       input.value !== gender ? (input.checked = false) : ""
     );
+  };
+
+  const handleImageUpload = (e) => {
+    let image = e.target.files[0];
+    console.log(image);
+    if (image) {
+      const reader = new FileReader();
+      reader.onload = function (evt) {
+        setProfileImage(evt.target.result);
+      };
+      reader.readAsDataURL(image);
+    } else {
+      console.log("upload failed try again");
+    }
+  };
+
+  const handleSubmit = () => {
+    let updateData = {
+      dateOfBirth,
+      gender,
+      imageUrl: profileImage,
+    };
+  };
+
+  const updateProfile = async (token) => {
+    try {
+      let imageFile = new FormData();
+      imageFile.append("image", profileImage);
+      let response = await fetch(uploadImageUrl + token, {
+        method: "PUT",
+        body: imageFile,
+        headers:{
+          authorization: `bearer ${token}`,
+        }
+      })
+      console.log(response);
+
+
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -35,9 +95,14 @@ const Profile = () => {
         </div>
         <div className="profileImageDivPS">
           <div>
-            <img src= {profile.imageUrl} />
+            <img src={profileImage ? profileImage : profile.imageUrl} />
             <div className="UploadImageDiv">
-              <input type="file" name="file" id="file" />
+              <input
+                onChange={(e) => handleImageUpload(e)}
+                type="file"
+                name="file"
+                id="file"
+              />
               <BsCamera />
             </div>
           </div>
@@ -87,7 +152,7 @@ const Profile = () => {
           <p> Contact Details </p>
           <div className="Infodiv">
             <p>Phone Number</p>
-            <div>Ebuka Eya</div>
+            <div>{profile.phoneNumber}</div>
           </div>
           <div className="Infodiv">
             <p>Email</p>
@@ -96,13 +161,24 @@ const Profile = () => {
           <div className="Infodiv">
             <p>Delivery Address</p>
             <div className="DeliveryAddress">
-              <p>Norder tasdhne, 2450 denmark</p>
+              <p>
+                {profile.streetAddress +
+                  ", " +
+                  profile.city +
+                  ", " +
+                  profile.country}
+              </p>
             </div>
           </div>
         </div>
-      
+
         <div className="saveDivePE">
-          <button>Save</button>
+          <button
+            style={{ backgroundColor: profileUpdate ? "#0E49B5" : "" }}
+            disabled={true}
+          >
+            Save
+          </button>
         </div>
       </div>
     </>

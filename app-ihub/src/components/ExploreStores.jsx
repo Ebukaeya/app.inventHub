@@ -64,6 +64,10 @@ const ExploreStores = () => {
         setStores(data.data.stores);
         setProducts(data.data.top_products);
         setLoading(false);
+      }else{
+   
+        alert("cound not detch stores and products")
+        
       }
     } catch (error) {
       console.log(error);

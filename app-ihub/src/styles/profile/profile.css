@@ -48,7 +48,7 @@
 }
 
 .basicInfoDiv {
-  margin: 1px 10px;
+  margin: 1px 0px;
 }
 .basicInfoDiv > p {
   font-weight: 700;
@@ -56,20 +56,27 @@
 
 .Infodiv {
   margin: 20px 0;
+  min-height: 40px;
 }
 .Infodiv > p {
   font-size: 14px;
 }
 .Infodiv > div {
   width: 88%;
-  height: 40px;
+  min-height: 40px;
   margin-top: 6px;
   border: 1px solid #e5e5e5;
   display: flex;
   align-items: center;
-  padding: 0 20px;
+  padding: 10px 20px;
   border-radius: 6px;
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+div.inputDateEP{
+  padding: 4px 20px;
 }
 
 .inputDateEP > input {
@@ -89,9 +96,9 @@
 }
 div.Gender {
   border: none;
-
   display: flex;
   justify-content: space-between;
+  height: 60px;
 }
 
 div.Gender > div {
@@ -132,7 +139,7 @@ div.DeliveryAddress {
 .saveDivePE >button {
   width: 80%;
   height:44px;
-  background-color: #0E49B5;
+  background-color: #dfdfdf;
   border-radius: 20px;
   border: none;
   color: white;
