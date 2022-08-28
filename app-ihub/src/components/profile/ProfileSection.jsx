@@ -5,13 +5,16 @@ import { BsCamera } from "react-icons/bs";
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateProfile } from "../../slices/profileSlice";
-import {uploadImageUrl} from "../../api/consumerApi";
+import { uploadImageUrl, updateUserProfile } from "../../api/consumerApi";
+import Spinner from "../loaders/Spinner";
 
 const Profile = () => {
   const [dateOfBirth, setDateOfBirth] = useState(null);
   const [gender, setGender] = useState(null);
   const [profileImage, setProfileImage] = useState(null);
   const [profileUpdate, setProfileUpdate] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [imageBuffer, setImageBuffer] = useState(null);
 
   const profile = useSelector((state) => state.profile?.profile);
   const dispatch = useDispatch();
@@ -20,15 +23,17 @@ const Profile = () => {
     console.log(profile);
     if (profile) {
       setDateOfBirth(profile.dateOfBirth);
-      setGender(profile);
+      setGender(profile.gender);
+      setProfileImage(profile.imageUrl);
     }
-  });
+  }, []);
 
   useEffect(() => {
-    if (dateOfBirth && gender && profileImage) {
+    console.log(dateOfBirth);
+    if (dateOfBirth && gender && imageBuffer) {
       setProfileUpdate(true);
     }
-  }, [gender, dateOfBirth, profileImage]);
+  }, [gender, dateOfBirth, imageBuffer]);
 
   const handleGenderSelect = (input) => {
     let inputs = document.querySelectorAll("div.Gender>div>input");
@@ -42,7 +47,7 @@ const Profile = () => {
 
   const handleImageUpload = (e) => {
     let image = e.target.files[0];
-    console.log(image);
+    setImageBuffer(image);
     if (image) {
       const reader = new FileReader();
       reader.onload = function (evt) {
@@ -55,27 +60,55 @@ const Profile = () => {
   };
 
   const handleSubmit = () => {
-    let updateData = {
-      dateOfBirth,
-      gender,
-      imageUrl: profileImage,
-    };
+    console.log(imageBuffer);
+    console.log(loading);
+    setLoading(true);
+
+    localStorage.setItem(
+      "token",
+      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGJjNWQ4NDhhMTUwOGQwMGIwNzZkMCIsImlhdCI6MTY2MTcxNTkyOCwiZXhwIjoxNjYyMzIwNzI4fQ.om8Jr9UgHrOWH1soEl3BuvquQCxCrjy2nFTUa9WY0Rs"
+    );
+    /* should be removed latter and redirected to login page instead */
+    updateProfileFun(localStorage.getItem("token"));
   };
 
-  const updateProfile = async (token) => {
+  const updateProfileFun = async (token) => {
     try {
       let imageFile = new FormData();
-      imageFile.append("image", profileImage);
-      let response = await fetch(uploadImageUrl + token, {
+      imageFile.append("image", imageBuffer);
+      let response = await fetch(uploadImageUrl, {
         method: "PUT",
         body: imageFile,
-        headers:{
+        headers: {
           authorization: `bearer ${token}`,
-        }
-      })
+        },
+      });
       console.log(response);
-
-
+      if (response.ok) {
+        console.log(dateOfBirth, gender);
+        let body = {
+          dateOfBirth,
+          gender,
+        };
+        let response = await fetch(updateUserProfile, {
+          method: "PUT",
+          body: JSON.stringify(body),
+          headers: {
+            authorization: `bearer ${token}`,
+            "Content-Type": "application/json",
+          },
+        });
+        if (response.ok) {
+          let data = await response.json();
+          dispatch(updateProfile(data));
+          setLoading(false);
+        } else {
+          alert("could not update profile");
+        }
+      } else {
+        alert("image upload failed token expired redirect to login");
+        console.log(response);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -156,7 +189,11 @@ const Profile = () => {
           </div>
           <div className="Infodiv">
             <p>Email</p>
-            <div className="inputDateEP">{profile.email}</div>
+            <div className="DeliveryAddress">
+              <p style={{ width: "100%", overflow: "hidden" }}>
+                {profile.email}
+              </p>
+            </div>
           </div>
           <div className="Infodiv">
             <p>Delivery Address</p>
@@ -175,11 +212,13 @@ const Profile = () => {
         <div className="saveDivePE">
           <button
             style={{ backgroundColor: profileUpdate ? "#0E49B5" : "" }}
-            disabled={true}
+            onClick={handleSubmit}
+            disabled={profileUpdate ? false : true}
           >
             Save
           </button>
         </div>
+        {loading && <Spinner />}
       </div>
     </>
   );

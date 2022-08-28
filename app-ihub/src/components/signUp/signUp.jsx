@@ -33,18 +33,14 @@ const SignUp = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-
-    console.log(isFormFilled, fullname, email, password, isEmailUnique, invalidEmail);
     if (fullname && email && password && isEmailUnique && !invalidEmail) {
-      setIsFormFilled(true);
-      
+      setIsFormFilled(true);  
     }else {setIsFormFilled(false)}
   }, [fullname, email, password]);
 
   const checkEmail = () => {
     let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-
-    if (email.match(mailFormat)) {
+   if (email.match(mailFormat)) {
       setInvalidEmail(false);
       /* check if email is already registered */
     } else setInvalidEmail(true);
