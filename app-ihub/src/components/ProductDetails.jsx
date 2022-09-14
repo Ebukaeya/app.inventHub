@@ -8,6 +8,7 @@ import { BsStarHalf, BsStarFill, BsPlus } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import { fetchProductsFunc } from "../api/index.js";
 import { useDispatch } from "react-redux";
+import  Spinner  from "../components/loaders/Spinner.jsx";
 import { addToCart, removeFromCart, clearCart } from "../slices/cartSlice";
 
 const ProductDetails = () => {
@@ -16,6 +17,7 @@ const ProductDetails = () => {
   const [loading, setLoading] = useState(true);
   const [quantity, setQuantity] = useState(1);
   const [totalPrice, setTotalPrice] = useState(0);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -23,20 +25,26 @@ const ProductDetails = () => {
   }, []);
 
   useEffect(() => {
-    setTotalPrice(product.stock?.unit_price*quantity);
+    setTotalPrice(product.stock?.unit_price * quantity);
   }, [quantity, product]);
 
   const fetchProduct = async () => {
+    setLoading(true);
     let { productDetails } = await fetchProductsFunc(productID);
     if (productDetails) {
-      console.log(productDetails);
       setProduct(productDetails);
+      setLoading(false);
     } else {
       alert("product details not found");
     }
   };
 
-  const addToCartFn = () => {
+  const addToCartFn = (e) => {
+    let button = e.target;
+    button.style.animation = "addingTocart 0.3s ease-in";
+    button.style.animationFillMode = "forwards";
+    button.innerText = "ADDED";
+    button.disabled = true;
     let selectedProduct = {
       product,
       quantity,
@@ -51,6 +59,7 @@ const ProductDetails = () => {
 
   return (
     <>
+     {loading ? <Spinner /> : 
       <div className="mycontainer">
         <div className="NavBarProdP">
           <IoIosArrowBack size={30} onClick={() => window.history.back()} />
@@ -163,10 +172,12 @@ const ProductDetails = () => {
 
         <div className="totalPriceDiv">
           <p>Total</p>
-          <p>£  {totalPrice && totalPrice}</p>
+          <p>£ {totalPrice && totalPrice}</p>
         </div>
-        <div className="AddtocartButton" onClick={addToCartFn}  >ADD TO CART</div>
-      </div>
+        <button className="AddtocartButton" onClick={(e)=> addToCartFn(e)}>
+          ADD TO CART
+        </button>
+      </div>}
     </>
   );
 };

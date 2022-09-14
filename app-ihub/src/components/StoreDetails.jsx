@@ -16,6 +16,7 @@ import {
   fetchStoresDetailsFunc,
 } from "../api/index.js";
 import { useParams } from "react-router-dom";
+import Spinner from "./loaders/Spinner";
 
 const StoreDetails = () => {
   const [search, setSearch] = useState("");
@@ -32,6 +33,7 @@ const StoreDetails = () => {
   }, []);
 
   const fetchStoreDetails = async () => {
+    setLoading(true);
     let { storeDetails } = await fetchStoresDetailsFunc(storeID);
     console.log(storeDetails);
     if (storeDetails) {
@@ -50,6 +52,7 @@ const StoreDetails = () => {
 
   return (
     <>
+    {loading ? <Spinner /> :
       <div className="mycontainer">
         <div className="NavBarProdP">
           <IoIosArrowBack size={30} onClick={() => window.history.back()} />
@@ -123,7 +126,7 @@ const StoreDetails = () => {
         {products.map((product) => (
           <StoreProduct product={product} />
         ))}
-      </div>
+      </div> }
     </>
   );
 };
