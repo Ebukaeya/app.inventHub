@@ -1,7 +1,8 @@
 import { updateProfileAddressUrl } from "./consumerApi";
 
 /* endpionts */
-export const token = "8f4baf80fa1f8504cfaae94f82c28d7a3f4049a7";
+export const token =  process.env.REACT_APP_TOKEN  /* "8f4baf80fa1f8504cfaae94f82c28d7a3f4049a7" */;
+console.log(process.env.REACT_APP_TOKEN);
 export const fetchStoresAndProductsUrl =
   "https://ihub.toxsl.in/webstore/api/top-rated-store/";
 
@@ -59,6 +60,7 @@ export const fetchStoresDetailsFunc = async (storeID) => {
 };
 
 export const fetchProductsFunc = async (product_id) => {
+  console.log(token);
   const endpiont = fetchProductDetailsUrl + product_id;
   try {
     const response = await fetch(endpiont, {
