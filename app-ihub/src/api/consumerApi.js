@@ -1,5 +1,5 @@
 
-const api = process.env.api_root
+const api = process.env.REACT_APP_api_root
 
 export const signUpUrl = /* "http://localhost:5002/users/signup" */ `${api}/users/signup` ;
 
