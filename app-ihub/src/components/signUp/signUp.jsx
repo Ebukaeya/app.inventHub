@@ -86,7 +86,9 @@ const SignUp = () => {
       password,
     };
     try {
-      console.log(process.env.REACT_APP_SECRET_KEY );
+      console.log("key",process.env.REACT_APP_SECRET_KEY );
+      console.log(process.env.REACT_APP_TOKEN);
+      console.log(signUpUrl);
       let response = await fetch(signUpUrl, {
         method: "POST",
         headers: {
