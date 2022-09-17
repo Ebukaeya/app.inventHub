@@ -6,6 +6,7 @@ import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateProfile } from "../../slices/profileSlice";
 import { uploadImageUrl, updateUserProfile } from "../../api/consumerApi";
+import { useNavigate } from "react-router-dom";
 import Spinner from "../loaders/Spinner";
 
 const Profile = () => {
@@ -18,6 +19,7 @@ const Profile = () => {
 
   const profile = useSelector((state) => state.profile?.profile);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(profile);
@@ -64,10 +66,10 @@ const Profile = () => {
     console.log(loading);
     setLoading(true);
 
-    localStorage.setItem(
+  /*   localStorage.setItem(
       "token",
       "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGJjNWQ4NDhhMTUwOGQwMGIwNzZkMCIsImlhdCI6MTY2MTcxNTkyOCwiZXhwIjoxNjYyMzIwNzI4fQ.om8Jr9UgHrOWH1soEl3BuvquQCxCrjy2nFTUa9WY0Rs"
-    );
+    ); */
     /* should be removed latter and redirected to login page instead */
     updateProfileFun(localStorage.getItem("token"));
   };
@@ -108,9 +110,11 @@ const Profile = () => {
       } else {
         alert("image upload failed token expired redirect to login");
         console.log(response);
+        navigate("/login");
       }
     } catch (error) {
       console.log(error);
+      alert("something went wrong, please try again later")
     }
   };
 
