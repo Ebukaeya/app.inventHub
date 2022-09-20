@@ -277,3 +277,22 @@ box-sizing: border-box;
     background-color: rgb(255, 255, 255);
     transition: transform 0.5s ease-in-out;
 }
+
+.signinButton{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.signinButton>button{
+  width: 80%;
+  height: 40px;
+  border-radius: 8px;
+  border: 0.2px solid rgb(235, 235, 235);
+  font-family: "Nunito", sans-serif;
+  word-spacing: 2px;
+  letter-spacing: 1px;
+  background-color: #ffffff;
+  box-shadow: 0px 1px 20px rgba(54, 152, 233, 0.2);
+}

@@ -22,6 +22,7 @@ import WishList from "./components/wishlist/WishList";
 import SignUp from "./components/signUp/signUp";
 import PaymentPage from "./components/payment/PaymentPage";
 import ConfirmedPayment from "./components/payment/ConfirmedPayment";
+import SignIn from "./components/signin/SignIn";
 
 
 setInterval(()=>{
@@ -55,6 +56,7 @@ function App() {
         <Route path="/profile" element={<Profile/>} />
         <Route path="/wishlist" element={ <WishList/>} />
         <Route path="/signup" element={<SignUp/>} />
+        <Route path="/sign-in" element={<SignIn/>} />
         <Route path="/Secure_payment" element={<PaymentPage/>} />
         <Route path="/Secure_payment/confirmation" element={<ConfirmedPayment/>} />
         <Route path="*" element={<div>404</div>} />

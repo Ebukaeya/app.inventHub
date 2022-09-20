@@ -17,6 +17,7 @@ import { useState, useEffect } from "react";
 import DeliveryAddress from "./DeliveryAddress";
 import { useSelector, useDispatch } from "react-redux";
 import BounceLoader from "react-spinners/ClipLoader";
+import { useNavigate } from "react-router-dom";
 
 const SignUp = () => {
   const [fullname, setFullname] = useState("");
@@ -31,6 +32,7 @@ const SignUp = () => {
 
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (fullname && email && password && isEmailUnique && !invalidEmail) {
@@ -208,6 +210,9 @@ const SignUp = () => {
                 <FcGoogle size={40} />
                 <FaFacebookF size={40} color={"rgb(23,115,234)"} />
               </div>
+            </div>
+            <div className="signinButton">
+              <button onClick={e=>navigate("/sign-in")}>Sign in </button>
             </div>
           </div>
           <DeliveryAddress proceed={proceedToPayment} />
