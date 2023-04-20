@@ -1,11 +1,11 @@
 import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
-import SearchBar from "./reUsable/SearchBar";
+import SearchBar from "../reUsable/SearchBar";
 import { useState, useEffect } from "react";
-import Categories from "./reUsable/Categories";
-import Product2 from "./reUsable/Product2";
-import LocationFilter from "./reUsable/LocationFilter";
-import { fetchStoresAndProductsUrl, token } from "../api/index.js";
+import Categories from "../reUsable/Categories";
+import Product2 from "../reUsable/Product2";
+import LocationFilter from "../reUsable/LocationFilter";
+import { fetchStoresAndProductsUrl, token } from "../../api/index.js";
 import { Link } from "react-router-dom";
 
 const SeeAllProducts = () => {
@@ -15,21 +15,14 @@ const SeeAllProducts = () => {
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  const storeCategories = [
-    "Grocery",
-    "Accessories",
-    "Automotive",
-    "Baby wears",
-    "Men wears",
-  ];
+  const storeCategories = ["Grocery", "Accessories", "Automotive", "Baby wears", "Men wears"];
 
   useEffect(() => {
-    if(localStorage.getItem("data")){
-        let data = JSON.parse(localStorage.getItem("data"))
-        setProducts(data.data.top_products);
-        setLoading(false);
-    }else{
-
+    if (localStorage.getItem("data")) {
+      let data = JSON.parse(localStorage.getItem("data"));
+      setProducts(data.data.top_products);
+      setLoading(false);
+    } else {
       fetchAllProducts();
     }
   }, []);
@@ -55,8 +48,8 @@ const SeeAllProducts = () => {
 
   return (
     <>
-      <div className="mycontainer">
-        <div className="NavBarProdP">
+      <div className='mycontainer'>
+        <div className='NavBarProdP'>
           <div style={{ display: "flex", alignItems: "center" }}>
             <IoIosArrowBack size={30} onClick={() => window.history.back()} />
             <p>Products</p>
@@ -66,19 +59,14 @@ const SeeAllProducts = () => {
           </div>
         </div>
         <SearchBar controlInput={setSearch} />
-        <Categories
-          categories={storeCategories}
-          updateCategories={setCategories}
-        />
+        <Categories categories={storeCategories} updateCategories={setCategories} />
         <div style={{ margin: "30px" }}></div>
-        <div className="Store2productWrapper">
-         
+        <div className='Store2productWrapper'>
           {/* should recieve as props brand, id, name rating size and price */}
-        {products.map((product)=> <Product2 key={product.id} product={product}/> )}
-          <LocationFilter
-            curentlocationFilter={locationFilter}
-            updateLocationFliter={setLocationFilter}
-          />
+          {products.map((product) => (
+            <Product2 key={product.id} product={product} />
+          ))}
+          <LocationFilter curentlocationFilter={locationFilter} updateLocationFliter={setLocationFilter} />
         </div>
       </div>
     </>
