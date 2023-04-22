@@ -26,17 +26,17 @@ const Template = (props) => {
             <div className={"sideMenu12"}>
               <div className={location.pathname.includes("/dashboard") ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/dashboard")}>
                 <RiDashboardFill />
-                <span>dashboard</span>
+                <span>My Orders</span>
               </div>
 
               <div
                 className={location.pathname.includes("/mystores") ? "clickedOption" : ""}
                 onClick={(e) => {
-                  handleClick(e, "/mystores");
+                  handleClick(e, "/explorestores");
                 }}
               >
                 <IoStorefrontSharp />
-                <span>Stores</span>
+                <span>Explore stores</span>
               </div>
               <div className={location.pathname === "/employees" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/employees")}>
                 <IoStorefrontSharp />

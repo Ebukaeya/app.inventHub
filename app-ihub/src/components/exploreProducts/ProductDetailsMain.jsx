@@ -1,8 +1,9 @@
 import Template from "../Template";
 import "../../styles/exploreProducts/productDetails.css";
 import ReactStars from "react-rating-stars-component";
-import { BsStarHalf, BsStarFill, BsPlusLg } from "react-icons/bs";
+import { BsStarHalf, BsStarFill, BsPlusLg, BsTruck } from "react-icons/bs";
 import { BiMinus } from "react-icons/bi";
+import ProductCardCopy from "./ProductCardCopy";
 
 const ProductDetailsMain = () => {
   return (
@@ -70,22 +71,64 @@ const ProductDetailsMain = () => {
                   </option>
                 </select>
               </div>
-           {/*    <div className='billButton'>
-                <span>
-                  {" "}
-                  <BiMinus size={26} />
-                </span>
-                <p>12</p>
-                <span>
-                  {" "}
-                  <BsPlusLg />
-                </span>
-              </div> */}
+
               <div className='button-toAddtoCartOrbiy'>
                 <button className='buyNoe28u3'>Buy Now</button>
                 <button className='buyNoe28u34'>Add to Cart</button>
               </div>
+              <div className='deliveryDiv34'>
+                <BsTruck color='#FFD700' size={24} />
+                <div>
+                  <p className='deliveryText534'>Delivery</p>
+                  <p>Delivered in 4 days at £ 20</p>
+                  <p>See policy</p>
+                </div>
+              </div>
+              <div className='deliveryDiv34'>
+                <BsTruck color='#FFD700' size={24} />
+                <div>
+                  <p className='deliveryText534'>Delivery</p>
+                  <p>Delivered in 4 days at £ 20</p>
+                  <p>See policy</p>
+                </div>
+              </div>
             </div>
+          </div>
+          <div className='productDescription'>
+            <h3 className='headingsInproductCO'>Product Description</h3>
+            <p>
+              {" "}
+              lorem kmkfd kdw kwrckmwmrefm wjrfrwn jwrnf cjwnrfjwrfjrnrr vjrvrnrjfew rjr dfejr rjf jruf nwrnf jnrf wfrfcwr fjcr fjcnrrf rfnjnrjffwijrf jn3wnrf
+              jrnf jnrf jnrf jr jr fjn. <br></br> wkenkoiwef kf if3 kr
+            </p>
+          </div>
+          <div className='soldByStoreDiv'>
+            <h5>Sold by :</h5>
+            <div className='bforeFlex43'>
+              <div className='flexingSoldByStore74'>
+                <div className='storeImageDiv12'>
+                  <img src='https://res.cloudinary.com/ebuka1122/image/upload/v1677526350/Ihub-product-images/qeateh2lkpfd95jhkscq.png' alt='storeImage' />
+                </div>
+                <div>
+                  <p className='storeNameTile'>Apple Store Inc.</p>
+                  <p>Nordre telkaj 12 st.tv 2450 sydhavn ej je j ej je , Denmark</p>
+                  <ReactStars size={12} count={5} value={4} isHalf={true} halfIcon={<BsStarHalf />} filledIcon={<BsStarFill />} />
+                </div>
+              </div>
+              <div>
+                <button className='visitSotreDiv884'>View</button>
+              </div>
+            </div>
+          </div>
+          {/* related products */}
+          <h3 className='headingsInproductCO' style={{ marginBottom: "20px" }}>Related products</h3>
+          <div className='recommendedProductDIv'>
+            <ProductCardCopy />
+            <ProductCardCopy />
+            <ProductCardCopy />
+            <ProductCardCopy />
+            <ProductCardCopy />
+            <ProductCardCopy />
           </div>
         </div>
       </Template>

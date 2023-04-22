@@ -41,7 +41,7 @@ const ExploreProducts = () => {
             <ProductCardCopy />
             <ProductCardCopy />
           </div>
-          <h3 style={{ marginTop: "30px" }} className='headingsInproductCO'>
+          <h3  style={{ marginTop: "30px" }} className='headingsInproductCO'>
             Top Categories
           </h3>
           <div className='TopCategoryWrapper12'>

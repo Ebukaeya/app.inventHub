@@ -25,6 +25,7 @@ import ConfirmedPayment from "./components/payment/ConfirmedPayment";
 import ExploreProducts from "./components/exploreProducts/ExploreProducts";
 import ExploreProductCategory from "./components/exploreProducts/ExploreProductCategory";
 import ProductDetailsMain from "./components/exploreProducts/ProductDetailsMain";
+import ExploreStoreMain from "./components/exploreStores/ExploreStoreMain";
 
 function App() {
   return (
@@ -35,9 +36,9 @@ function App() {
         <Route path='/products' element={<ExploreProducts />} />
         <Route path='/products/category/:productCategory' element={<ExploreProductCategory />} />
         <Route path='/product/:productID' element={<ProductDetailsMain />} />
+        <Route path='/explorestores' element={<ExploreStoreMain />} />
 
         {/* old */}
-        <Route path='/explorestores' element={<ExploreStores2 />} />
         <Route path='/restaurants' element={<Restaurants />} />
         <Route path='/explore-restaurants' element={<ExploreRestaurant />} />
         <Route path='/explore-foodmenu' element={<SeeAllFoodMenu />} />
