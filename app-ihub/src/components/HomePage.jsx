@@ -11,7 +11,7 @@ const HomePage = () => {
 
   return (
     <>
-      <Narbar />
+   
       <Template>
         <div className='mycontainer'>
           <div className='SliderDivWrapper'>
@@ -19,7 +19,7 @@ const HomePage = () => {
           </div>
           <div className='ExplorePageWrapper'>
             <div>
-              <Link className='link' to={"/stores"}>
+              <Link className='link' to={"/products"}>
                 <div className='IconDiv'>
                   <img src='https://res.cloudinary.com/ebuka1122/image/upload/v1655510350/samples/Ihub-Consumer-App/Asset_1_who0e4.png' />
                 </div>

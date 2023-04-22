@@ -1,16 +1,16 @@
 import logo from "./logo.svg";
 import "./App.css";
 import HomePage from "./components/HomePage";
-import ExploreStores from "./components/stores/ExploreStores";
+import ExploreStores from "./components/exploreProducts/ExploreStores";
 import Restaurants from "./components/Restaurants";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import ProductDetails from "./components/stores/ProductDetails";
+import ProductDetails from "./components/exploreProducts/ProductDetails";
 import FoodDetails from "./components/FoodDetails";
-import StoreDetails from "./components/stores/StoreDetails";
-import StoreDetails2 from "./components/stores/StoreDetails2";
+import StoreDetails from "./components/exploreProducts/StoreDetails";
+import StoreDetails2 from "./components/exploreProducts/StoreDetails2";
 import RestaurantDetail from "./components/RestaurantDetail";
-import SeeAllProducts from "./components/stores/SeeAllProducts";
-import ExploreStores2 from "./components/stores/ExploreStore2";
+import SeeAllProducts from "./components/exploreProducts/SeeAllProducts";
+import ExploreStores2 from "./components/exploreProducts/ExploreStore2";
 import SeeAllFoodMenu from "./components/SellAllFoodMenu";
 import ExploreRestaurant from "./components/ExploreRestaurants";
 import Cart from "./components/cart/Cart";
@@ -22,22 +22,28 @@ import WishList from "./components/wishlist/WishList";
 import SignUp from "./components/signUp/signUp";
 import PaymentPage from "./components/payment/PaymentPage";
 import ConfirmedPayment from "./components/payment/ConfirmedPayment";
-import ExploreStoresCopy from "./components/stores/ExploreStoresCopy";
+import ExploreProducts from "./components/exploreProducts/ExploreProducts";
+import ExploreProductCategory from "./components/exploreProducts/ExploreProductCategory";
+import ProductDetailsMain from "./components/exploreProducts/ProductDetailsMain";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path='/' element={<HomePage />} />
-       {/*  <Route path='/stores' element={<ExploreStores />} /> */}
-        <Route path='/stores' element={<ExploreStoresCopy/>} />
+        {/*  <Route path='/stores' element={<ExploreStores />} /> */}
+        <Route path='/products' element={<ExploreProducts />} />
+        <Route path='/products/category/:productCategory' element={<ExploreProductCategory />} />
+        <Route path='/product/:productID' element={<ProductDetailsMain />} />
+
+        {/* old */}
         <Route path='/explorestores' element={<ExploreStores2 />} />
         <Route path='/restaurants' element={<Restaurants />} />
         <Route path='/explore-restaurants' element={<ExploreRestaurant />} />
         <Route path='/explore-foodmenu' element={<SeeAllFoodMenu />} />
         <Route path='/restaurants/:restuarantID' element={<RestaurantDetail />} />
         <Route path='/food/:foodID' element={<FoodDetails />} />
-        <Route path='/product/:productID' element={<ProductDetails />} />
+        {/* <Route path='/product/:productID' element={<ProductDetails />} /> */}
         <Route path='/store/:storeID' element={<StoreDetails />} />
         <Route path='/store/:storeID/2' element={<StoreDetails2 />} />
         <Route path='/products' element={<SeeAllProducts />} />

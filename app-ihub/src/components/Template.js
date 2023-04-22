@@ -4,6 +4,7 @@ import { IoStorefrontSharp } from "react-icons/io5";
 //import Narbar from "../components/narbar/Narbar";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
+import Narbar from "./narbar/Narbar";
 
 const Template = (props) => {
   const navigate = useNavigate();
@@ -17,6 +18,7 @@ const Template = (props) => {
   return (
     <>
       {/* <Narbar /> */}
+      <Narbar/>
       <div className='TemplateContain'>
         <div className='templateWrapper'>
           <div>

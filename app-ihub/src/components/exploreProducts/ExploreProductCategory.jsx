@@ -1,13 +1,14 @@
-import Narbar from "../narbar/Narbar";
+
 import Template from "../Template";
 import { BsChevronDown } from "react-icons/bs";
 import LocationFilter from "../reUsable/LocationFilter";
 import ProductCardCopy from "./ProductCardCopy";
+import Footer from "../reUsable/Footer";
 
-const ExploreStoresCopy = () => {
+const ExploreProductCategory = () => {
   return (
     <>
-      <Narbar />
+      
       <Template>
         <div className='verticalScrollingDiv'>
           <div className='staticAdDiv12'>e</div>
@@ -29,7 +30,8 @@ const ExploreStoresCopy = () => {
               <BsChevronDown />
             </div>
           </div>
-          <h3 className="headingsInproductCO">Recomended Products</h3>
+
+          <h3 className='headingsInproductCO'>Showing "Categories" products</h3>
           <div className='recommendedProductDIv'>
             <ProductCardCopy />
             <ProductCardCopy />
@@ -38,9 +40,11 @@ const ExploreStoresCopy = () => {
             <ProductCardCopy />
             <ProductCardCopy />
           </div>
-          <h3 style={{marginTop:"30px"}} className="headingsInproductCO">Top Categories</h3>
-          <h3 style={{marginTop:"30px"}} className="headingsInproductCO">Top Rated products</h3>
-          <h3 style={{marginTop:"30px"}} className="headingsInproductCO">Explore All products</h3>
+
+          <div className='BackToTopBtn-1'>
+            <p>Explore more categories</p>
+          </div>
+          <Footer />
         </div>
         <LocationFilter />
       </Template>
@@ -48,4 +52,4 @@ const ExploreStoresCopy = () => {
   );
 };
 
-export default ExploreStoresCopy;
+export default ExploreProductCategory;

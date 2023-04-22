@@ -2,7 +2,7 @@ import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
 import SearchBar from "../reUsable/SearchBar";
 import { useState, useEffect } from "react";
-import "../../styles/storeDetails2.css";
+import "../../styles/exploreProducts/exploreProducts.css";
 import ReactStars from "react-rating-stars-component";
 import { Link } from "react-router-dom";
 import Product2 from "../reUsable/Product2";
