@@ -26,6 +26,7 @@ import ExploreProducts from "./components/exploreProducts/ExploreProducts";
 import ExploreProductCategory from "./components/exploreProducts/ExploreProductCategory";
 import ProductDetailsMain from "./components/exploreProducts/ProductDetailsMain";
 import ExploreStoreMain from "./components/exploreStores/ExploreStoreMain";
+import StoreDetailsMain from "./components/exploreStores/StoreDetailsMain";
 
 function App() {
   return (
@@ -36,6 +37,7 @@ function App() {
         <Route path='/products' element={<ExploreProducts />} />
         <Route path='/products/category/:productCategory' element={<ExploreProductCategory />} />
         <Route path='/product/:productID' element={<ProductDetailsMain />} />
+        <Route path='/explorestores/store/:storeID' element={<StoreDetailsMain />} />
         <Route path='/explorestores' element={<ExploreStoreMain />} />
 
         {/* old */}
@@ -45,8 +47,8 @@ function App() {
         <Route path='/restaurants/:restuarantID' element={<RestaurantDetail />} />
         <Route path='/food/:foodID' element={<FoodDetails />} />
         {/* <Route path='/product/:productID' element={<ProductDetails />} /> */}
-        <Route path='/store/:storeID' element={<StoreDetails />} />
-        <Route path='/store/:storeID/2' element={<StoreDetails2 />} />
+        {/*    <Route path='/store/:storeID' element={<StoreDetails />} />
+        <Route path='/store/:storeID/2' element={<StoreDetails2 />} /> */}
         <Route path='/products' element={<SeeAllProducts />} />
         <Route path='/cart' element={<Cart />} />
         <Route path='/myorder' element={<MyOrders />} />

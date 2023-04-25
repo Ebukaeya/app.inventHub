@@ -164,6 +164,10 @@ p {
   }
 }
 @media screen and (max-width: 442px) {
+  .TemplateContain {
+    padding: 6px 4px !important;
+    
+}
   .templateWrapper > div:first-of-type {
     display: none;
   }
