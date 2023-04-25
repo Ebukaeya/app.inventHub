@@ -23,12 +23,12 @@ const GoogleMap = () => {
     },
     zoom: 12,
   };
-
+console.log(process.env.REACT_APP_Google_Map_Api);
   return (
     <>
       <div style={{ height: "100%", width: "100%" }}>
         <GoogleMapReact
-          bootstrapURLKeys={{ key: "AIzaSyB9YH41EUCs7Zgm4ZTZ9B_YxHvz2MOOdZk" }}
+          bootstrapURLKeys={{ key: process.env.REACT_APP_Google_Map_Api}}
           defaultCenter={center}
           defaultZoom={defaultProps.zoom}
           options={options}
