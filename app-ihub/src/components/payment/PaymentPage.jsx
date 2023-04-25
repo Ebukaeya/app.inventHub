@@ -8,7 +8,7 @@ import {
 } from "react-icons/bs";
 import { ImCheckboxChecked } from "react-icons/im";
 import { useState, useEffect } from "react";
-import Cardpayment from "./CardPayment";
+/* import Cardpayment from "./CardPayment"; */
 import { useNavigate } from "react-router-dom";
 import SwitchButton from "./SwitchButton";
 
@@ -64,7 +64,7 @@ const PaymentPage = () => {
             <BsCurrencyBitcoin /> Bitcoin
           </div>
         </div>
-        <Cardpayment />
+        {/* <Cardpayment /> */}
         <div className="tokenAV">
           {" "}
           <p> Use your accumulated voucher</p>

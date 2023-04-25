@@ -7,6 +7,7 @@ import { AiFillMessage } from "react-icons/ai";
 import { FaLocationArrow } from "react-icons/fa";
 import { BiSearch } from "react-icons/bi";
 import ProductCardCopy from "../exploreProducts/ProductCardCopy";
+import GoogleMap from "../map/GoogleMap";
 const StoreDetailsMain = () => {
   return (
     <>
@@ -85,7 +86,11 @@ const StoreDetailsMain = () => {
             </div>
           </div>
 
-          <div className='storeDetailsContainMap22'></div>
+          <div className='storeDetailsContainMap22'>
+            <div className="googleMapRenderDIv">
+<GoogleMap/>
+            </div>
+          </div>
         </div>
       </Template>
     </>
