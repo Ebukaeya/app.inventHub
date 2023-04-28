@@ -420,6 +420,11 @@ font-size: 0.95rem;
     height: min-content;
     max-height: 85% ;
   }
+  .verticalScrollingDivRemix::-webkit-scrollbar {
+    width: 0px;
+  
+    
+  }
   .CartContainer836 > div:last-of-type {
     width: 100%;
     box-sizing: border-box;
