@@ -5,6 +5,7 @@ import ProfileCard from "./ProfileCard";
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import { HiShoppingCart } from "react-icons/hi";
 
 const Narbar = () => {
   const [showProfile, setShowProfile] = useState(false);
@@ -55,15 +56,16 @@ const Narbar = () => {
             {showProfile && <ProfileCard />}
           </div>
           <div>
+            <HiShoppingCart onClick={toggleShowSetting} color='gray' size={22} style={{ cursor: "pointer" }} />
             <IoNotifications color='gray' size={22} style={{ cursor: "pointer" }} />
-            {!showSetting ? (
-              <IoSettingsSharp onClick={toggleShowSetting} color='gray' size={22} style={{ cursor: "pointer" }} />
+           {/*  {!showSetting ? (
+              <HiShoppingCart onClick={toggleShowSetting} color='gray' size={22} style={{ cursor: "pointer" }} />
             ) : (
               <div onClick={toggleShowSetting} className='settingsIconNar'>
                 {" "}
                 <IoSettingsSharp size={22} style={{ cursor: "pointer" }} />
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>

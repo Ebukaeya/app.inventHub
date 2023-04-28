@@ -27,6 +27,8 @@ import ExploreProductCategory from "./components/exploreProducts/ExploreProductC
 import ProductDetailsMain from "./components/exploreProducts/ProductDetailsMain";
 import ExploreStoreMain from "./components/exploreStores/ExploreStoreMain";
 import StoreDetailsMain from "./components/exploreStores/StoreDetailsMain";
+import CartMain from "./components/cart/CartMain";
+import PaymentPage from "./components/payment/PaymentPage";
 
 function App() {
   return (
@@ -39,6 +41,7 @@ function App() {
         <Route path='/product/:productID' element={<ProductDetailsMain />} />
         <Route path='/explorestores/store/:storeID' element={<StoreDetailsMain />} />
         <Route path='/explorestores' element={<ExploreStoreMain />} />
+        <Route path='/cart' element={<CartMain/>} />
 
         {/* old */}
         <Route path='/restaurants' element={<Restaurants />} />
@@ -50,14 +53,14 @@ function App() {
         {/*    <Route path='/store/:storeID' element={<StoreDetails />} />
         <Route path='/store/:storeID/2' element={<StoreDetails2 />} /> */}
         <Route path='/products' element={<SeeAllProducts />} />
-        <Route path='/cart' element={<Cart />} />
+        
         <Route path='/myorder' element={<MyOrders />} />
         <Route path='/order-details/:orderID' element={<OrderDetails />} />
         <Route path='/order-details/:orderID/:productID' element={<EachOrder />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/wishlist' element={<WishList />} />
         <Route path='/signup' element={<SignUp />} />
-        {/* <Route path='/Secure_payment' element={<PaymentPage />} /> */}
+        { <Route path='/Secure_payment' element={<PaymentPage />} /> }
         {/* <Route path='/Secure_payment/confirmation' element={<ConfirmedPayment />} /> */}
         <Route path='*' element={<div>404</div>} />
       </Routes>

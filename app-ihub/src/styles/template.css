@@ -6,7 +6,7 @@
 .templateWrapper {
   display: flex;
 
-  margin-top: 70px;
+  margin-top: 60px;
   min-width: 350px; 
 }
 
@@ -14,7 +14,7 @@
   width: 17%;
 
   /*  height: calc(100vh-80px); */
-  height: calc(100vh - 130px);
+  height: calc(100vh - 110px); 
   background-color: rgb(255, 255, 255);
   margin-top: 4px;
   padding-left: 10px;
@@ -24,7 +24,7 @@
   width: 82%;
   background-color: #f7f8ff;
 
-  height: calc(100vh - 116px);
+  height: calc(100vh - 100px);
   border-radius: 14px;
   margin-top: 4px;
   margin-left: 1vw;
