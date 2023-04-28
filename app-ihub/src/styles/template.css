@@ -1,0 +1,106 @@
+.TemplateContain {
+  padding: 6px 30px;
+  background-color: white;
+}
+
+.templateWrapper {
+  display: flex;
+
+  margin-top: 60px;
+  min-width: 350px; 
+}
+
+.templateWrapper > div:first-of-type {
+  width: 17%;
+
+  /*  height: calc(100vh-80px); */
+  height: calc(100vh - 110px); 
+  background-color: rgb(255, 255, 255);
+  margin-top: 4px;
+  padding-left: 10px;
+}
+
+.templateWrapper > div:last-of-type {
+  width: 82%;
+  background-color: #f7f8ff;
+
+  height: calc(100vh - 100px);
+  border-radius: 14px;
+  margin-top: 4px;
+  margin-left: 1vw;
+  padding: 10px 40px 10px 40px;
+  /*  overflow: hidden; */
+  position: relative;
+  overflow: hidden;
+}
+
+.StorePlaceholder {
+  width: 100%;
+  height: 30%;
+  background-color: rgb(54, 41, 41);
+  border-radius: 14px;
+}
+.sideMenu12 {
+  margin-top: 60px;
+  width: 100%;
+}
+
+.sideMenu12 > div {
+  display: flex;
+
+  gap: 24px;
+  margin-bottom: 24px;
+  cursor: pointer;
+  align-items: center;
+  color: #a5a5ad;
+  font-size: 0.87rem;
+}
+
+.sideMenu12 > div > svg,
+.sideMenu12 > div > span {
+  pointer-events: none;
+}
+
+.clickedOption {
+  color: #3473e9 !important;
+  font-weight: 600;
+  font-size: 1rem !important;
+}
+
+.signOutDiv {
+  width: 100%;
+  height: 20%;
+  background-color: #3473e9;
+ /*  margin-top: 20px; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.signOutDiv > div:first-of-type {
+ 
+  width: 100%;
+  height: 100px;
+}
+
+/* media query */
+
+@media screen and (max-width: 1415px) {
+  .templateWrapper > div:first-of-type {
+    width: 4%;
+    padding-left: 0;
+  }
+  .StorePlaceholder {
+    opacity: 1;
+    border-radius: 4px;
+  }
+  .sideMenu12 > div > span {
+    display: none;
+  }
+  .sideMenu12 > div {
+    justify-content: center;
+  }
+  .templateWrapper > div:last-of-type {
+    width: 94%;
+  }
+}

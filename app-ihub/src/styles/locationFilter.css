@@ -4,9 +4,9 @@
   border-radius: 100%;
   background-color: rgb(14, 73, 181);
   color: white;
-  position: fixed;
-  bottom: 90px;
-  right: 15px;
+  position: absolute;
+  bottom: 5%;
+  right: 8%;
   display: flex;
   justify-content: center;
   align-items: center;

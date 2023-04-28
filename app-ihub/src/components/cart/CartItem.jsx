@@ -39,44 +39,13 @@ const CartItem = ({ item, index, updateTotal }) => {
           <div className="QualityButtonSP cartEdit">
             <div>
               <div
-                onClick={() => {
-                  if (quantity >= 2) {
-                    setQuantity(quantity - 1);
-                    let updatedProduct = {
-                      product: item.product,
-                      quantity: quantity - 1,
-                      unitPrice: item.unitPrice,
-                      totalPrice: item.unitPrice * (quantity - 1),
-                    };
-
-                    console.log(item);
-                    dispatch(updateCart({ index, item: updatedProduct }));
-
-                    console.log(totalPrice);
-                  }
-                }}
                 className="minusPlus"
               >
                 <BiMinus />
               </div>
               <div>{quantity}</div>
               <div
-                onClick={() => {
-                  if (quantity <= 99) {
-                    setQuantity(quantity + 1);
-                    let updatedProduct = {
-                      product: item.product,
-                      quantity: quantity + 1,
-                      unitPrice: item.unitPrice,
-                      totalPrice: item.unitPrice * (quantity + 1),
-                    };
-
-                    console.log(item);
-                    dispatch(updateCart({ index, item: updatedProduct }));
-
-                    console.log(totalPrice);
-                  }
-                }}
+                
                 className="minusPlus"
               >
                 <BsPlus />

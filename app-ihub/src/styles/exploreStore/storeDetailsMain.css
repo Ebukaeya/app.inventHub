@@ -1,0 +1,280 @@
+.StoreDetailsWrappperMain23 {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+}
+
+.storeDetailsContain22 {
+  flex: 1;
+}
+.storeDetailsContainMap22 {
+  min-width: 380px;
+  width: 380px;
+  background-color: #e4edfd;
+}
+.storeIntroHeaderCont12 {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+}
+.storeIntroHeaderCont12 > div:first-of-type {
+  display: flex;
+  gap: 16px;
+}
+.storeIntroHeaderCont12 > div:last-of-type {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+.storeIntroHeaderCont12 > div:last-of-type > div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.storeAvatarDiv123 {
+  flex-shrink: 0;
+  width: 120px;
+  height: 100px;
+  background-color: rgb(255, 255, 255);
+  border-radius: 10px;
+  box-shadow: 0 1px 8px #dcdcdc;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s ease-in-out;
+  position: -webkit-sticky; /* Safari */
+  position: static;
+  top: 0;
+}
+.storeAvatarDiv123 > img {
+  width: 97%;
+  height: 90%;
+  object-fit: contain;
+  border-radius: 10px;
+}
+.storeAvatarDiv123 + div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.storeTitlt839 {
+  font-size: 1.1rem;
+  font-weight: 800;
+  color: #000000;
+}
+.storeTitlt839 + div {
+  display: flex;
+  gap: 10px;
+}
+.StoreAddressHeader54 {
+  font-size: 0.85rem;
+  max-width: 260px;
+}
+.StoreAddressHeader54 + span {
+  color: #4edb4e;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.followersCont12 {
+  font-size: 0-9rem;
+  font-weight: 700;
+}
+.followersCont12 + p {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: #585858;
+}
+.followStoreBtn11 {
+  width: 80px;
+  height: 30px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  color: rgb(3, 3, 3);
+  font-size: 0.9rem;
+
+  border: 1px solid #e4edfd;
+  cursor: pointer;
+  font-family: "Nunito", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+}
+
+.MessageAndSearch231 {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.MessageAndSearch231 > div:first-of-type {
+  display: flex;
+  gap: 10px;
+}
+.verticalScrollingDiv12 {
+  overflow-y: auto;
+  height: 100%;
+  margin-top: 4px;
+  padding-right: 2px;
+}
+.verticalScrollingDiv12::-webkit-scrollbar {
+  width: 1.5px;
+  background: rgb(206, 206, 206);
+}
+.verticalScrollingDiv12::-webkit-scrollbar-thumb {
+  background: #4d4d4d;
+  border-radius: 10px;
+}
+
+.MessageAndSearch231 > div:first-of-type > button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #e9e9e9;
+  border-radius: 40px;
+  color: #3b3b3b;
+  font-size: 14px;
+  gap: 6px;
+  padding: 0 12px;
+  background-color: white;
+  height: 26px;
+  cursor: pointer;
+  font-size: 0.84rem;
+  font-family: "Nunito", sans-serif;
+}
+.MessageAndSearch231 > div:last-of-type {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-radius: 40px;
+  border: 1px solid #e9e9e9;
+  background-color: white;
+  padding: 2px 14px;
+  box-sizing: border-box;
+}
+.searchInStore {
+  width: 240px;
+  height: 26px;
+
+  border: none;
+  font-family: "Nunito", sans-serif;
+}
+
+.searchInStore:focus {
+  outline: none;
+}
+#hideInWeb73 {
+  display: none;
+}
+
+
+.googleMapRenderDIv{
+  width: 100%;
+  height: 40vh;
+  background-color: #585d66;
+}
+
+.StoreOpeningHours21{
+  margin: 10px;
+  background-color: white;
+  border-radius: 8px;
+  
+  padding: 10px;
+}
+.StoreOpeningHours21>h4{
+ text-align: center;
+}
+
+.openingHoursDiv12{
+  margin: 10px;
+}
+.openingHoursDiv12>div{
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  align-items: center;
+  margin: 10px 0;
+}
+
+.daysTitleOpen{
+  font-size: 0.9rem;
+  font-weight: 555;
+ 
+}
+.daysTitleOpen+span{
+  color: #2d7adf;
+  font-size: 0.83rem;
+  font-weight: 500;
+  
+  letter-spacing:0.5px;
+}
+
+
+/* media querry */
+
+@media screen and (max-width: 1100px) {
+  .storeDetailsContainMap22 {
+    display: none;
+  }
+  #hideInWeb73 {
+    display: flex;
+  }
+}
+@media screen and (max-width: 700px) {
+  .searchInStore {
+    width: 160px;
+  }
+
+  element.style {
+  }
+  .storeTitlt839 {
+    font-size: 1rem;
+  }
+  .followersCont12 {
+    font-size: 0.9rem;
+  }
+}
+@media screen and (max-width: 580px) {
+  .MessageAndSearch231 {
+    margin-top: 10px;
+    display: flex;
+    gap: 6px;
+    flex-direction: column;
+    align-items: start;
+  }
+  .MessageAndSearch231 > div:last-of-type {
+    display: flex;
+    width: 100%;
+  }
+  .searchInStore {
+    width: 100%;
+    height: 28px;
+  }
+  .storeAvatarDiv123 {
+    width: 90px;
+    height: 80px;
+  }
+  .storeTitlt839 {
+    font-size: 0.9rem;
+  }
+  .StoreAddressHeader54 {
+    font-size: 0.75rem;
+  }
+  .StoreAddressHeader54 + span {
+    color: #4edb4e;
+    font-size: 10px;
+  }
+
+  .storeIntroHeaderCont12 {
+    gap: 6px;
+  }
+  .followStoreBtn11 {
+    width: 60px;
+    height: 24px;
+    font-size: 0.7rem;
+  }
+}

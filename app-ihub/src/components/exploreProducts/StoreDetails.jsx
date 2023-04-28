@@ -1,4 +1,4 @@
-import "../styles/storeDetails.css";
+import "../../styles/storeDetails.css";
 import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
 import ReactStars from "react-rating-stars-component";
@@ -6,17 +6,12 @@ import { BsStarHalf, BsStarFill, BsPlus } from "react-icons/bs";
 import { MdWifiCalling3 } from "react-icons/md";
 import { RiMessage3Fill } from "react-icons/ri";
 import { FaLocationArrow } from "react-icons/fa";
-import SearchBar from "./reUsable/SearchBar";
+import SearchBar from "../reUsable/SearchBar";
 import { useState, useEffect } from "react";
-import StoreProduct from "./reUsable/StoreProduct";
+import StoreProduct from "../reUsable/StoreProduct";
 import { Link } from "react-router-dom";
-import {
-  fetchStoreDetailsUrl,
-  token,
-  fetchStoresDetailsFunc,
-} from "../api/index.js";
+import { fetchStoreDetailsUrl, token, fetchStoresDetailsFunc } from "../../api/index.js";
 import { useParams } from "react-router-dom";
-import Spinner from "./loaders/Spinner";
 
 const StoreDetails = () => {
   const [search, setSearch] = useState("");
@@ -28,12 +23,10 @@ const StoreDetails = () => {
   const { storeID } = useParams();
 
   useEffect(() => {
-    
     fetchStoreDetails();
   }, []);
 
   const fetchStoreDetails = async () => {
-    setLoading(true);
     let { storeDetails } = await fetchStoresDetailsFunc(storeID);
     console.log(storeDetails);
     if (storeDetails) {
@@ -52,36 +45,28 @@ const StoreDetails = () => {
 
   return (
     <>
-    {loading ? <Spinner /> :
-      <div className="mycontainer">
-        <div className="NavBarProdP">
+      <div className='mycontainer'>
+        <div className='NavBarProdP'>
           <IoIosArrowBack size={30} onClick={() => window.history.back()} />
           <div>
             <BiDotsVerticalRounded size={30} />
           </div>
         </div>
-        <div className="storeProfile">
+        <div className='storeProfile'>
           <div>
-            <div className="storeImage">
+            <div className='storeImage'>
               <img src={storeDetails.image_url} />
             </div>
             <div>
               <div>
-                <p className="storeNameClamp">{storeDetails.name}</p>
+                <p className='storeNameClamp'>{storeDetails.name}</p>
                 <div style={{ width: "100%", display: "flex" }}>
-                  <span className="storePaddress">{storeDetails.address}</span>
+                  <span className='storePaddress'>{storeDetails.address}</span>
                   <span>open</span>
                 </div>
               </div>
               <div style={{ fontWeight: "750" }}>
-                <ReactStars
-                  size={16}
-                  count={5}
-                  value={storeDetails.rating}
-                  isHalf={true}
-                  halfIcon={<BsStarHalf />}
-                  filledIcon={<BsStarFill />}
-                />{" "}
+                <ReactStars size={16} count={5} value={storeDetails.rating} isHalf={true} halfIcon={<BsStarHalf />} filledIcon={<BsStarFill />} />{" "}
               </div>
             </div>
           </div>
@@ -91,7 +76,7 @@ const StoreDetails = () => {
             <p>Follow</p>
           </div>
         </div>
-        <div className="contactStore">
+        <div className='contactStore'>
           <div>
             <MdWifiCalling3 size={20} />
             <p>Call</p>
@@ -105,19 +90,15 @@ const StoreDetails = () => {
             <FaLocationArrow /> Location
           </div>
         </div>
-        <div className="StickySearchbar">
+        <div className='StickySearchbar'>
           {" "}
           <SearchBar controlInput={setSearch} />
         </div>
-        <div style={{ marginTop: "18px" }} className="titleFlex">
+        <div style={{ marginTop: "18px" }} className='titleFlex'>
           <p>Explore products</p>
           <p style={{ fontSize: "14px" }}>
             {" "}
-            <Link
-              color="inherit"
-              className="linkreset"
-              to={`/store/${storeID}/2`}
-            >
+            <Link color='inherit' className='linkreset' to={`/store/${storeID}/2`}>
               See all
             </Link>
           </p>
@@ -126,7 +107,7 @@ const StoreDetails = () => {
         {products.map((product) => (
           <StoreProduct product={product} />
         ))}
-      </div> }
+      </div>
     </>
   );
 };

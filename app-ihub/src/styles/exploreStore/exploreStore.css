@@ -1,0 +1,161 @@
+.eachStoreCard12Div {
+  width: 230px;
+  height: 210px;
+  background-color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+.eachStoreCard12Div:hover{
+      transform: scale(1.05);
+}
+
+.addMarginBot {
+  margin-bottom: 20px;
+}
+.StoreImageDiv122 {
+  width: 100%;
+  height: 58%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.locationOfstoreFloating6{
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      background-color: rgb(255, 255, 255, 0.9);
+      color: #068394;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.7rem;
+      
+      
+}
+
+.StoreImageDiv122 > img {
+  width: 96%;
+  height: 96%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0;
+}
+.storeTitleInfo44 {
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  height: 18%;
+  border-bottom: 1px solid #dbdbdb;
+}
+.storeTitleInfo44FirstFlex{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+}
+.storeTitleInfo44FirstFlex>p{
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #068394;
+      font-weight: 700;
+}
+.storeTitleInfo44FirstFlex122{
+      display: flex;
+     gap: 4px;
+      align-items: center;
+}
+.storeTitleInfo44FirstFlex122>p{
+      font-size: 0.55rem;
+      max-width: 90%;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+
+      
+}
+
+.storeIconDiv{
+      padding: 6px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-radius: 0 0 10px 10px;
+}
+
+.storeIconDiv>div{
+      display: flex;
+      gap: 6px;
+      align-items: center;
+      font-size: 0.65rem;
+}
+.storeIconDiv>div>div{
+      display: flex;
+      gap: 3px;
+      align-items: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* media query */
+@media screen and (max-width: 1660px) and (min-width: 1000px) {
+  .eachStoreCard12Div {
+    width: 200px;
+    height: 180px;
+  }
+}
+@media screen and (max-width: 942px) and (min-width: 716px) {
+  .eachStoreCard12Div {
+    width: 200px;
+    height: 180px;
+  }
+}
+@media screen and (max-width: 567px) and (min-width: 474px) {
+  .eachStoreCard12Div {
+    width: 200px;
+    height: 180px;
+  }
+}
+@media screen and (max-width: 474px) {
+  .eachStoreCard12Div {
+    min-width: 150px;
+    width: 45%;
+    height: 180px;
+  }
+}
+@media screen and (max-width: 363px) {
+  .eachStoreCard12Div {
+    min-width: 0px;
+    width: 45%;
+    height: 160px;
+  }
+}

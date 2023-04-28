@@ -11,10 +11,11 @@
   backdrop-filter: blur(18.4px);
   -webkit-backdrop-filter: blur(18.4px);
   border: 1px solid rgba(245, 244, 243, 0.24);
-  display: flex;
+  
   justify-content: space-between;
   align-items: center;
   padding: 0 24px;
+  display: none;
 }
 .bottomNavCover{
   position: fixed;
@@ -23,6 +24,7 @@
   right: 0;
   background-color: white;
   height: 80px;
+  display: none;
 }
 
 .cart {
@@ -67,6 +69,13 @@
   color: white;
 }
 
+
+
+
+
+
+
+
 /* .cart > p > p {
   background-color: red;
   color: white;
@@ -79,3 +88,16 @@
   align-items: center;
   font-family: "Montserrat", sans-serif;
 } */
+
+
+/* media query */
+
+@media screen and (max-width: 768px) {
+  .BottomNavWrapper {
+    display: flex;
+  }
+  .bottomNavCover{
+    display: block;
+  }
+ 
+}

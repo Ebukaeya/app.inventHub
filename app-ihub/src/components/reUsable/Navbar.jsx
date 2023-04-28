@@ -126,4 +126,4 @@ const user = useSelector(state => state.profile.profile);
   );
 };
 
-export default Narbar;
+export default Narbar; 
