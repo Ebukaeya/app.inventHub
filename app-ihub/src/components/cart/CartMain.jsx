@@ -1,8 +1,11 @@
 import Template from "../Template";
 import EachCartItem from "./EachCartItem";
 import { BsTruck } from "react-icons/bs";
+import { useNavigate } from "react-router-dom";
 
 const CartMain = () => {
+
+      const navigate = useNavigate();     
   return (
     <>
       <Template>
@@ -58,7 +61,7 @@ const CartMain = () => {
                 <p>$4000.00</p>
               </div>
               <div className='checkOutButtonDiv'>
-                <button>Proceed to checkout</button>
+                <button onClick={()=>navigate("check-out")}>Proceed to checkout</button>
                 <button>Continue shopping</button>
               </div>
             </div>

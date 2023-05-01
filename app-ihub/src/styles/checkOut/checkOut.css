@@ -1,0 +1,78 @@
+.backToCart33 {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+.backToCart33 > * {
+  cursor: pointer;
+}
+
+.DeliveryType33 {
+  gap: 14px;
+  display: flex;
+  padding: 10px;
+  border-radius: 4px;
+  color: rgb(179, 179, 179);
+  border: 1px solid rgb(225, 236, 255);
+  align-items: center;
+  margin-bottom: 14px;
+  /*  border: 1px solid rgb(85, 142, 241); */
+  cursor: pointer;
+}
+.DeliveryType33 > p {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgb(48, 77, 102);
+}
+.selectDeliveryType33 {
+  background-color: rgb(244, 250, 255);
+  color: rgb(85, 142, 241);
+  border: 1px solid rgb(142, 182, 250);
+}
+
+.labelTI12 {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: rgb(92, 92, 92);
+}
+.shippingaddressEnter1 {
+  margin: 20px 0 20px 0;
+}
+
+.shippingaddressEnter1 > div {
+  padding: 10px;
+  border-radius: 4px;
+  border: 1px solid rgb(225, 236, 255);
+  display: flex;
+  gap: 20px;
+  margin-top: 6px;
+}
+.shippingaddressEnter1 > div > input {
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  flex: 1;
+  font-family: "Nunito", sans-serif;
+}
+.shippingaddressEnter1 > div > input:focus {
+  outline: none;
+}
+
+.eachOrderItem83{
+      display: flex;
+      justify-content: space-between;
+      margin: 6px 0 0 0;
+}
+.eachOrderItem83>div{
+      display: flex;
+      gap: 10px;
+      font-size: 0.8rem;
+      align-items: center;
+}
+.eachOrderItem83>div>span{
+      display: flex;
+      align-items: center;
+      color: rgb(100, 100, 100);
+}
+

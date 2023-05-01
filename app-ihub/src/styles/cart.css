@@ -418,7 +418,7 @@ font-size: 0.95rem;
     box-sizing: border-box;
     flex-shrink: 0;
     height: min-content;
-    max-height: 85% ;
+   
   }
   .verticalScrollingDivRemix::-webkit-scrollbar {
     width: 0px;

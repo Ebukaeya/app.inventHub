@@ -3,7 +3,7 @@ import { useState } from "react";
 const SwitchButton = () => {
   const [useVoucher, setUseVoucher] = useState(true);
 
-  let backGroundColor = useVoucher ? "rgb(34, 84, 178)" : "rgb(199, 205, 216)";
+  let backGroundColor = useVoucher ? "#157ED4" : "rgb(199, 205, 216)";
 
   const handleClick = () => {
     let switchNode = document.querySelector(".radioBuBase>div");

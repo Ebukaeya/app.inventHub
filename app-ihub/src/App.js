@@ -29,7 +29,7 @@ import ExploreStoreMain from "./components/exploreStores/ExploreStoreMain";
 import StoreDetailsMain from "./components/exploreStores/StoreDetailsMain";
 import CartMain from "./components/cart/CartMain";
 import PaymentPage from "./components/payment/PaymentPage";
-import CheckOutPage from "./components/checkOut/CheckOut";
+import CheckOutPage from "./components/checkOut/CheckOut.jsx";
 
 function App() {
   return (

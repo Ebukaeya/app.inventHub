@@ -16,11 +16,11 @@ const Cardpayment = () => {
   const cartTotal = useSelector((state) => state.cart.cartTotal);
   const amount = cartTotal.total * 100; // Remember, set in kobo!
   const componentProps = {
-    email: profile.email,
-    amount,
+    email: "profile.email@gm.com",
+    amount: 22,
     metadata: {
-      name: profile.name,
-      phone,
+      name: "Enid",
+      phone: "07066914342",
     },
     publicKey,
     text: "Pay Now",
@@ -35,17 +35,13 @@ const Cardpayment = () => {
 
   return (
     <>
-      <div className="CarpaymentDiv">
-        <p className="paymentTitleMute">Phone Number</p>
-        <input
-          placeholder=" +234 7066914342"
-          className="cardNumberInput"
-          value={phone}
-          type={"number"}
-          onChange={(e) => setPhone(e.target.value)}
-        />
+      <div className='CarpaymentDiv'>
+        <p className='labelTI12'>Name on card</p>
+        <input placeholder=' Ifeanyi Eya' className='cardNumberInput' type="text" />
 
-        <PaystackButton className="paystack-button" {...componentProps} />
+        <p className='labelTI12'>Phone Number</p>
+        <input type="number" placeholder=' +234 7066914342' className='cardNumberInput' />
+        <PaystackButton className='paystack-button' {...componentProps} />
 
         {/*      <div>
           <div>
@@ -57,19 +53,11 @@ const Cardpayment = () => {
             <input placeholder="123" />
           </div>
         </div> */}
-
-        <button
-          style={{
-            backgroundColor: phone ? "" : "rgb(206, 205, 205)",
-          }}
-          disabled={phone ? false : true}
-          onClick={() => makePayment()}
-          className="cartOverView"
-        >
-          Pay now <b>{`Kr ${cartTotal.total}`}</b>{" "}
-          <BounceLoader color="#1CCCE9" size={18} loading={loading} />
-        </button>
-        <div className="cancelPayment">Cancel</div>
+     
+     <div className="paymeentInfoTab">
+      Tab explain payStack how to use it
+     </div>
+       
       </div>
     </>
   );

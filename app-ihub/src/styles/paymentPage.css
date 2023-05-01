@@ -2,8 +2,9 @@
 .paymentMethodDiv{
     display: flex;
     gap: 20px;
-    padding: 16px 10px;
-  justify-content: center;
+  justify-content: flex-start;
+  margin: 12px 0 20px 0;
+  padding: 0 2px;
 }
 
 .paymentMethodDiv > div{
@@ -13,12 +14,11 @@
     align-items: center;
     border-radius: 6px;
     padding: 10px;
-    margin-right: 10px;
     cursor: pointer;
     min-width: 80px;
     color: white;
     background-color: rgb(198, 217, 241);
-    gap: 4px;
+    gap: 6px;
 }
 
 div.activepayment{
@@ -26,6 +26,9 @@ div.activepayment{
     transform: scale(1.03);
     box-shadow: 0px 1px 10px rgba(0, 0, 0, 0.3);
  
+}
+div.activepayment>*{
+    pointer-events: none;
 }
 
 .paymentTitleMute{
