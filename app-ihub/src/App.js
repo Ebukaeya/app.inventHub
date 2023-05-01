@@ -29,6 +29,7 @@ import ExploreStoreMain from "./components/exploreStores/ExploreStoreMain";
 import StoreDetailsMain from "./components/exploreStores/StoreDetailsMain";
 import CartMain from "./components/cart/CartMain";
 import PaymentPage from "./components/payment/PaymentPage";
+import CheckOutPage from "./components/checkOut/CheckOut";
 
 function App() {
   return (
@@ -42,6 +43,7 @@ function App() {
         <Route path='/explorestores/store/:storeID' element={<StoreDetailsMain />} />
         <Route path='/explorestores' element={<ExploreStoreMain />} />
         <Route path='/cart' element={<CartMain/>} />
+        <Route path='/cart/check-out' element={<CheckOutPage/>} />
 
         {/* old */}
         <Route path='/restaurants' element={<Restaurants />} />
