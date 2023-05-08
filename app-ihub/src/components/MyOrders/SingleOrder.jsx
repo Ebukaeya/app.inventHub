@@ -21,12 +21,7 @@ const SingleOrder = (props) => {
           </div>
         </div>
       </div>
-      <div className="OrderDetailsTotal">
-        <div>
-          <p>Total Order</p>
-          <p>£ 9999.9</p>
-        </div>
-      </div>
+     
     </>
   );
 };

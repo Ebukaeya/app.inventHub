@@ -30,6 +30,8 @@ import StoreDetailsMain from "./components/exploreStores/StoreDetailsMain";
 import CartMain from "./components/cart/CartMain";
 import PaymentPage from "./components/payment/PaymentPage";
 import CheckOutPage from "./components/checkOut/CheckOut.jsx";
+import MyOrderMain from "./components/MyOrders/MyOrderMain";
+import MyOrderListDetail from "./components/MyOrders/MyOrderLisrDetail";
 
 function App() {
   return (
@@ -44,6 +46,7 @@ function App() {
         <Route path='/explorestores' element={<ExploreStoreMain />} />
         <Route path='/cart' element={<CartMain/>} />
         <Route path='/cart/check-out' element={<CheckOutPage/>} />
+        <Route path='/my-orders' element={<MyOrderMain/>} />
 
         {/* old */}
         <Route path='/restaurants' element={<Restaurants />} />
@@ -57,7 +60,7 @@ function App() {
         <Route path='/products' element={<SeeAllProducts />} />
         
         <Route path='/myorder' element={<MyOrders />} />
-        <Route path='/order-details/:orderID' element={<OrderDetails />} />
+        <Route path='/my-orders/:orderID' element={<MyOrderListDetail />} />
         <Route path='/order-details/:orderID/:productID' element={<EachOrder />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/wishlist' element={<WishList />} />

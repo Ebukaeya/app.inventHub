@@ -2,20 +2,22 @@
   display: flex;
   justify-content: space-between;
   margin: 16px 10px 20px 10px;
+  font-size: 0.85rem;
 }
 
-.RorderTitle > p:first-of-type {
+.nothinks74h3 {
+  position: relative;
 }
 .Orderfilter {
   position: absolute;
   width: 142px;
 
   background-color: rgb(255, 255, 255);
-  top: 150px;
+
   right: -160px;
   border-radius: 10px;
   box-shadow: 2px 10px 20px rgb(228, 228, 228);
-  padding: 10px;
+  padding: 10px 0;
   box-sizing: border-box;
   transition: right 10s ease-in-out;
   display: none;
@@ -24,18 +26,22 @@
 }
 
 .Orderfilter > p {
-  padding: 6px;
-  border-radius: 6px;
+  padding: 6px 14px;
+  cursor: pointer;
   font-size: 14px;
   color: rgb(89, 163, 233);
-
-  font-weight: 550;
+  margin-bottom: 3px;
+  font-weight: 500;
+}
+.Orderfilter > p:hover {
+  background-color: rgb(89, 163, 233);
+  color: white;
 }
 
 .showFilter {
   display: block;
   opacity: 1;
-  right: 6px;
+  right: 2%;
 }
 
 .bulkOrderDiv {
@@ -50,12 +56,15 @@
 }
 .bulkOrderDiv > div:first-of-type > img {
   height: 100%;
-  object-fit: cover;
+  object-fit: contain;
 }
 
 .bulkOrderDiv > div:first-of-type {
   width: 30%;
-  height: 100%;
+  height: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   border-radius: 6px 0 0 6px;
 }
 
@@ -71,12 +80,12 @@
   display: flex;
 }
 .orderItemTitle > p:first-of-type {
-  max-width: 60%;
+  max-width: 66%;
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  font-size: 14px;
+  font-size:0.87rem;
   font-weight: 600;
 }
 .orderItemTitle > span {
@@ -144,7 +153,7 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  font-size: 14px;
+  font-size: 0.8rem;
   color: rgb(108, 108, 109);
 }
 
@@ -152,28 +161,11 @@
   font-size: 14px;
 }
 
-.OrderDetailsTotal {
-  height: 100px;
 
-  display: flex;
-  background-color: firebrick;
-  position: fixed;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  margin: 2px;
-  /* From https://css.glass */
-  background: rgba(255, 255, 255, 0.48);
-  backdrop-filter: blur(12.9px);
-  -webkit-backdrop-filter: blur(12.9px);
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 
 .OrderDetailsTotal > div {
-  height: 50%;
-  width: 90%;
+  height: 90%;
+  width: 94%;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -508,4 +500,208 @@
 #orderIsSupplied {
   background-color: rgb(243, 56, 30);
   color: white;
+}
+
+/* order Main page */
+.searchDivFilter12 {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 20px 0;
+}
+.searchDivFilter12 > div:first-of-type {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  border-radius: 8px;
+
+  gap: 10px;
+  background-color: white;
+}
+.myOrderPageWrapper343 {
+  display: flex;
+  gap: 4%;
+  justify-content: center;
+  height: 88%;
+}
+.myOrderPageWrapper343 > div {
+  
+
+  background-color: white;
+  padding: 2px 0 30px 2px;
+}
+
+.myOrderEachOrderDiv122 {
+  width: 410px;
+  height: 100%;
+  overflow-y: auto;
+}
+.myOrderEachOrderDiv122::-webkit-scrollbar {
+  width: 2px;
+
+}
+.myOrderEachOrderDiv122::-webkit-scrollbar-thumb {
+  background-color: rgb(222, 220, 220);
+  border-radius: 10px;
+}
+
+
+.myOrderList122 {
+  width: 410px;
+  height: 100%;
+  position: relative;
+  padding-right: 10px !important;
+  overflow-y: auto;
+}
+
+.myOrderList122::-webkit-scrollbar {
+  width: 2px;
+
+}
+.myOrderList122::-webkit-scrollbar-thumb {
+  background-color: rgb(222, 220, 220);
+  border-radius: 10px;
+}
+
+
+
+.OrderDetailsTotal {
+  height: 60px;
+
+  display: flex;
+  background-color: firebrick;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  margin: 2px;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.48);
+  backdrop-filter: blur(12.9px);
+  -webkit-backdrop-filter: blur(12.9px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.eachOrderMainItemList {
+  padding: 10px 10px 15px 10px;
+  border-bottom: 1px solid rgb(222, 220, 220);
+  cursor: pointer;
+  position: relative;
+}
+.eachOrderMainItemList:hover {
+  background-color: rgb(248, 255, 255);
+}
+.priceHeaderDiv33 {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.flexingContainer21 {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 10px;
+}
+
+.caption4r {
+  font-size: 0.6em;
+  color: gray;
+}
+.caption293e {
+  font-size: 0.65em;
+  color: rgb(56, 56, 56);
+}
+.orderImageDisplayDiv345 {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 6px;
+}
+.orderImageDisplayDiv345 > span {
+  font-size: 0.8em;
+  color: rgb(0, 0, 0);
+}
+.OrderImageDivRow2 {
+  
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  max-width: 80%;
+}
+.OrderImageDivRow2 > div {
+  height: 50px;
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.OrderImageDivRow2 > div > img {
+  height: 96%;
+  width: 96%;
+
+  object-fit: contain;
+}
+.hideOnWeb22{
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  display: none;
+}
+.divMyOrderList774{
+  width: 100%;
+  height: 100%;
+  position: relative;
+  padding-right: 10px !important;
+  overflow-y: auto;
+  overflow-x: hidden;
+  
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+}
+.divMyOrderList774>div{
+  background-color: white;
+  width: 100%;
+  max-width: 650px;
+  height: 100%;
+  
+}
+
+.backHeader83{
+  margin: 10px;
+}
+
+
+.divMyOrderList7742::-webkit-scrollbar {
+  width: 2px;
+
+}
+.divMyOrderList774::-webkit-scrollbar-thumb {
+  background-color: rgb(222, 220, 220);
+  border-radius: 10px;
+}
+
+
+/* media query */
+
+
+@media screen and (max-width: 768px) {
+  .myOrderList122 {
+  display: none;
+  }
+  .myOrderEachOrderDiv122 {
+    width: 100%;
+   
+  }
+  .hideOnWeb22{
+    display: block;
+  }
 }

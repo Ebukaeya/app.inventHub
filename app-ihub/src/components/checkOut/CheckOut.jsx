@@ -66,8 +66,23 @@ const CheckOutPage = () => {
 
             <div>
               <h5 style={{ marginBottom: "16px" }}>Order summary</h5>
-              <EachItemToPurchase />
-              <EachItemToPurchase />
+              <div >
+                    <EachItemToPurchase />
+                    <EachItemToPurchase />
+                    <EachItemToPurchase />
+                    <EachItemToPurchase />
+                    <EachItemToPurchase />
+                    <EachItemToPurchase />
+                    <EachItemToPurchase />
+                    <EachItemToPurchase />
+                    <EachItemToPurchase />
+                    <EachItemToPurchase />
+                    <EachItemToPurchase />
+                    <EachItemToPurchase />
+                    <EachItemToPurchase />
+                    
+                
+              </div>
               <hr />
               <div className='tokenAV'>
                 {" "}

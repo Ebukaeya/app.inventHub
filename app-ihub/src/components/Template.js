@@ -24,7 +24,7 @@ const Template = (props) => {
           <div>
             <div className='StorePlaceholder'></div>
             <div className={"sideMenu12"}>
-              <div className={location.pathname.includes("/dashboard") ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/dashboard")}>
+              <div className={location.pathname.includes("/dashboard") ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/my-orders")}>
                 <RiDashboardFill />
                 <span>My Orders</span>
               </div>
