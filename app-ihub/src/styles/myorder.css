@@ -290,7 +290,7 @@
   display: flex;
   justify-content: center;
   /*  align-items: center; */
-  padding-bottom: 20px;
+  padding-bottom: 70px;
 }
 .buttonDivDR > button {
   width: 70%;
@@ -524,7 +524,7 @@
 }
 .myOrderPageWrapper343 > div {
   background-color: white;
-  padding: 2px 0 40px 2px;
+  padding: 2px 0 120px 2px;
   box-sizing: border-box;
 }
 
@@ -697,7 +697,7 @@
   width: 100%;
   max-width: 650px;
  height: fit-content;
- padding-bottom: 60px;
+ padding-bottom: 15vh;
 }
 
 .backHeader83 {
