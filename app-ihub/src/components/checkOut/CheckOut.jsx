@@ -5,7 +5,7 @@ import { BsTruck } from "react-icons/bs";
 import { ImRadioChecked2 } from "react-icons/im";
 import { BsFillPenFill } from "react-icons/bs";
 import { BsCreditCard2BackFill, BsDash, BsPaypal, BsCurrencyBitcoin } from "react-icons/bs";
-import PaymentTab from "../payment/PaymentTab";
+import PaymentTab from "../payment/PaymentTab.jsx";
 import Cardpayment from "../payment/CardPayment";
 import { AiFillDelete } from "react-icons/ai";
 import SwitchButton from "../payment/SwitchButton";
