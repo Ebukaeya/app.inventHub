@@ -4,13 +4,45 @@ import { BiSearch } from "react-icons/bi";
 import { useState } from "react";
 import EachOrderMain from "./EachOrderMain";
 import SingleOrder from "./SingleOrder";
+import EachOrder from "./EachOrder";
 
-
-export const MyOrderDetails = () => {
+export const MyOrderDetails = ({openModal}) => {
   return (
     <>
       <div className='myOrderList122'>
+        <div className='RorderTitle'>
+          <p>15 items</p>
+          <div>
+            {" "}
+            <p style={{ color: "rgb(0, 128, 248)", fontWeight: "600" }}> 07, Mar, 2023</p>
+          </div>
+        </div>
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        <SingleOrder openModal={openModal} />
+        
        
+        <div className='OrderDetailsTotal'>
+          <div>
+            <p>Total Order</p>
+            <p>£ 9999.9</p>
+          </div>
+        </div>
       </div>
     </>
   );
@@ -18,12 +50,11 @@ export const MyOrderDetails = () => {
 
 const MyOrderMain = () => {
   const [filter, setFilter] = useState("All");
+  const [showEachOrderDetails, setShowEachOrderDetails] = useState(false);
   const showFilter = () => {
     let filter = document.querySelector(".Orderfilter");
     filter.classList.toggle("showFilter");
   };
-
-  
 
   return (
     <>
@@ -84,14 +115,30 @@ const MyOrderMain = () => {
         </div>
         <div className='myOrderPageWrapper343'>
           <div className='myOrderEachOrderDiv122'>
-          
-              <EachOrderMain />
-           
-          
+            <EachOrderMain />
+
+            <EachOrderMain />
+            <EachOrderMain />
+            <EachOrderMain />
+            <EachOrderMain />
+            <EachOrderMain />
+            <EachOrderMain />
+            <EachOrderMain />
+            <EachOrderMain />
+            <EachOrderMain />
+            <EachOrderMain />
+            <EachOrderMain />
+            <EachOrderMain />
+            <EachOrderMain />
             <EachOrderMain />
           </div>
-          <MyOrderDetails />
+          <MyOrderDetails openModal={setShowEachOrderDetails} />
         </div>
+       { showEachOrderDetails && <div className='OrderItemDetails83Wrapper'>
+          <div>
+            <EachOrder closeItemDetails={setShowEachOrderDetails} />
+          </div>
+        </div>}
       </Template>
     </>
   );

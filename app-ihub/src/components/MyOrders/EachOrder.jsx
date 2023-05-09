@@ -6,7 +6,7 @@ import DisputeWindow from "./disputeWindow/DisputeWindow";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
-const EachOrder = () => {
+const EachOrder = ({closeItemDetails}) => {
   const [openModal, setOpenModal] = useState(false);
   const [pendingOrder, setPendingOrder] = useState(true);
   const [dispute, setDispute] = useState(null);
@@ -60,40 +60,43 @@ const EachOrder = () => {
 
   return (
     <>
-      <div className="mycontainer">
-        <div className="NavBarProdP">
-          <div style={{ display: "flex", alignItems: "center" }}>
-            <IoIosArrowBack size={30} onClick={() => window.history.back()} />
+      <div className='EachOrderContainer11'>
+        <div className='NavBarProdP122'>
+          <div style={{ display: "flex", alignItems: "center", cursor:"pointer" }}>
+            <IoIosArrowBack size={30} onClick={() => closeItemDetails(false)} />
           </div>
           <div>
             <BiDotsVerticalRounded size={30} />
           </div>
         </div>
-        <div className="eachProductProductDiv">
+        <div className='eachProductProductDiv'>
           <div>
-            <img
-              src="https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60"
-              alt=""
-            />
+            <div className='itemDetailImageDiv'>
+              <img
+                src='https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
+                alt=''
+              />
+            </div>
             <p>Iphone 11 pro in da djn djt</p>
-            <div className="producTPageSTore">
+            <div className='producTPageSTore'>
               <p>Fresh Mart stores</p>
-              <p>No.22 Nordre talkaj Denmark</p>
+              <p>No.22 Nordre talkaj Denmark bfje fjv fvewrf vwjrfv erwjver vjerv</p>
             </div>
           </div>
         </div>
 
         {/* state 1 pending order */}
         {pendingOrder && (
-          <div className="DisputeDiv">
+          <div className='DisputeDiv'>
             <div onClick={openDisputeWindow}>Dispute</div>
+            {openModal && <DisputeWindow closeModel={setOpenModal} updateDispute={updateDisputeReason} />}
             <div>Dispute window will close in 7 days</div>
           </div>
         )}
 
         {/* state 2 dispute raised */}
         {dispute && (
-          <div className="DisputeRaisedDiv">
+          <div className='DisputeRaisedDiv'>
             <div>
               {" "}
               <div>Dispute</div>
@@ -105,14 +108,14 @@ const EachOrder = () => {
 
         {/* state 3 dispute resolved */}
         {disputeStatus && (
-          <div className="RoslvedDisputeDiv">
+          <div className='RoslvedDisputeDiv'>
             <div>
               {" "}
               <div onClick={() => orderIsSuppliedSim()}>Dispute</div>
               <p>Dispute resovled on {getCurrentDate()}</p>
             </div>
             <div>
-              <Link className="linkreset" to={"/"}>
+              <Link className='linkreset' to={"/"}>
                 Buy again
               </Link>
             </div>
@@ -122,19 +125,16 @@ const EachOrder = () => {
         {/* state 4 order not pending i.e supplied */}
 
         {!dispute && !disputeStatus && !pendingOrder && !isDisputeWindowClosed && (
-          <div className="RoslvedDisputeDiv">
+          <div className='RoslvedDisputeDiv'>
             <div>
               {" "}
-              <div
-                id="orderIsSupplied"
-                onClick={() => disputeWindowClosedSim()}
-              >
+              <div id='orderIsSupplied' onClick={() => disputeWindowClosedSim()}>
                 Dispute
               </div>
               <p>Dispute window will close in 7 days</p>
             </div>
             <div>
-              <Link className="linkreset" to={"/"}>
+              <Link className='linkreset' to={"/"}>
                 Buy again
               </Link>
             </div>
@@ -143,27 +143,27 @@ const EachOrder = () => {
 
         {/* state 5 dispute window closed automatically. */}
         {!dispute && !disputeStatus && !pendingOrder && isDisputeWindowClosed && (
-          <div className="RoslvedDisputeDiv">
+          <div className='RoslvedDisputeDiv'>
             <div>
               {" "}
               <div>Dispute</div>
               <p>Dispute window close after 7 days</p>
             </div>
             <div>
-              <Link className="linkreset" to={"/"}>
+              <Link className='linkreset' to={"/"}>
                 Buy again
               </Link>
             </div>
           </div>
         )}
 
-        <div className="rateDivWrapper">
+        <div className='rateDivWrapper'>
           <p>Rate Item</p>
           <ReactStars classNames={"ratingStar"} size={40} />
           <p>Rate Store</p>
           <ReactStars classNames={"ratingStar"} size={40} />
         </div>
-        <div className="OrderDetailsDiv">
+        <div className='OrderDetailsDiv'>
           <p>Order Details</p>
           <div>
             <p>Order date</p>
@@ -194,17 +194,12 @@ const EachOrder = () => {
             <p>Kr. 200</p>
           </div>
         </div>
-        <div className="buttonDivDR">
+        <div className='buttonDivDR'>
           {" "}
           <button>Download Receipt</button>
         </div>
       </div>
-      {openModal && (
-        <DisputeWindow
-          closeModel={setOpenModal}
-          updateDispute={updateDisputeReason}
-        />
-      )}
+      
     </>
   );
 };

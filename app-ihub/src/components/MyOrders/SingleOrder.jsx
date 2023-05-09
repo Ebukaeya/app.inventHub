@@ -1,9 +1,10 @@
 import { AiOutlineRight } from "react-icons/ai";
 
-const SingleOrder = (props) => {
+
+const SingleOrder = ({openModal}) => {
   return (
     <>
-      <div className="bulkOrderDiv newPos">
+      <div onClick={()=>openModal(true)} className="bulkOrderDiv newPos">
         <div>
           <img src="https://res.cloudinary.com/ebuka1122/image/upload/v1656114183/samples/Ihub-Consumer-App/images_ostgjp.jpg" />
         </div>
@@ -13,7 +14,7 @@ const SingleOrder = (props) => {
           </div>
           <div>
             <span className="orderItemShop">Tega Mobile sevice jion</span>
-            <AiOutlineRight color="gray" />
+            <AiOutlineRight size={12} color="gray" />
           </div>
           <div>
             <span className="pending2-">pending</span>
@@ -21,6 +22,8 @@ const SingleOrder = (props) => {
           </div>
         </div>
       </div>
+
+     
      
     </>
   );

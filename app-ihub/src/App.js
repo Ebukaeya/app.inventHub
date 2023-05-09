@@ -32,8 +32,27 @@ import PaymentPage from "./components/payment/PaymentPage";
 import CheckOutPage from "./components/checkOut/CheckOut.jsx";
 import MyOrderMain from "./components/MyOrders/MyOrderMain";
 import MyOrderListDetail from "./components/MyOrders/MyOrderLisrDetail";
+import { useState, useEffect } from "react";
 
 function App() {
+  const [tabletScreen, setTabletScreen] = useState(false);
+
+  useEffect(() => {
+    if (window.innerWidth <= 768) {
+      setTabletScreen(true);
+    } else {
+      setTabletScreen(false);
+    }
+  }, []);
+
+  window.onresize = () => {
+    if (window.innerWidth <= 768) {
+      setTabletScreen(true);
+    } else {
+      setTabletScreen(false);
+    }
+  };
+
   return (
     <BrowserRouter>
       <Routes>
@@ -44,9 +63,9 @@ function App() {
         <Route path='/product/:productID' element={<ProductDetailsMain />} />
         <Route path='/explorestores/store/:storeID' element={<StoreDetailsMain />} />
         <Route path='/explorestores' element={<ExploreStoreMain />} />
-        <Route path='/cart' element={<CartMain/>} />
-        <Route path='/cart/check-out' element={<CheckOutPage/>} />
-        <Route path='/my-orders' element={<MyOrderMain/>} />
+        <Route path='/cart' element={<CartMain />} />
+        <Route path='/cart/check-out' element={<CheckOutPage />} />
+        <Route path='/my-orders' element={<MyOrderMain />} />
 
         {/* old */}
         <Route path='/restaurants' element={<Restaurants />} />
@@ -58,14 +77,14 @@ function App() {
         {/*    <Route path='/store/:storeID' element={<StoreDetails />} />
         <Route path='/store/:storeID/2' element={<StoreDetails2 />} /> */}
         <Route path='/products' element={<SeeAllProducts />} />
-        
+
         <Route path='/myorder' element={<MyOrders />} />
-        <Route path='/my-orders/:orderID' element={<MyOrderListDetail />} />
+        {tabletScreen && <Route path='/my-orders/:orderID' element={<MyOrderListDetail />} />}
         <Route path='/order-details/:orderID/:productID' element={<EachOrder />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/wishlist' element={<WishList />} />
         <Route path='/signup' element={<SignUp />} />
-        { <Route path='/Secure_payment' element={<PaymentPage />} /> }
+        {<Route path='/Secure_payment' element={<PaymentPage />} />}
         {/* <Route path='/Secure_payment/confirmation' element={<ConfirmedPayment />} /> */}
         <Route path='*' element={<div>404</div>} />
       </Routes>

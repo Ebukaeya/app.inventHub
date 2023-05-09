@@ -53,6 +53,7 @@
   display: flex;
   justify-content: space-between;
   position: relative;
+  cursor: pointer;
 }
 .bulkOrderDiv > div:first-of-type > img {
   height: 100%;
@@ -85,7 +86,7 @@
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  font-size:0.87rem;
+  font-size: 0.87rem;
   font-weight: 600;
 }
 .orderItemTitle > span {
@@ -163,25 +164,6 @@
 
 
 
-.OrderDetailsTotal > div {
-  height: 90%;
-  width: 94%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  box-shadow: 0 1px 10px rgba(218, 241, 247, 0.623);
-  padding: 0 10px;
-  border-radius: 10px;
-}
-
-.OrderDetailsTotal > div > p:last-of-type {
-  color: rgb(0, 153, 255);
-  font-weight: 650;
-}
-.newPos {
-  position: relative;
-}
-
 .eachProductProductDiv {
   height: 200px;
   width: 100%;
@@ -193,19 +175,26 @@
 }
 .eachProductProductDiv > div {
   height: 100%;
-  width: 45%;
+  width: 80%;
 
   text-align: center;
 }
-
-.eachProductProductDiv > div > img {
+.itemDetailImageDiv {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   height: 56%;
-  object-fit: cover;
+}
+
+.itemDetailImageDiv > img {
+  height: 96%;
+  object-fit: contain;
   border-radius: 6px;
 }
-.eachProductProductDiv > div > img + p {
-  font-size: 17px;
-  color: rgb(7, 7, 7);
+.itemDetailImageDiv + p {
+  font-size: 0.9rem;
+  color: rgb(0, 0, 0);
   font-weight: 700;
   margin-top: 4px;
   display: -webkit-box;
@@ -219,7 +208,8 @@
   width: 100%;
 }
 .producTPageSTore > p:first-of-type {
-  color: gray;
+  font-size: 0.9rem;
+  color: rgb(71, 71, 71);
   display: -webkit-box;
   -webkit-line-clamp: 1;
   -webkit-box-orient: vertical;
@@ -228,8 +218,8 @@
 
 .producTPageSTore > p:last-of-type {
   color: gray;
-  font-size: 12px;
-  font-family: "Montserrat", sans-serif;
+  font-size: 0.7rem;
+  font-family: "Nunito", sans-serif;
   font-weight: 350;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -243,6 +233,7 @@
   align-items: center;
   gap: 10px;
   justify-content: flex-start;
+  position: relative;
 }
 
 .DisputeDiv > div:first-of-type {
@@ -254,11 +245,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .DisputeDiv > div:last-of-type {
-  font-size: 14px;
-  color: rgb(137, 219, 130);
+  font-size: 0.9rem;
+  color: rgb(95, 194, 86);
 }
 
 .rateDivWrapper {
@@ -294,10 +286,11 @@
   font-weight: 600;
 }
 .buttonDivDR {
-  margin: 50px 0 80px 0;
+  margin: 16px 0;
   display: flex;
   justify-content: center;
   /*  align-items: center; */
+  padding-bottom: 20px;
 }
 .buttonDivDR > button {
   width: 70%;
@@ -312,17 +305,17 @@
 /* dispute window */
 
 .DisputeWindowWrapper {
-  position: fixed;
-  top: 0;
+  position: absolute;
+  top: 110px;
   left: 0;
   right: 0;
-  bottom: 0;
-  margin: auto;
-  /* From https://css.glass */
-  background: rgba(156, 156, 156, 0.8);
+  z-index: 200;
 
-  backdrop-filter: blur(5.1px);
-  -webkit-backdrop-filter: blur(6.1px);
+  /* From https://css.glass */
+  background: rgba(94, 94, 94, 0.9);
+
+ /*  backdrop-filter: blur(5.1px);
+  -webkit-backdrop-filter: blur(6.1px); */
   display: flex;
   align-items: center;
 }
@@ -338,7 +331,7 @@
 }
 
 .DisputeWindowDiv > p:first-of-type {
-  font-size: 16px;
+  font-size: 0.9rem;
   font-weight: 700;
   margin-bottom: 10px;
 }
@@ -353,6 +346,7 @@
   font-size: 14px;
   font-weight: 500;
   margin-bottom: 6px;
+  cursor: pointer;
 }
 
 .DisputeRPOption {
@@ -366,6 +360,7 @@
 .DisputeRPOption > p {
   margin-bottom: 6px;
   color: rgb(7, 7, 7);
+  cursor: pointer;
 }
 
 .RaiseDisputeBtnDiv {
@@ -383,6 +378,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .RaiseDisputeBtnDiv > div:last-of-type {
@@ -394,6 +390,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 .DisputeDropdown {
@@ -508,6 +505,7 @@
   justify-content: space-between;
   align-items: center;
   margin: 20px 0;
+  padding-right: 10px;
 }
 .searchDivFilter12 > div:first-of-type {
   display: flex;
@@ -525,26 +523,23 @@
   height: 88%;
 }
 .myOrderPageWrapper343 > div {
-  
-
   background-color: white;
-  padding: 2px 0 30px 2px;
+  padding: 2px 0 40px 2px;
+  box-sizing: border-box;
 }
 
 .myOrderEachOrderDiv122 {
-  width: 410px;
+  width: 440px;
   height: 100%;
   overflow-y: auto;
 }
 .myOrderEachOrderDiv122::-webkit-scrollbar {
   width: 2px;
-
 }
 .myOrderEachOrderDiv122::-webkit-scrollbar-thumb {
   background-color: rgb(222, 220, 220);
   border-radius: 10px;
 }
-
 
 .myOrderList122 {
   width: 410px;
@@ -552,28 +547,25 @@
   position: relative;
   padding-right: 10px !important;
   overflow-y: auto;
+  overflow-x: hidden;
 }
 
 .myOrderList122::-webkit-scrollbar {
   width: 2px;
-
 }
 .myOrderList122::-webkit-scrollbar-thumb {
   background-color: rgb(222, 220, 220);
   border-radius: 10px;
 }
 
-
-
 .OrderDetailsTotal {
   height: 60px;
-
   display: flex;
-  background-color: firebrick;
-  position: absolute;
-  bottom: 0;
+  position: sticky;
+  bottom: -37px;
   right: 0;
   left: 0;
+  top: 96%;
   margin: 2px;
   /* From https://css.glass */
   background: rgba(255, 255, 255, 0.48);
@@ -582,6 +574,25 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+.OrderDetailsTotal > div {
+  height: 90%;
+  width: 94%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 10px rgba(218, 241, 247, 0.623);
+  padding: 0 10px;
+  border-radius: 10px;
+}
+
+.OrderDetailsTotal > div > p:last-of-type {
+  color: rgb(0, 153, 255);
+  font-weight: 650;
+}
+.newPos {
+  position: relative;
 }
 
 .eachOrderMainItemList {
@@ -626,7 +637,6 @@
   color: rgb(0, 0, 0);
 }
 .OrderImageDivRow2 {
-  
   display: flex;
   align-items: center;
   gap: 10px;
@@ -646,7 +656,7 @@
 
   object-fit: contain;
 }
-.hideOnWeb22{
+.hideOnWeb22 {
   position: absolute;
   top: 0;
   right: 0;
@@ -655,53 +665,110 @@
   margin: auto;
   display: none;
 }
-.divMyOrderList774{
+.divMyOrderList774 {
   width: 100%;
   height: 100%;
   position: relative;
-  padding-right: 10px !important;
+  padding-right: 6px !important;
+  
   overflow-y: auto;
   overflow-x: hidden;
-  
   box-sizing: border-box;
   display: flex;
   justify-content: center;
 }
-.divMyOrderList774>div{
-  background-color: white;
-  width: 100%;
-  max-width: 650px;
-  height: 100%;
-  
-}
 
-.backHeader83{
-  margin: 10px;
-}
-
-
-.divMyOrderList7742::-webkit-scrollbar {
+.divMyOrderList774::-webkit-scrollbar {
   width: 2px;
-
 }
 .divMyOrderList774::-webkit-scrollbar-thumb {
   background-color: rgb(222, 220, 220);
   border-radius: 10px;
 }
 
+.divMyOrderList774 > div {
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  max-width: 650px;
+ height: fit-content;
+ padding-bottom: 60px;
+}
+
+.backHeader83 {
+  margin: 10px;
+}
+
+.divMyOrderList7742::-webkit-scrollbar {
+  width: 2px;
+}
+.divMyOrderList774::-webkit-scrollbar-thumb {
+  background-color: rgb(222, 220, 220);
+  border-radius: 10px;
+}
+.OrderItemDetails83Wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  background-color: rgba(0, 0, 0, 0.23);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  padding-top: 6vh;
+}
+.OrderItemDetails83Wrapper > div {
+  width: 500px;
+  border-radius: 10px;
+  height: calc(88.5vh);
+  max-height: 850px;
+  background-color: white;
+  overflow-y: auto;
+}
+
+.OrderItemDetails83Wrapper > div::-webkit-scrollbar {
+  width: 3px;
+}
+.OrderItemDetails83Wrapper > div::-webkit-scrollbar-thumb {
+  background-color: rgb(194, 194, 194);
+  border-radius: 10px;
+}
+
+.EachOrderContainer11 {
+  padding: 15px;
+  box-sizing: border-box;
+  height: 100%;
+}
+.NavBarProdP122 {
+  display: flex;
+  justify-content: space-between;
+  color: gray;
+}
 
 /* media query */
 
-
 @media screen and (max-width: 768px) {
+  .OrderDetailsTotal {
+    top: 89%;
+    bottom: 10px;
+    position: fixed;
+  }
   .myOrderList122 {
-  display: none;
+    display: none;
   }
   .myOrderEachOrderDiv122 {
     width: 100%;
-   
   }
-  .hideOnWeb22{
+  .hideOnWeb22 {
     display: block;
+  }
+}
+@media screen and (max-width: 568px) {
+  .searchDivFilter12 > div:first-of-type {
+    width: 60%;
+  }
+  .OrderItemDetails83Wrapper > div {
+    width: 100%;
   }
 }

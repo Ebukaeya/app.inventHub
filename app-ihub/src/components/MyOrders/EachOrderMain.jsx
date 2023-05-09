@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
-
+import { AiOutlineRight } from "react-icons/ai";
 const EachOrderMain = (props) => {
-      const navigate = useNavigate();
+  const navigate = useNavigate();
   return (
     <>
       <div className='eachOrderMainItemList'>
@@ -19,7 +19,9 @@ const EachOrderMain = (props) => {
               <p className='caption4r'>Order status</p>
               <p className='caption293e'>Delivered</p>
             </div>
-            <p>-</p>
+            <p>
+              <AiOutlineRight size={12} color='gray' />
+            </p>
           </div>
         </div>
         <div className='orderImageDisplayDiv345'>
@@ -39,13 +41,10 @@ const EachOrderMain = (props) => {
             <div>
               <img src='https://res.cloudinary.com/ebuka1122/image/upload/v1656026265/samples/Ihub-Consumer-App/images_xvpyq7.jpg' />
             </div>
-            <div>
-              <img src='https://res.cloudinary.com/ebuka1122/image/upload/v1656026265/samples/Ihub-Consumer-App/images_xvpyq7.jpg' />
-            </div>
           </div>
           <span>+ 5</span>
         </div>
-        <div onClick={()=>navigate("kfhe8fuvjefi")} className="hideOnWeb22"></div>
+        <div onClick={() => navigate("kfhe8fuvjefi")} className='hideOnWeb22'></div>
       </div>
     </>
   );

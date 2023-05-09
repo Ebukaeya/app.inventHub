@@ -1,8 +1,11 @@
 import Template from "../Template";
+import EachOrder from "./EachOrder";
 import { MyOrderDetails } from "./MyOrderMain";
 import SingleOrder from "./SingleOrder";
+import { useState } from "react";
 
 const MyOrderListDetail = (props) => {
+  const [showEachOrderDetails, setShowEachOrderDetails] = useState(false);
   return (
     <>
       <Template>
@@ -16,6 +19,16 @@ const MyOrderListDetail = (props) => {
                 <p style={{ color: "rgb(0, 128, 248)", fontWeight: "600" }}> 07, Mar, 2023</p>
               </div>
             </div>
+            <SingleOrder openModal={setShowEachOrderDetails} />
+            <SingleOrder />
+            <SingleOrder />
+            <SingleOrder />
+            <SingleOrder />
+            <SingleOrder />
+            <SingleOrder />
+            <SingleOrder />
+            <SingleOrder />
+            <SingleOrder />
             <SingleOrder />
             <SingleOrder />
 
@@ -27,6 +40,13 @@ const MyOrderListDetail = (props) => {
             </div>
           </div>
         </div>
+        {showEachOrderDetails && (
+          <div className='OrderItemDetails83Wrapper'>
+            <div>
+              <EachOrder closeItemDetails={setShowEachOrderDetails} />
+            </div>
+          </div>
+        )}
       </Template>
     </>
   );
