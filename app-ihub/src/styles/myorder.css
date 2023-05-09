@@ -533,6 +533,7 @@
   height: 100%;
   overflow-y: auto;
   overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 .myOrderEachOrderDiv122::-webkit-scrollbar {
   width: 2px;
@@ -550,6 +551,7 @@
   overflow-y: auto;
   overflow-x: hidden;
   overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .myOrderList122::-webkit-scrollbar {
@@ -679,6 +681,7 @@
   display: flex;
   justify-content: center;
   overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .divMyOrderList774::-webkit-scrollbar {
@@ -729,6 +732,7 @@
   background-color: white;
   overflow-y: auto;
   overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
 }
 
 .OrderItemDetails83Wrapper > div::-webkit-scrollbar {
