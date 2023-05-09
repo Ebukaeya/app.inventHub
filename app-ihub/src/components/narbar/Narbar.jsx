@@ -6,35 +6,31 @@ import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { HiShoppingCart } from "react-icons/hi";
+import { VscMenu } from "react-icons/vsc";
+import { TbMenu2 } from "react-icons/tb";
+import SideMenu from "../reUsable/SideMenu";
 
 const Narbar = () => {
   const [showProfile, setShowProfile] = useState(false);
-  const [showNotification, setShowNotification] = useState(false);
-  const [showSetting, setShowSetting] = useState(false);
+  const [showSideMenu, setShowSideMenu] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   //const { user } = useSelector((state) => state.webStoreUser);
 
-  useEffect(() => {
-    location.pathname === "/settings" ? setShowSetting(true) : setShowSetting(false);
-  }, [location]);
-
   const toggleShowProfile = () => {
     showProfile ? setShowProfile(false) : setShowProfile(true);
-  };
-  const toggleShowNotification = () => {
-    showNotification ? setShowNotification(false) : setShowNotification(true);
-  };
-  const toggleShowSetting = () => {
-    navigate("/settings");
-    /* showSetting ? setShowSetting(false) : setShowSetting(true); */
   };
 
   return (
     <>
       <div className='navBarMain'>
-        <div>Logo</div>
+        <div className='NavBarMenuAndLog'>
+          <div onClick={() => setShowSideMenu(true)} className='meanuWrapper44'>
+            <TbMenu2  size={18}  />
+          </div>
+          <span>Logo</span>
+        </div>
         <div className='navbarChild'>
           <div onClick={toggleShowProfile}>
             <div>
@@ -56,19 +52,12 @@ const Narbar = () => {
             {showProfile && <ProfileCard />}
           </div>
           <div>
-            <HiShoppingCart onClick={toggleShowSetting} color='gray' size={22} style={{ cursor: "pointer" }} />
+            <HiShoppingCart color='gray' size={22} style={{ cursor: "pointer" }} />
             <IoNotifications color='gray' size={22} style={{ cursor: "pointer" }} />
-           {/*  {!showSetting ? (
-              <HiShoppingCart onClick={toggleShowSetting} color='gray' size={22} style={{ cursor: "pointer" }} />
-            ) : (
-              <div onClick={toggleShowSetting} className='settingsIconNar'>
-                {" "}
-                <IoSettingsSharp size={22} style={{ cursor: "pointer" }} />
-              </div>
-            )} */}
           </div>
         </div>
       </div>
+      {showSideMenu && <SideMenu closeSideMenu={setShowSideMenu} />}
     </>
   );
 };

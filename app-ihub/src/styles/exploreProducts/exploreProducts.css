@@ -374,7 +374,7 @@
     transform: none;
   }
   .templateWrapper > div:last-of-type {
-    padding: 10px 0 !important;
+    padding: 10px 2px !important;
     width: 100%;
   }
 }

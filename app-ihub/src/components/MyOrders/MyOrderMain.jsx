@@ -17,24 +17,24 @@ export const MyOrderDetails = ({openModal}) => {
             <p style={{ color: "rgb(0, 128, 248)", fontWeight: "600" }}> 07, Mar, 2023</p>
           </div>
         </div>
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
-        <SingleOrder openModal={openModal} />
+        <div className="anchorMargiv844">
+              <SingleOrder openModal={openModal} />
+              <SingleOrder openModal={openModal} />
+              <SingleOrder openModal={openModal} />
+              <SingleOrder openModal={openModal} />
+              <SingleOrder openModal={openModal} />
+              <SingleOrder openModal={openModal} />
+              <SingleOrder openModal={openModal} />
+              <SingleOrder openModal={openModal} />
+              <SingleOrder openModal={openModal} />
+              <SingleOrder openModal={openModal} />
+              <SingleOrder openModal={openModal} />
+              <SingleOrder openModal={openModal} />
+              <SingleOrder openModal={openModal} />
+              <SingleOrder openModal={openModal} />
+              <SingleOrder openModal={openModal} />
+        </div>
+       
         
        
         <div className='OrderDetailsTotal'>

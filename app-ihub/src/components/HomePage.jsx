@@ -69,7 +69,7 @@ const HomePage = () => {
             </div>
           </div>
         </div>
-        <SideMenu />
+        
       </Template>
       {/*    { profile &&  <Narbar />} */}
     </>

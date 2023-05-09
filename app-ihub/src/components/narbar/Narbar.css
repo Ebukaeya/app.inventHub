@@ -6,9 +6,15 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0px 0px 30px 0px rgb(241, 248, 255);
+ 
   position: fixed;
   box-sizing: border-box;
+  /* From https://css.glass */
+  background: rgba(255, 255, 255, 0.25);
+
+  box-shadow: 0 4px 30px rgba(177, 177, 177, 0.1);
+  backdrop-filter: blur(10.2px);
+  -webkit-backdrop-filter: blur(10.2px);
 }
 
 .navbarChild {
@@ -24,6 +30,17 @@
   gap: 16px;
   cursor: pointer;
   position: relative;
+}
+.meanuWrapper44{
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 30px;
+ border:  1px solid  rgba(165, 171, 196, 0.863);
+ border-radius: 6px;
+ cursor: pointer;
+
 }
 
 .profileImageNar {
@@ -41,6 +58,11 @@
   gap: 46px;
   align-items: center;
   margin-right: 20px;
+}
+.NavBarMenuAndLog {
+  display: flex;
+  gap: 20px;
+  align-items: center;
 }
 
 .settingsIconNar {
@@ -70,39 +92,38 @@
   z-index: 10000;
 }
 
-
 @media screen and (max-width: 850px) {
   .navBarMain {
     padding: 20px;
   }
-  .navbarChild{
+  .navbarChild {
     margin-right: 0px;
   }
-  
- 
 }
 @media screen and (max-width: 768px) {
- 
-  .navbarChild > div:last-of-type>svg:first-of-type {
+  .navbarChild > div:last-of-type > svg:first-of-type {
     display: none;
   }
- 
+}
+@media screen and (max-width: 800px) {
+  .meanuWrapper44 {
+    display: flex !important;
+  }
 }
 @media screen and (max-width: 550px) {
   .navBarMain {
-    padding: 20px;
+    padding: 20px 10px;
   }
-  .navbarChild{
+  .navbarChild {
     width: 100%;
     justify-content: space-between;
     align-items: center;
     margin-right: 0px;
     gap: 20px;
   }
-  
+
   .navbarChild > div:last-of-type {
     gap: 20px;
     margin-right: 0px;
   }
- 
 }

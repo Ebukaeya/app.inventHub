@@ -19,18 +19,13 @@ const MyOrderListDetail = (props) => {
                 <p style={{ color: "rgb(0, 128, 248)", fontWeight: "600" }}> 07, Mar, 2023</p>
               </div>
             </div>
-            <SingleOrder openModal={setShowEachOrderDetails} />
-            <SingleOrder />
-            <SingleOrder />
-            <SingleOrder />
-            <SingleOrder />
-            <SingleOrder />
-            <SingleOrder />
-            <SingleOrder />
-            <SingleOrder />
-            <SingleOrder />
-            <SingleOrder />
-            <SingleOrder />
+            <div className='anchorMargiv844'>
+              <SingleOrder openModal={setShowEachOrderDetails} />
+              <SingleOrder />
+           
+              
+             
+            </div>
 
             <div className='OrderDetailsTotal'>
               <div>
