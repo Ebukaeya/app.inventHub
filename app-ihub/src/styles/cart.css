@@ -458,7 +458,7 @@ font-size: 0.95rem;
 
 @media screen and (max-width: 458px) {
   .CartContainer836{
-   padding-bottom: 90px;
+   padding-bottom: 16vh;
     box-sizing: border-box;
     
   }

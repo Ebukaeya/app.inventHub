@@ -180,9 +180,22 @@ p {
     margin-top: 40px;
   }
   .ExplorePageWrapper > div {
-    width: 46%;
-    height: 54%;
+    width: 45%;
+    height: 46%;
   
+  }
+  .IconDiv {
+    margin-top: 6px;
+    height: 63%;
+    width: 85%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .IconDiv >img{
+    height:90%;
+    width:90%;
+    object-fit: contain;
   }
   .mycontainer{
     margin: 0 0;

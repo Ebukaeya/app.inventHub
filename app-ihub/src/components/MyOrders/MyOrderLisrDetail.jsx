@@ -83,6 +83,22 @@ const MyOrderListDetail = (props) => {
             <div className='anchorMargiv844'>
               <SingleOrder openModal={setShowEachOrderDetails} />
               <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
+              <SingleOrder />
             </div>
 
             <div className='OrderDetailsTotal'>

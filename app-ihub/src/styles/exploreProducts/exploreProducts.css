@@ -381,6 +381,14 @@
     width: 100%;
   }
 }
+@media screen and (max-width: 560px) {
+  .verticalScrollingDiv {
+  
+    padding: 0 10px 20vh 0;
+   
+  }
+ 
+}
 @media screen and (max-width: 430px) {
   .productCopy12 {
     flex: 1;
