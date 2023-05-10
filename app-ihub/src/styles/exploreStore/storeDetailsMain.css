@@ -241,6 +241,13 @@
   }
 }
 @media screen and (max-width: 580px) {
+  
+ .mobilpadding{
+padding: 14px 0 15vh 0;
+ }
+
+
+  
   .MessageAndSearch231 {
     margin-top: 10px;
     display: flex;

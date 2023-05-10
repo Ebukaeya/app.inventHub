@@ -785,6 +785,10 @@
   }
 }
 @media screen and (max-width: 568px) {
+  .buttonDivDR {
+  
+     padding-bottom: 12vh; 
+  }
   .searchDivFilter12 > div:first-of-type {
     width: 60%;
   }
@@ -800,6 +804,6 @@
   }
   .OrderDetailsTotal  {
     position: fixed !important;
-    bottom: 5px;
+    bottom: 1px;
   }
 }

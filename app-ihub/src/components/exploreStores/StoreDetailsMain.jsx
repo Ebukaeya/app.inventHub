@@ -64,7 +64,7 @@ const StoreDetailsMain = () => {
                 </div>
               </div>
 
-              <div style={{ padding: "14px 0 70px 0" }} className='recommendedProductDIv'>
+              <div className='recommendedProductDIv mobilpadding'>
                 <ProductCardCopy />
                 <ProductCardCopy />
                 <ProductCardCopy />
