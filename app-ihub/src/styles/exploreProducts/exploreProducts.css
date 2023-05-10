@@ -91,7 +91,10 @@
   overflow-y: auto;
   overflow-x: hidden;
   height: 100%;
-  padding: 0 10px;
+  padding: 0 10px 60px 0;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  box-sizing: border-box;
 }
 .verticalScrollingDiv::-webkit-scrollbar {
   margin-right: -10px;

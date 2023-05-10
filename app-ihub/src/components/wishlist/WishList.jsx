@@ -4,17 +4,17 @@ import BottomNavigation from "../reUsable/BottomNavigation";
 import EmptyList from "./EmptyList";
 import { useState } from "react";
 import FilledList from "./FilledList";
-import SideMenu from "../reUsable/SideMenu";
+import Template from "../Template";
 
 const Wishlist = () => {
   const [wishlist, setWishlist] = useState([]);
   return (
     <>
-      <Narbar />
-     { !wishlist && <EmptyList />}
-     { wishlist && <FilledList/>}
-      <BottomNavigation />
-        <SideMenu />
+      <Template>
+        {!wishlist && <EmptyList />}
+        {wishlist && <FilledList />}
+        <BottomNavigation />
+      </Template>
     </>
   );
 };

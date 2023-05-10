@@ -8,17 +8,21 @@ const FilledList = () => {
 
   return (
     <>
-      <div className="mycontainer">
-        <SearchBar
-          controlInput={setSearch}
-          placeholder={"Search your wishlist"}
-        />
-        <div className="wishItemWrapper">
-
-        <WishItem/>
-        <WishItem/>
-        
+      <h4 className='titleMyorder873'>Wish list</h4>
+      <div className='wishItemWrapper'>
+        <div className='wishListContainer'>
+          <WishItem />
+          <WishItem />
+          <WishItem />
+          <WishItem />
+          <WishItem />
+          <WishItem />
+          <WishItem />
+          <WishItem />
+          <WishItem />
+          <WishItem />
         </div>
+        <div className='wishlistAdd232'>p</div>
       </div>
     </>
   );

@@ -3,6 +3,7 @@ import { BsChevronDown } from "react-icons/bs";
 import LocationFilter from "../reUsable/LocationFilter";
 import EachStoreCard from "./EachStoreCard";
 import Footer from "../reUsable/Footer";
+import BottomNavigation from "../reUsable/BottomNavigation";
 
 const ExploreStoreMain = () => {
   return (
@@ -69,6 +70,9 @@ const ExploreStoreMain = () => {
             <p>back to top</p>
           </div>
           <Footer/>
+        </div>
+        <div>
+          <BottomNavigation/>
         </div>
         <LocationFilter />
       </Template>

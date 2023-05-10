@@ -9,6 +9,7 @@ import PaymentTab from "../payment/PaymentTab";
 import Cardpayment from "../payment/CardPayment";
 import { AiFillDelete } from "react-icons/ai";
 import SwitchButton from "../payment/SwitchButton";
+import { useNavigate } from "react-router-dom";
 
 const EachItemToPurchase = () => {
   return (
@@ -30,13 +31,15 @@ const EachItemToPurchase = () => {
 };
 
 const CheckOutPage = () => {
+
+      const navigate = useNavigate();
   return (
     <>
       <Template>
         <div className='CartMainWrapper2'>
           <div className='CartContainer836'>
             <div>
-              <div className='backToCart33'>
+              <div onClick={()=> window.history.back()} className='backToCart33'>
                 {" "}
                 <AiOutlineArrowLeft /> <h4> Back</h4>
               </div>
@@ -112,7 +115,7 @@ const CheckOutPage = () => {
               </div>
               <div className='checkOutButtonDiv'>
                 <button>Confirm payment</button>
-                <button>Continue shopping</button>
+                <button onClick={()=>navigate("/products")} >Continue shopping</button>
               </div>
             </div>
           </div>

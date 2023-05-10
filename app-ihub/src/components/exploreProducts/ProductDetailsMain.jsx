@@ -4,13 +4,17 @@ import ReactStars from "react-rating-stars-component";
 import { BsStarHalf, BsStarFill, BsPlusLg, BsTruck } from "react-icons/bs";
 import { BiMinus } from "react-icons/bi";
 import ProductCardCopy from "./ProductCardCopy";
+import { FaAngleLeft } from "react-icons/fa";
 
 const ProductDetailsMain = () => {
   return (
     <>
       <Template>
         <div className='verticalScrollingDiv'>
-          <div>Back button</div>
+          <div onClick={() => window.history.back()} style={{ display: "flex", gap: "4px", alignItems: "center", margin: "8px 2px", cursor: "pointer" }}>
+            {" "}
+            <FaAngleLeft /> <span>Back</span>
+          </div>
           <div className='productDetailsWrapper123'>
             <div className='productImageShow5'>
               <div className='pDDetails1232'>
@@ -121,7 +125,9 @@ const ProductDetailsMain = () => {
             </div>
           </div>
           {/* related products */}
-          <h3 className='headingsInproductCO' style={{ marginBottom: "20px" }}>Related products</h3>
+          <h3 className='headingsInproductCO' style={{ marginBottom: "20px" }}>
+            Related products
+          </h3>
           <div className='recommendedProductDIv'>
             <ProductCardCopy />
             <ProductCardCopy />

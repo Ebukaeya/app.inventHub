@@ -762,6 +762,12 @@
 /* media query */
 
 @media screen and (max-width: 768px) {
+  .searchDivFilter12{
+    display: none;
+  }
+  .titleMyorder873{
+    margin: 6px 0 20px 6px;
+  }
   .OrderDetailsTotal {
     top: 89%;
     bottom: 3px;

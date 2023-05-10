@@ -5,8 +5,12 @@ import { useState } from "react";
 import EachOrderMain from "./EachOrderMain";
 import SingleOrder from "./SingleOrder";
 import EachOrder from "./EachOrder";
+import BottomNavigation from "../reUsable/BottomNavigation";
+
 
 export const MyOrderDetails = ({openModal}) => {
+
+     
   return (
     <>
       <div className='myOrderList122'>
@@ -59,12 +63,13 @@ const MyOrderMain = () => {
   return (
     <>
       <Template>
-        <h4>My Orders</h4>
+        <h4 className="titleMyorder873">My Orders</h4>
         <div className='searchDivFilter12'>
           <div>
             <BiSearch color='gray' />
             <input className='searchInStore' type='text' placeholder='Search in store' />
           </div>
+
           <div>
             <p onClick={showFilter} style={{ color: "rgb(0, 128, 248)", fontWeight: "600", fontSize: "14px", cursor: "pointer" }}>
               {filter}
@@ -139,6 +144,10 @@ const MyOrderMain = () => {
             <EachOrder closeItemDetails={setShowEachOrderDetails} />
           </div>
         </div>}
+        <div>
+            <BottomNavigation/>
+        </div>
+       
       </Template>
     </>
   );

@@ -6,7 +6,7 @@ import Categories from "../reUsable/Categories";
 import Product2 from "../reUsable/Product2";
 import LocationFilter from "../reUsable/LocationFilter";
 import { fetchStoresAndProductsUrl, token } from "../../api/index.js";
-import { Link } from "react-router-dom";
+
 
 const SeeAllProducts = () => {
   const [search, setSearch] = useState("");

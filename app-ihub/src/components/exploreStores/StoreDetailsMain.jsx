@@ -64,7 +64,7 @@ const StoreDetailsMain = () => {
                 </div>
               </div>
 
-              <div style={{ padding: "14px 0" }} className='recommendedProductDIv'>
+              <div style={{ padding: "14px 0 70px 0" }} className='recommendedProductDIv'>
                 <ProductCardCopy />
                 <ProductCardCopy />
                 <ProductCardCopy />
@@ -95,38 +95,34 @@ const StoreDetailsMain = () => {
               <h4>Opening hours</h4>
               <div className='openingHoursDiv12'>
                 <div>
-                 
-                  <span className="daysTitleOpen">Monday</span> <span>8:00am to 5:00pm</span>
+                  <span className='daysTitleOpen'>Monday</span> <span>8:00am to 5:00pm</span>
                 </div>
                 <div>
-                 
-                  <span className="daysTitleOpen">Tuesday</span> <span>8:00am to 5:00pm</span>
+                  <span className='daysTitleOpen'>Tuesday</span> <span>8:00am to 5:00pm</span>
                 </div>
                 <div>
-                 
-                  <span className="daysTitleOpen">Wednesday</span> <span>8:00am to 5:00pm</span>
+                  <span className='daysTitleOpen'>Wednesday</span> <span>8:00am to 5:00pm</span>
                 </div>
                 <div>
-                 
-                  <span className="daysTitleOpen">Thursday</span> <span>8:00am to 5:00pm</span>
+                  <span className='daysTitleOpen'>Thursday</span> <span>8:00am to 5:00pm</span>
                 </div>
                 <div>
-                 
-                  <span className="daysTitleOpen">Friday</span> <span>8:00am to 5:00pm</span>
+                  <span className='daysTitleOpen'>Friday</span> <span>8:00am to 5:00pm</span>
                 </div>
                 <div>
-                 
-                  <span className="daysTitleOpen">Saturday</span> <span>8:00am to 5:00pm</span>
+                  <span className='daysTitleOpen'>Saturday</span> <span>8:00am to 5:00pm</span>
                 </div>
                 <div>
-                 
-                  <span className="daysTitleOpen">Sunday</span> <span>8:00am to 5:00pm</span>
+                  <span className='daysTitleOpen'>Sunday</span> <span>8:00am to 5:00pm</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
-       <div> <BottomNavigation/></div>
+        <div>
+          {" "}
+          <BottomNavigation />
+        </div>
       </Template>
     </>
   );

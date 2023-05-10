@@ -6,6 +6,7 @@ import ProductCardCopy from "./ProductCardCopy";
 import Footer from "../reUsable/Footer";
 import { useNavigate } from "react-router-dom";
 import "../../styles/exploreProducts/exploreProducts.css";
+import BottomNavigation from "../reUsable/BottomNavigation";
 
 const ExploreProducts = () => {
   const navigate = useNavigate();
@@ -78,6 +79,7 @@ const ExploreProducts = () => {
           </div>
           <Footer />
         </div>
+        <BottomNavigation/>
         <LocationFilter />
       </Template>
     </>

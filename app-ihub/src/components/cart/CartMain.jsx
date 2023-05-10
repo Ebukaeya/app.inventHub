@@ -62,7 +62,7 @@ const CartMain = () => {
               </div>
               <div className='checkOutButtonDiv'>
                 <button onClick={()=>navigate("check-out")}>Proceed to checkout</button>
-                <button>Continue shopping</button>
+                <button onClick={()=>navigate("/products")}>Continue shopping</button>
               </div>
             </div>
          

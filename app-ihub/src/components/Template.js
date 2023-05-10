@@ -5,6 +5,11 @@ import { IoStorefrontSharp } from "react-icons/io5";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import Narbar from "./narbar/Narbar";
+import { HiOutlineHome } from "react-icons/hi";
+import { MdOutlineShoppingBasket } from "react-icons/md";
+import { BsBook, BsTruck, BsShop } from "react-icons/bs";
+import { VscTools } from "react-icons/vsc";
+import { IoSettingsOutline, IoChatbubblesOutline, IoFastFoodOutline } from "react-icons/io5";
 
 const Template = (props) => {
   const navigate = useNavigate();
@@ -24,35 +29,48 @@ const Template = (props) => {
           <div>
             <div className='StorePlaceholder'></div>
             <div className={"sideMenu12"}>
+              <div className={location.pathname.includes("/dashboard") ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/")}>
+                <HiOutlineHome />
+                <span>Home</span>
+              </div>
               <div className={location.pathname.includes("/dashboard") ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/my-orders")}>
-                <RiDashboardFill />
+                <MdOutlineShoppingBasket />
                 <span>My Orders</span>
               </div>
 
               <div
                 className={location.pathname.includes("/mystores") ? "clickedOption" : ""}
                 onClick={(e) => {
+                  handleClick(e, "/bookings");
+                }}
+              >
+                <BsBook />
+                <span>My bookings</span>
+              </div>
+              <div
+                className={location.pathname.includes("/mystores") ? "clickedOption" : ""}
+                onClick={(e) => {
                   handleClick(e, "/explorestores");
                 }}
               >
-                <IoStorefrontSharp />
+                <BsShop />
                 <span>Explore stores</span>
               </div>
-              <div className={location.pathname === "/employees" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/employees")}>
-                <IoStorefrontSharp />
-                <span>Employees</span>
+              <div className={location.pathname === "/employees" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/restaurants")}>
+                <IoFastFoodOutline />
+                <span>Order food</span>
               </div>
-              <div className={location.pathname === "/customers" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/customers")}>
-                <IoStorefrontSharp />
-                <span>Customers</span>
+              <div className={location.pathname === "/customers" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/logistics")}>
+                <BsTruck />
+                <span>Find logistics</span>
               </div>
-              <div className={location.pathname === "/sales-record" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/sales-record")}>
-                <IoStorefrontSharp />
-                <span>Sales record</span>
+              <div className={location.pathname === "/sales-record" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/services")}>
+                <VscTools />
+                <span>Book services</span>
               </div>
-              <div className={location.pathname === "/payout" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/payout")}>
-                <IoStorefrontSharp />
-                <span>Payouts</span>
+              <div className={location.pathname === "/payout" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/chat")}>
+                <IoChatbubblesOutline />
+                <span>Chats</span>
               </div>
             </div>
             <div className='signOutDiv'>

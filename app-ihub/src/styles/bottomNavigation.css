@@ -1,8 +1,10 @@
 .BottomNavWrapper {
-  position: fixed;
+  /* position: fixed;
   bottom: 15px;
   left: 6vw;
-  right: 6vw;
+  right: 6vw; */
+  width:90%;
+  max-width: 400px;
   height: 50px;
   border-radius: 10px;
   background: rgba(245, 244, 243, 0.81);
@@ -11,10 +13,10 @@
   backdrop-filter: blur(18.4px);
   -webkit-backdrop-filter: blur(18.4px);
   border: 1px solid rgba(245, 244, 243, 0.24);
-  
+  gap: 4px;
   justify-content: space-between;
   align-items: center;
-  padding: 0 24px;
+  
   display: none;
 }
 .bottomNavCover{
@@ -22,8 +24,12 @@
   bottom: 0;
   left: 0;
   right: 0;
-  background-color: white;
-  height: 80px;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(4.4px);
+  -webkit-backdrop-filter: blur(4.4px);
+  height: 60px;
+  align-items: center;
+  justify-content: center;
   display: none;
 }
 
@@ -40,9 +46,14 @@
     justify-content: center;
     align-items: center;
     color: #bdbcb8;
-}
-.navDivActive{
-    color: rgb(14,73,181);
+   
+    flex: 1;
+    height: 96%;
+    cursor: pointer;
+    font-size: 24px;
+  }
+  .navDivActive{
+  color: rgb(14,73,181);
 }
 .cart > div {
   position: absolute;
@@ -97,7 +108,7 @@
     display: flex;
   }
   .bottomNavCover{
-    display: block;
+    display: flex;
   }
  
 }
