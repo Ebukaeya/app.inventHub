@@ -40,6 +40,7 @@ function App() {
   const [tabletScreen, setTabletScreen] = useState(false);
 
   useEffect(() => {
+    updateViewPort();
     if (window.innerWidth <= 768) {
       setTabletScreen(true);
     } else {
@@ -48,11 +49,17 @@ function App() {
   }, []);
 
   window.onresize = () => {
+    updateViewPort();
     if (window.innerWidth <= 768) {
       setTabletScreen(true);
     } else {
       setTabletScreen(false);
     }
+  };
+  const updateViewPort = () => {
+    let viewport = window.innerHeight ;
+    document.documentElement.style.setProperty('--vh', `${viewport}px`);
+    console.log(viewport);
   };
 
   return (
