@@ -68,7 +68,7 @@ function App() {
     let inputTags = document.querySelectorAll("input, textarea, select");
     inputTags.forEach((inputTag) => {
       inputTag.addEventListener("focusout", () => {
-        document.body.style.zoom = "100%";
+        document.meta["viewport"].content = "width=device-width, initial-scale=1.0, ";
       });
     });
   };
