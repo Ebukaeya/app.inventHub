@@ -41,6 +41,7 @@ function App() {
 
   useEffect(() => {
     updateViewPort();
+    zoomOutOnFocusOut();
     if (window.innerWidth <= 768) {
       setTabletScreen(true);
     } else {
@@ -51,15 +52,25 @@ function App() {
   window.onresize = () => {
     updateViewPort();
     if (window.innerWidth <= 768) {
+      zoomOutOnFocusOut();
       setTabletScreen(true);
     } else {
       setTabletScreen(false);
     }
   };
   const updateViewPort = () => {
-    let viewport = window.innerHeight ;
-    document.documentElement.style.setProperty('--vh', `${viewport}px`);
+    let viewport = window.innerHeight;
+    document.documentElement.style.setProperty("--vh", `${viewport}px`);
     console.log(viewport);
+  };
+
+  const zoomOutOnFocusOut = () => {
+    let inputTags = document.querySelectorAll("input, textarea, select");
+    inputTags.forEach((inputTag) => {
+      inputTag.addEventListener("focusout", () => {
+        document.body.style.zoom = "100%";
+      });
+    });
   };
 
   return (
@@ -76,7 +87,7 @@ function App() {
         <Route path='/cart/check-out' element={<CheckOutPage />} />
         <Route path='/my-orders' element={<MyOrderMain />} />
         {tabletScreen && <Route path='/my-orders/:orderID' element={<MyOrderListDetail />} />}
-        <Route path='/messages' element={<MessagesPage />} />
+        <Route path='/messages' element={<MessagesPage screenType={tabletScreen} />} />
         {tabletScreen && <Route path='/messages/:chatID' element={<MessageDetailPage />} />}
 
         {/* old */}

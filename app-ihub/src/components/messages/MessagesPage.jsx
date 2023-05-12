@@ -6,7 +6,7 @@ import { IoSend } from "react-icons/io5";
 import Template from "../Template";
 import BottomNavigation from "../reUsable/BottomNavigation";
 
-const MessagesPage = () => {
+const MessagesPage = ({screenType}) => {
   return (
     <>
       <Template>
@@ -16,19 +16,8 @@ const MessagesPage = () => {
             <div className=''>
               {/* each message */}
 
-              <EachMessage />
-              <EachMessage />
-              <EachMessage />
-              <EachMessage />
-              <EachMessage />
-              <EachMessage />
-              <EachMessage />
-              <EachMessage />
-              <EachMessage />
-              <EachMessage />
-              <EachMessage />
-              <EachMessage />
-              <EachMessage />
+              <EachMessage isTabletScreen={screenType} />
+              
             </div>
             <div>
               <div className='messageDetailTitleDiv'>
