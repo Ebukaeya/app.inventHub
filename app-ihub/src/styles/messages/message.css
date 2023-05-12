@@ -1,0 +1,348 @@
+.messageWrapperDiv {
+  display: flex;
+  justify-content: center;
+  height: 700px;
+  width: 100%;
+
+  margin-top: 20px;
+}
+
+.messageComWrapper {
+  width: 1050px;
+  height: 100%;
+  display: flex;
+  gap: 4%;
+  flex-shrink: 2;
+}
+
+.messageComWrapper > div:first-of-type {
+  width: 40%;
+  height: 85%;
+  background-color: white;
+  padding: 10px 0 50px 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  margin-top: 60px;
+  border-radius: 4px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  box-sizing: border-box;
+}
+
+.messageComWrapper > div:first-of-type::-webkit-scrollbar {
+  width: 3px;
+}
+
+.messageComWrapper > div:first-of-type::-webkit-scrollbar-thumb {
+  background-color: #bbbbbb;
+  border-radius: 4px;
+}
+
+.messageComWrapper > div:first-of-type::-webkit-scrollbar-track {
+  background-color: #f9f8f8;
+  border-radius: 4px;
+}
+
+.messageComWrapper > div:last-of-type {
+  width: 56%;
+  height: 100%;
+  background-color: #ffffff;
+  box-sizing: border-box;
+}
+
+.EachMessageCompDiv {
+  height: 70px;
+  width: 100%;
+  margin: 10px 0 10px 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  cursor: pointer;
+  transition: all 0.1s ease-in-out;
+}
+
+.selecetedMessage {
+  border-left: 3px solid #5ccb4b;
+}
+
+.EachMessageCompDiv > img {
+  height: 56px;
+  width: 56px;
+  border-radius: 50%;
+  margin-left: 10px;
+  pointer-events: none;
+}
+
+.EachMessageCompDiv > div {
+  height: 100%;
+  width: 280px;
+  pointer-events: none;
+  border-bottom: 1px solid #d6dddc;
+}
+
+.EachMessageCompDiv > div > p {
+  font-size: 0.9rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.EachMessageCompDiv > div > p + p {
+  font-size: 0.8rem;
+  color: #afafaf;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 100%;
+  font-weight: 300;
+}
+
+.messageDetailTitleDiv {
+  height: 60px;
+  width: 100%;
+  background-color: #f8f8f8;
+  padding: 8px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.messageDetailTitleDiv > img {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+}
+
+.NameMessageDetail {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+.NameMessageDetail + p {
+  font-size: 0.8rem;
+  color: #54e346;
+}
+
+.messageContentDiv {
+  width: 100%;
+  height: 75.5%;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  /* gap: 40px; */
+  box-sizing: border-box;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  margin-bottom: 22px;
+}
+.messageContentDiv::-webkit-scrollbar {
+  width: 3px;
+}
+
+.messageContentDiv::-webkit-scrollbar-thumb {
+  background-color: #bbbbbb;
+  border-radius: 4px;
+}
+
+.chattingDiv {
+  width: 45%;
+  /* min-height: 10px; */
+
+  font-size: 0.85rem;
+  font-weight: 200;
+  /*  margin: 30px 0; */
+  box-sizing: border-box;
+}
+
+.rightchat {
+  background-color: #0e49b5;
+  color: white;
+  align-self: flex-end;
+  position: relative;
+  border-radius: 10px;
+  padding: 10px;
+}
+.rightchat::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  right: -20px;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border-radius: 10px 0 0 20px;
+  box-shadow: -20px 0px 0px 0#0E49B5;
+  /*  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 10px 30px;
+  border-color: transparent transparent #0e49b5 transparent; */
+}
+
+.leftchat {
+  background-color: #f2f5fb;
+  color: rgb(0, 0, 0);
+  align-self: flex-start;
+  position: relative;
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 400;
+}
+
+.leftchat::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: -20px;
+  height: 20px;
+  width: 20px;
+  background-color: transparent;
+  border-radius: 0 10px 20px 0;
+  box-shadow: 20px 0px 0px 0#f2f5fb;
+}
+
+.timeStampChat {
+  font-size: 0.7rem;
+
+  margin: 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+.messageInputDIv {
+  width: auto;
+  height: 8%;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+
+  background-color: white;
+  margin: 10px;
+  /*   border-radius: 40px;
+      box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1); */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.messageInputDIv > div {
+  padding: 10px 26px 10px 10px;
+  height: 100%;
+  width: 400px;
+  border-radius: 40px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.messageInputDIv > div + button {
+  height: 100%;
+  width: 80px;
+  border-radius: 40px;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  background-color: #0e49b5;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: "Nunito", sans-serif;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.inputMessage {
+  width: 70%;
+  border: none;
+  outline: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  font-family: "Nunito", sans-serif;
+}
+.messageComWrapper3 {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 10px;
+  background-color: white;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+
+/* mobile */
+
+#messgageProfileImage3 {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+#messgageProfileImage3 > img {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+}
+
+/* media query */
+
+@media screen and (max-width: 1100px) {
+  .messageComWrapper {
+    min-width: 700px;
+  }
+
+  .chattingDiv {
+    width: 55%;
+  }
+}
+@media screen and (max-width: 768px) {
+  .messageComWrapper {
+    min-width: 600px;
+  }
+  .messageComWrapper > div:first-of-type {
+    width: 37%;
+  }
+  .messageComWrapper > div:last-of-type {
+    width: 53%;
+  }
+  .EachMessageCompDiv {
+    height: 60px;
+    gap: 10px;
+  }
+  .EachMessageCompDiv > div > p {
+    margin-bottom: 10px;
+  }
+  .EachMessageCompDiv > div > p + p {
+    font-size: 0.75rem;
+  }
+  .EachMessageCompDiv > img {
+    height: 40px;
+    width: 40px;
+  }
+}
+
+@media screen and (max-width: 648px) {
+  .messageWrapperDiv {
+    height: 100%;
+    box-sizing: border-box;
+    margin-top: 0;
+  }
+  .messageComWrapper {
+    min-width: unset;
+    height: 100%;
+  }
+  .messageComWrapper > div:last-of-type {
+    display: none;
+  }
+  .messageComWrapper > div:first-of-type {
+    width: 100%;
+    margin-top: 0;
+    height: 100%;
+    padding-bottom: 13vh;
+  }
+  .titleMessage3 {
+    margin-bottom: 10px;
+  }
+}

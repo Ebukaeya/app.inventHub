@@ -23,23 +23,23 @@ const Template = (props) => {
   return (
     <>
       {/* <Narbar /> */}
-      <Narbar/>
+      <Narbar />
       <div className='TemplateContain'>
         <div className='templateWrapper'>
           <div>
             <div className='StorePlaceholder'></div>
             <div className={"sideMenu12"}>
-              <div className={location.pathname.includes("/dashboard") ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/")}>
+              <div className={location.pathname === "/" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/")}>
                 <HiOutlineHome />
                 <span>Home</span>
               </div>
-              <div className={location.pathname.includes("/dashboard") ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/my-orders")}>
+              <div className={location.pathname.includes("/my-orders") ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/my-orders")}>
                 <MdOutlineShoppingBasket />
                 <span>My Orders</span>
               </div>
 
               <div
-                className={location.pathname.includes("/mystores") ? "clickedOption" : ""}
+                className={location.pathname.includes("/bookings") ? "clickedOption" : ""}
                 onClick={(e) => {
                   handleClick(e, "/bookings");
                 }}
@@ -48,7 +48,7 @@ const Template = (props) => {
                 <span>My bookings</span>
               </div>
               <div
-                className={location.pathname.includes("/mystores") ? "clickedOption" : ""}
+                className={location.pathname.includes("/explorestores") ? "clickedOption" : ""}
                 onClick={(e) => {
                   handleClick(e, "/explorestores");
                 }}
@@ -56,19 +56,19 @@ const Template = (props) => {
                 <BsShop />
                 <span>Explore stores</span>
               </div>
-              <div className={location.pathname === "/employees" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/restaurants")}>
+              <div className={location.pathname === "/restaurant" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/restaurants")}>
                 <IoFastFoodOutline />
                 <span>Order food</span>
               </div>
-              <div className={location.pathname === "/customers" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/logistics")}>
+              <div className={location.pathname === "/logistics" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/logistics")}>
                 <BsTruck />
                 <span>Find logistics</span>
               </div>
-              <div className={location.pathname === "/sales-record" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/services")}>
+              <div className={location.pathname === "/book-service" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/services")}>
                 <VscTools />
                 <span>Book services</span>
               </div>
-              <div className={location.pathname === "/payout" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/chat")}>
+              <div className={location.pathname === "/messages" ? "clickedOption" : ""} onClick={(e) => handleClick(e, "/messages")}>
                 <IoChatbubblesOutline />
                 <span>Chats</span>
               </div>

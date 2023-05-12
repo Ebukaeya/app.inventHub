@@ -33,6 +33,8 @@ import CheckOutPage from "./components/checkOut/CheckOut.jsx";
 import MyOrderMain from "./components/MyOrders/MyOrderMain";
 import MyOrderListDetail from "./components/MyOrders/MyOrderLisrDetail";
 import { useState, useEffect } from "react";
+import MessagesPage from "./components/messages/MessagesPage";
+import MessageDetailPage from "./components/messages/MessageDetailPage";
 
 function App() {
   const [tabletScreen, setTabletScreen] = useState(false);
@@ -66,6 +68,9 @@ function App() {
         <Route path='/cart' element={<CartMain />} />
         <Route path='/cart/check-out' element={<CheckOutPage />} />
         <Route path='/my-orders' element={<MyOrderMain />} />
+        {tabletScreen && <Route path='/my-orders/:orderID' element={<MyOrderListDetail />} />}
+        <Route path='/messages' element={<MessagesPage />} />
+        {tabletScreen && <Route path='/messages/:chatID' element={<MessageDetailPage />} />}
 
         {/* old */}
         <Route path='/restaurants' element={<Restaurants />} />
@@ -79,7 +84,7 @@ function App() {
         <Route path='/products' element={<SeeAllProducts />} />
 
         <Route path='/myorder' element={<MyOrders />} />
-        {tabletScreen && <Route path='/my-orders/:orderID' element={<MyOrderListDetail />} />}
+
         <Route path='/order-details/:orderID/:productID' element={<EachOrder />} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/wishlist' element={<WishList />} />
