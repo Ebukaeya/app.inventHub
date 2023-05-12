@@ -17,6 +17,17 @@ const MessagesPage = ({screenType}) => {
               {/* each message */}
 
               <EachMessage isTabletScreen={screenType} />
+              <EachMessage isTabletScreen={screenType} />
+              <EachMessage isTabletScreen={screenType} />
+              <EachMessage isTabletScreen={screenType} />
+              <EachMessage isTabletScreen={screenType} />
+              <EachMessage isTabletScreen={screenType} />
+              <EachMessage isTabletScreen={screenType} />
+              <EachMessage isTabletScreen={screenType} />
+              <EachMessage isTabletScreen={screenType} />
+              <EachMessage isTabletScreen={screenType} />
+              <EachMessage isTabletScreen={screenType} />
+              <EachMessage isTabletScreen={screenType} />
               
             </div>
             <div>

@@ -9,7 +9,20 @@ import { BiSearch } from "react-icons/bi";
 import ProductCardCopy from "../exploreProducts/ProductCardCopy";
 import GoogleMap from "../map/GoogleMap";
 import BottomNavigation from "../reUsable/BottomNavigation";
+import StoreLocationOnMobile from "./storeLocationOnMobile";
+import { useState } from "react";
+import MessageSeller from "../../styles/exploreStore/MessageSeller";
 const StoreDetailsMain = () => {
+
+
+  const [showMapMobile, setShowMapMobile] = useState(false);
+
+
+
+  const showMessageDiv = () => {
+    const messageDiv = document.querySelector(".dropDownMessageDiv");
+    messageDiv.classList.toggle("showDropDownMessageDiv");
+  };
   return (
     <>
       <Template>
@@ -49,11 +62,12 @@ const StoreDetailsMain = () => {
                   <button>
                     <MdCall /> Call
                   </button>
-                  <button>
+                  <button onClick={()=>showMessageDiv()}>
                     {" "}
                     <AiFillMessage /> Message
+                    <MessageSeller/>
                   </button>
-                  <button id='hideInWeb73'>
+                  <button onClick={()=>setShowMapMobile(true)} id='hideInWeb73'>
                     {" "}
                     <FaLocationArrow /> Location
                   </button>
@@ -123,6 +137,7 @@ const StoreDetailsMain = () => {
           {" "}
           <BottomNavigation />
         </div>
+         {showMapMobile &&<StoreLocationOnMobile closeMap={setShowMapMobile}/> }
       </Template>
     </>
   );

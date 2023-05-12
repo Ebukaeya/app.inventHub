@@ -41,7 +41,7 @@ function App() {
 
   useEffect(() => {
     updateViewPort();
-    zoomOutOnFocusOut();
+  /*   zoomOutOnFocusOut(); */
     if (window.innerWidth <= 768) {
       setTabletScreen(true);
     } else {
@@ -52,7 +52,7 @@ function App() {
   window.onresize = () => {
     updateViewPort();
     if (window.innerWidth <= 768) {
-      zoomOutOnFocusOut();
+      /* zoomOutOnFocusOut(); */
       setTabletScreen(true);
     } else {
       setTabletScreen(false);
@@ -64,14 +64,14 @@ function App() {
     console.log(viewport);
   };
 
-  const zoomOutOnFocusOut = () => {
+/*   const zoomOutOnFocusOut = () => {
     let inputTags = document.querySelectorAll("input, textarea, select");
     inputTags.forEach((inputTag) => {
       inputTag.addEventListener("focusout", () => {
         document.meta["viewport"].content = "width=device-width, initial-scale=1.0, ";
       });
     });
-  };
+  }; */
 
   return (
     <BrowserRouter>
