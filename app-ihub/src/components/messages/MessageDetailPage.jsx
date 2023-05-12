@@ -35,7 +35,7 @@ const MessageDetailPage = () => {
           </div>
           <div className='messageInputDIv'>
             <div>
-              <input autoFocus={true} className='inputMessage' type='text' placeholder='Type something..' />
+              <input  className='inputMessage' type='text' placeholder='Type something..' />
               <ImAttachment />
             </div>
             <button>
