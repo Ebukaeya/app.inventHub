@@ -79,7 +79,7 @@ const SideMenu = ({ closeSideMenu }) => {
               <p>Book services</p>
             </div>
 
-            <div onClick={()=> {navigate("/chat")  ;closeSideMenu(false)}} className='sideBarMenus'>
+            <div onClick={()=> {navigate("/messages")  ;closeSideMenu(false)}} className='sideBarMenus'>
               <IoChatbubblesOutline fontSize={"19px"} />
               <p>Chat</p>
             </div>
