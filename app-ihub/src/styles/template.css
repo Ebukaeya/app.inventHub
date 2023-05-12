@@ -1,12 +1,13 @@
 .TemplateContain {
   padding: 6px 30px;
   background-color: white;
+  box-sizing: border-box;
 }
 
 .templateWrapper {
   display: flex;
-
-  margin-top: 60px;
+  box-sizing: border-box;
+  margin-top: 61px;
   min-width: 350px; 
 }
 
@@ -23,7 +24,7 @@
 .templateWrapper > div:last-of-type {
   width: 82%;
   background-color: #f7f8ff;
-
+  box-sizing: border-box;
   height: calc(100vh - 100px);
   border-radius: 14px;
   margin-top: 4px;
