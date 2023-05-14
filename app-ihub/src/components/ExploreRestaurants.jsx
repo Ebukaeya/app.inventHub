@@ -1,4 +1,4 @@
-import Narbar from "./reUsable/Navbar";
+/* import Narbar from "./reUsable/Navbar";
 import SideMenu from "./reUsable/SideMenu";
 import SearchBar from "./reUsable/SearchBar";
 import Categories from "./reUsable/Categories";
@@ -16,13 +16,7 @@ const ExploreRestaurant = () => {
   const [categories, setCategories] = useState("All");
   const [locationFilter, setLocationFilter] = useState("nearby");
 
-  const storeCategories = [
-    "Grocery",
-    "Accessories",
-    "Automotive",
-    "Baby wears",
-    "Men wears",
-  ];
+  const storeCategories = ["Grocery", "Accessories", "Automotive", "Baby wears", "Men wears"];
 
   useEffect(() => {
     console.log(locationFilter);
@@ -30,7 +24,7 @@ const ExploreRestaurant = () => {
 
   return (
     <>
-      <div className="NavBarProdP">
+      <div className='NavBarProdP'>
         <div style={{ display: "flex", alignItems: "center" }}>
           <IoIosArrowBack size={30} onClick={() => window.history.back()} />
           <p>Explore restaurants</p>
@@ -40,14 +34,11 @@ const ExploreRestaurant = () => {
         </div>
       </div>
       <SearchBar controlInput={setSearch} />
-      <Categories
-        categories={storeCategories}
-        updateCategories={setCategories}
-      />
+      <Categories categories={storeCategories} updateCategories={setCategories} />
       <div style={{ margin: "30px" }}></div>
-      <div className="mycontainer">
-        <div className="storeCardWrapper">
-          <Link className="linkreset" to={"/store/storeId"}>
+      <div className='mycontainer'>
+        <div className='storeCardWrapper'>
+          <Link className='linkreset' to={"/store/storeId"}>
             {" "}
             <StoreCard />
           </Link>
@@ -59,19 +50,13 @@ const ExploreRestaurant = () => {
           <StoreCard />
           <StoreCard />
           <StoreCard />
-          
         </div>
       </div>
 
-     
-
-          <LocationFilter
-            curentlocationFilter={locationFilter}
-            updateLocationFliter={setLocationFilter}
-          />
-
+      <LocationFilter curentlocationFilter={locationFilter} updateLocationFliter={setLocationFilter} />
     </>
   );
 };
 
 export default ExploreRestaurant;
+ */

@@ -4,11 +4,11 @@ import { FiBox, FiHeart } from "react-icons/fi";
 import { RiUserFollowLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
 
-const EachStoreCard = ({}) => {
+const EachStoreCard = ({store}) => {
   const navigate = useNavigate();
 
   const handleStoreClick = () => {
-      navigate("store/123");
+      navigate(`store/${store._id}`, {state: {store}});
   };
   return (
     <>
@@ -19,7 +19,7 @@ const EachStoreCard = ({}) => {
         </div>
         <div className='storeTitleInfo44'>
           <div className='storeTitleInfo44FirstFlex'>
-            <p>FreshMart Stores</p> <MdVerified size={12} color='green' />{" "}
+            <p>{store?.storeName}</p> <MdVerified size={12} color='green' />{" "}
           </div>
           <div className='storeTitleInfo44FirstFlex122'>
             <MdLocationPin size={12} color='gray' />
@@ -29,7 +29,7 @@ const EachStoreCard = ({}) => {
         <div className='storeIconDiv'>
           <div>
             <FiBox size={12} color='gray' />
-            <span>1232</span>
+            <span>1232</span> {/* change to online only or online + offline */}
           </div>
           <div>
             <div>

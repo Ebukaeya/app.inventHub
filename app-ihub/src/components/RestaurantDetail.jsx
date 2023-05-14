@@ -1,4 +1,4 @@
-import "../styles/storeDetails.css";
+/* import "../styles/storeDetails.css";
 import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
 import ReactStars from "react-rating-stars-component";
@@ -15,37 +15,28 @@ const RestaurantDetail = () => {
 
   return (
     <>
-      <div className="mycontainer">
-        <div className="NavBarProdP">
+      <div className='mycontainer'>
+        <div className='NavBarProdP'>
           <IoIosArrowBack size={30} onClick={() => window.history.back()} />
           <div>
             <BiDotsVerticalRounded size={30} />
           </div>
         </div>
-        <div className="storeProfile">
+        <div className='storeProfile'>
           <div>
-            <div className="storeImage">
-              <img src="https://res.cloudinary.com/ebuka1122/image/upload/v1656021029/samples/Ihub-Consumer-App/images_zpwci4.jpg" />
+            <div className='storeImage'>
+              <img src='https://res.cloudinary.com/ebuka1122/image/upload/v1656021029/samples/Ihub-Consumer-App/images_zpwci4.jpg' />
             </div>
             <div>
               <div>
-                <p className="storeNameClamp">Super Grocery jrn</p>
+                <p className='storeNameClamp'>Super Grocery jrn</p>
                 <div style={{ width: "100%", display: "flex" }}>
-                  <span className="storePaddress">
-                    yudi street in hhdsu jbfdj kwern
-                  </span>
+                  <span className='storePaddress'>yudi street in hhdsu jbfdj kwern</span>
                   <span>open</span>
                 </div>
               </div>
               <div style={{ fontWeight: "750" }}>
-                <ReactStars
-                  size={16}
-                  count={5}
-                  value={4}
-                  isHalf={true}
-                  halfIcon={<BsStarHalf />}
-                  filledIcon={<BsStarFill />}
-                />{" "}
+                <ReactStars size={16} count={5} value={4} isHalf={true} halfIcon={<BsStarHalf />} filledIcon={<BsStarFill />} />{" "}
               </div>
             </div>
           </div>
@@ -55,7 +46,7 @@ const RestaurantDetail = () => {
             <p>Follow</p>
           </div>
         </div>
-        <div className="contactStore">
+        <div className='contactStore'>
           <div>
             <MdWifiCalling3 size={20} />
             <p>Call</p>
@@ -69,9 +60,9 @@ const RestaurantDetail = () => {
             <FaLocationArrow /> Location
           </div>
         </div>
-        <div className="StickySearchbar"> </div>
-        <div className="FoodMenu">
-          <div className="activeFoodmenu">All</div>
+        <div className='StickySearchbar'> </div>
+        <div className='FoodMenu'>
+          <div className='activeFoodmenu'>All</div>
           <div>Main Menu</div>
           <div>Extra</div>
           <div>Top ups</div>
@@ -79,21 +70,51 @@ const RestaurantDetail = () => {
           <div>Custom</div>
         </div>
 
-        <div className="FoodRWrapper">
-       
-           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
-           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
-           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
-           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
-           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
-           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
-           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
-           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
-           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
-           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
-           <Link style={{textDecoration:"none", color:"inherit"}} to={"/food/foodID"}> <FoodMenu /></Link>
-       
-          
+        <div className='FoodRWrapper'>
+          <Link style={{ textDecoration: "none", color: "inherit" }} to={"/food/foodID"}>
+            {" "}
+            <FoodMenu />
+          </Link>
+          <Link style={{ textDecoration: "none", color: "inherit" }} to={"/food/foodID"}>
+            {" "}
+            <FoodMenu />
+          </Link>
+          <Link style={{ textDecoration: "none", color: "inherit" }} to={"/food/foodID"}>
+            {" "}
+            <FoodMenu />
+          </Link>
+          <Link style={{ textDecoration: "none", color: "inherit" }} to={"/food/foodID"}>
+            {" "}
+            <FoodMenu />
+          </Link>
+          <Link style={{ textDecoration: "none", color: "inherit" }} to={"/food/foodID"}>
+            {" "}
+            <FoodMenu />
+          </Link>
+          <Link style={{ textDecoration: "none", color: "inherit" }} to={"/food/foodID"}>
+            {" "}
+            <FoodMenu />
+          </Link>
+          <Link style={{ textDecoration: "none", color: "inherit" }} to={"/food/foodID"}>
+            {" "}
+            <FoodMenu />
+          </Link>
+          <Link style={{ textDecoration: "none", color: "inherit" }} to={"/food/foodID"}>
+            {" "}
+            <FoodMenu />
+          </Link>
+          <Link style={{ textDecoration: "none", color: "inherit" }} to={"/food/foodID"}>
+            {" "}
+            <FoodMenu />
+          </Link>
+          <Link style={{ textDecoration: "none", color: "inherit" }} to={"/food/foodID"}>
+            {" "}
+            <FoodMenu />
+          </Link>
+          <Link style={{ textDecoration: "none", color: "inherit" }} to={"/food/foodID"}>
+            {" "}
+            <FoodMenu />
+          </Link>
         </div>
       </div>
     </>
@@ -101,18 +122,4 @@ const RestaurantDetail = () => {
 };
 
 export default RestaurantDetail;
-
-/* 
-const RestaurantDetail = (props) => {
-
-
-    return(
-        <>
-
-        </>
-    )
-}
-
-
-
-export default RestaurantDetail; */
+ */

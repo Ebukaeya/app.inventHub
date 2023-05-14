@@ -10,7 +10,7 @@ import SearchBar from "../reUsable/SearchBar";
 import { useState, useEffect } from "react";
 import StoreProduct from "../reUsable/StoreProduct";
 import { Link } from "react-router-dom";
-import { fetchStoreDetailsUrl, token, fetchStoresDetailsFunc } from "../../api/index.js";
+import { fetchStoreDetailsUrl, token, fetchStoresDetailsFunc } from "../../api/StoreAPI.js";
 import { useParams } from "react-router-dom";
 
 const StoreDetails = () => {

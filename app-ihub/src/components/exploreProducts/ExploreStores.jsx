@@ -10,7 +10,7 @@ import StoreCard from "../reUsable/StoresCard";
 import BottomNavigation from "../reUsable/BottomNavigation";
 import LocationFilter from "../reUsable/LocationFilter";
 import { Link } from "react-router-dom";
-import { fetchStoresAndProductsUrl, token } from "../../api/index.js";
+import { fetchStoresAndProductsUrl, token } from "../../api/StoreAPI.js";
 import SkeletonLoad from "../loaders/SkeletonLoad";
 import { useSelector } from "react-redux";
 import Template from "../Template";
@@ -119,7 +119,7 @@ const ExploreStores = () => {
           </div>
         </div>
 
-       {/*  <SideMenu /> */}
+        {/*  <SideMenu /> */}
         {/* <LocationFilter curentlocationFilter={locationFilter} updateLocationFliter={setLocationFilter} />
         {loading && <SkeletonLoad />} */}
       </Template>

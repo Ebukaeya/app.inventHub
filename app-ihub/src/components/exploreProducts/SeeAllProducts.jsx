@@ -1,12 +1,11 @@
-import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
+/* import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
 import SearchBar from "../reUsable/SearchBar";
 import { useState, useEffect } from "react";
 import Categories from "../reUsable/Categories";
 import Product2 from "../reUsable/Product2";
 import LocationFilter from "../reUsable/LocationFilter";
-import { fetchStoresAndProductsUrl, token } from "../../api/index.js";
-
+import { fetchStoresAndProductsUrl, token } from "../../api/StoreAPI.js";
 
 const SeeAllProducts = () => {
   const [search, setSearch] = useState("");
@@ -62,7 +61,6 @@ const SeeAllProducts = () => {
         <Categories categories={storeCategories} updateCategories={setCategories} />
         <div style={{ margin: "30px" }}></div>
         <div className='Store2productWrapper'>
-          {/* should recieve as props brand, id, name rating size and price */}
           {products.map((product) => (
             <Product2 key={product.id} product={product} />
           ))}
@@ -74,3 +72,4 @@ const SeeAllProducts = () => {
 };
 
 export default SeeAllProducts;
+ */

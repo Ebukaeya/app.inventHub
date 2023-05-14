@@ -1,4 +1,4 @@
-import "../../styles/profile/profile.css";
+/* import "../../styles/profile/profile.css";
 import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
 import { BsCamera } from "react-icons/bs";
@@ -42,9 +42,7 @@ const Profile = () => {
     let gender = input.value;
     setGender(gender);
     console.log(gender);
-    inputs.forEach((input) =>
-      input.value !== gender ? (input.checked = false) : ""
-    );
+    inputs.forEach((input) => (input.value !== gender ? (input.checked = false) : ""));
   };
 
   const handleImageUpload = (e) => {
@@ -66,11 +64,6 @@ const Profile = () => {
     console.log(loading);
     setLoading(true);
 
-  /*   localStorage.setItem(
-      "token",
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYzMGJjNWQ4NDhhMTUwOGQwMGIwNzZkMCIsImlhdCI6MTY2MTcxNTkyOCwiZXhwIjoxNjYyMzIwNzI4fQ.om8Jr9UgHrOWH1soEl3BuvquQCxCrjy2nFTUa9WY0Rs"
-    ); */
-    /* should be removed latter and redirected to login page instead */
     updateProfileFun(localStorage.getItem("token"));
   };
 
@@ -114,14 +107,14 @@ const Profile = () => {
       }
     } catch (error) {
       console.log(error);
-      alert("something went wrong, please try again later")
+      alert("something went wrong, please try again later");
     }
   };
 
   return (
     <>
-      <div className="mycontainer">
-        <div className="NavBarProdP">
+      <div className='mycontainer'>
+        <div className='NavBarProdP'>
           <div style={{ display: "flex", alignItems: "center" }}>
             <IoIosArrowBack size={30} onClick={() => window.history.back()} />
             <p>My Profile</p>
@@ -130,95 +123,64 @@ const Profile = () => {
             <BiDotsVerticalRounded size={30} />
           </div>
         </div>
-        <div className="profileImageDivPS">
+        <div className='profileImageDivPS'>
           <div>
             <img src={profileImage ? profileImage : profile.imageUrl} />
-            <div className="UploadImageDiv">
-              <input
-                onChange={(e) => handleImageUpload(e)}
-                type="file"
-                name="file"
-                id="file"
-              />
+            <div className='UploadImageDiv'>
+              <input onChange={(e) => handleImageUpload(e)} type='file' name='file' id='file' />
               <BsCamera />
             </div>
           </div>
         </div>
-        <div className="basicInfoDiv">
+        <div className='basicInfoDiv'>
           <p>Basic Details </p>
-          <div className="Infodiv">
+          <div className='Infodiv'>
             <p>Full name</p>
             <div>{profile.fullName}</div>
           </div>
-          <div className="Infodiv">
+          <div className='Infodiv'>
             <p>Date of birth</p>
-            <div className="inputDateEP">
-              <input
-                value={dateOfBirth}
-                onChange={(e) => setDateOfBirth(e.target.value)}
-                type="date"
-                name="date"
-                id="date"
-              />
+            <div className='inputDateEP'>
+              <input value={dateOfBirth} onChange={(e) => setDateOfBirth(e.target.value)} type='date' name='date' id='date' />
             </div>
           </div>
-          <div className="Infodiv">
+          <div className='Infodiv'>
             <p>Date of birth</p>
-            <div className="Gender">
+            <div className='Gender'>
               <div>
-                <input
-                  onClick={(e) => handleGenderSelect(e.target)}
-                  value={"Male"}
-                  type="radio"
-                />
+                <input onClick={(e) => handleGenderSelect(e.target)} value={"Male"} type='radio' />
                 <p>Male</p>
               </div>
               <div>
-                <input
-                  onChange={(e) => handleGenderSelect(e.target)}
-                  value={"Female"}
-                  type="radio"
-                />
+                <input onChange={(e) => handleGenderSelect(e.target)} value={"Female"} type='radio' />
                 <p>Female</p>
               </div>
             </div>
           </div>
         </div>
 
-        <div style={{ margin: "10px 0 170px 0" }} className="basicInfoDiv">
+        <div style={{ margin: "10px 0 170px 0" }} className='basicInfoDiv'>
           <p> Contact Details </p>
-          <div className="Infodiv">
+          <div className='Infodiv'>
             <p>Phone Number</p>
             <div>{profile.phoneNumber}</div>
           </div>
-          <div className="Infodiv">
+          <div className='Infodiv'>
             <p>Email</p>
-            <div className="DeliveryAddress">
-              <p style={{ width: "100%", overflow: "hidden" }}>
-                {profile.email}
-              </p>
+            <div className='DeliveryAddress'>
+              <p style={{ width: "100%", overflow: "hidden" }}>{profile.email}</p>
             </div>
           </div>
-          <div className="Infodiv">
+          <div className='Infodiv'>
             <p>Delivery Address</p>
-            <div className="DeliveryAddress">
-              <p>
-                {profile.streetAddress +
-                  ", " +
-                  profile.city +
-                  ", " +
-                  profile.country}
-              </p>
+            <div className='DeliveryAddress'>
+              <p>{profile.streetAddress + ", " + profile.city + ", " + profile.country}</p>
             </div>
           </div>
         </div>
 
-        <div className="saveDivePE">
-          <button
-            style={{ backgroundColor: profileUpdate ? "#0E49B5" : "" }}
-            onClick={handleSubmit}
-            disabled={profileUpdate ? false : true}
-          >
+        <div className='saveDivePE'>
+          <button style={{ backgroundColor: profileUpdate ? "#0E49B5" : "" }} onClick={handleSubmit} disabled={profileUpdate ? false : true}>
             Save
           </button>
         </div>
@@ -229,3 +191,4 @@ const Profile = () => {
 };
 
 export default Profile;
+ */

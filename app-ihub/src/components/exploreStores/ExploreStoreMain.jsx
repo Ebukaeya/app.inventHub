@@ -4,8 +4,33 @@ import LocationFilter from "../reUsable/LocationFilter";
 import EachStoreCard from "./EachStoreCard";
 import Footer from "../reUsable/Footer";
 import BottomNavigation from "../reUsable/BottomNavigation";
+import { useEffect,useState } from "react";
+import { fetchStoresEnpoint } from "../../api/StoreAPI";
 
 const ExploreStoreMain = () => {
+  const [storeData, setStoreData] = useState([]);
+  useEffect(() => {
+  fetchStores();
+  }, []);
+
+  const fetchStores = async () => {
+    try {
+      let response = await fetch(fetchStoresEnpoint, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if(response.ok){
+        let data = await response.json();
+        setStoreData(data);
+      
+      }
+     
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <Template>
@@ -57,22 +82,17 @@ const ExploreStoreMain = () => {
           </div>
           <h3 className='headingsInproductCO addMarginBot'>All stores</h3>
           <div className='recommendedProductDIv'>
-            <EachStoreCard />
-            <EachStoreCard />
-            <EachStoreCard />
-            <EachStoreCard />
-            <EachStoreCard />
-            <EachStoreCard />
-            <EachStoreCard />
-            <EachStoreCard />
+            {storeData.map((store) => (
+              <EachStoreCard key={store._id} store={store} />
+            ))}
           </div>
           <div className='BackToTopBtn-1'>
             <p>back to top</p>
           </div>
-          <Footer/>
+          <Footer />
         </div>
         <div>
-          <BottomNavigation/>
+          <BottomNavigation />
         </div>
         <LocationFilter />
       </Template>

@@ -10,7 +10,7 @@ import LocationFilter from "../reUsable/LocationFilter";
 import { Link } from "react-router-dom";
 import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
-import { fetchStores } from "../../api/index.js";
+import { fetchStores } from "../../api/StoreAPI.js";
 
 const ExploreStore2 = () => {
   const [search, setSearch] = useState("");

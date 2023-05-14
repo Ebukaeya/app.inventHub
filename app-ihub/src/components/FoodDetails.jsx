@@ -1,4 +1,4 @@
-import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
+/* import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
 import ProductSlider from "./reUsable/ProductSlider";
 import ReactStars from "react-rating-stars-component";
@@ -54,19 +54,7 @@ const FoodDetails = () => {
           <div>
             <p>£ 850</p>
 
-            {/*    <p> £ 300</p>
-            <div
-              style={{
-                display: "flex",
-                gap: "20px",
-                color: "gray",
-                fontSize: "12px",
-                marginTop: "10px",
-              }}
-            >
-              <p>Size</p>{" "}
-              <p style={{ color: "black", fontWeight: "bold" }}>NA</p>
-            </div> */}
+         
             <div style={{ marginTop: "35px" }} className="billButton">
               <BiMinus
                 onClick={() => quantity >= 2 && setQuantity(quantity - 1)}
@@ -116,3 +104,4 @@ const FoodDetails = () => {
 };
 
 export default FoodDetails;
+ */

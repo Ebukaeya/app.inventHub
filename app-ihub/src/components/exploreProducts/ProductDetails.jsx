@@ -6,7 +6,7 @@ import ProductSlider from "../reUsable/ProductSlider";
 import ReactStars from "react-rating-stars-component";
 import { BsStarHalf, BsStarFill, BsPlus } from "react-icons/bs";
 import { useEffect, useState } from "react";
-import { fetchProductsFunc } from "../../api/index.js";
+import { fetchProductsFunc } from "../../api/StoreAPI.js";
 import { useDispatch } from "react-redux";
 import { addToCart, removeFromCart, clearCart } from "../../slices/cartSlice";
 

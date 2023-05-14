@@ -1,4 +1,4 @@
-import "../../styles/myorder.css";
+/* import "../../styles/myorder.css";
 import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
 import SearchBar from "../reUsable/SearchBar";
@@ -29,7 +29,7 @@ const MyOrders = () => {
         <SearchBar controlInput={setSearch} placeholder={"Search an order"} />
         <div className='RorderTitle'>
           <p>Recent Orders</p>
-          <div className="nothinks74h3">
+          <div className='nothinks74h3'>
             {" "}
             <p onClick={showFilter} style={{ color: "rgb(0, 128, 248)", fontWeight: "600", fontSize: "14px", cursor: "pointer" }}>
               {filter}
@@ -61,3 +61,4 @@ const MyOrders = () => {
 };
 
 export default MyOrders;
+ */

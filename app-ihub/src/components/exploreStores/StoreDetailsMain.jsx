@@ -10,14 +10,40 @@ import ProductCardCopy from "../exploreProducts/ProductCardCopy";
 import GoogleMap from "../map/GoogleMap";
 import BottomNavigation from "../reUsable/BottomNavigation";
 import StoreLocationOnMobile from "./storeLocationOnMobile";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import MessageSeller from "../../styles/exploreStore/MessageSeller";
+import { useLocation } from "react-router-dom";
+import { fetchStoreProductsEnpoint } from "../../api/StoreAPI";
 const StoreDetailsMain = () => {
-
+  const { state } = useLocation();
 
   const [showMapMobile, setShowMapMobile] = useState(false);
+  const [storeDetails, setStoreDetails] = useState({});
+  const [storeProducts, setStoreProducts] = useState([]);
 
+  useEffect(() => {
+    setStoreDetails(state.store);
+    getStoreProducts();
+  }, []);
 
+  /* fetch store products using the store ID */
+  const getStoreProducts = async () => {
+    try {
+      const response = await fetch(fetchStoreProductsEnpoint + state.store._id, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+      if (response.ok) {
+        const data = await response.json();
+        console.log(data);
+        setStoreProducts(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const showMessageDiv = () => {
     const messageDiv = document.querySelector(".dropDownMessageDiv");
@@ -32,11 +58,13 @@ const StoreDetailsMain = () => {
               <div className='storeIntroHeaderCont12'>
                 <div>
                   <div className='storeAvatarDiv123'>
-                    <img src='https://res.cloudinary.com/ebuka1122/image/upload/v1656021029/samples/Ihub-Consumer-App/images_zpwci4.jpg' />
+                    <img src={
+                      storeDetails.storeImage?storeDetails.storeImage:'https://res.cloudinary.com/ebuka1122/image/upload/v1656021029/samples/Ihub-Consumer-App/images_zpwci4.jpg'
+                    } />
                   </div>
                   <div>
                     <div>
-                      <p className='storeTitlt839'>FreshMart store in.</p>
+                      <p className='storeTitlt839'>{storeDetails.storeName}</p>
                       <div>
                         <span className='StoreAddressHeader54'>No 19 chukwu Street abakaliki Denmark</span>
                         <span>Open</span>
@@ -62,12 +90,12 @@ const StoreDetailsMain = () => {
                   <button>
                     <MdCall /> Call
                   </button>
-                  <button onClick={()=>showMessageDiv()}>
+                  <button onClick={() => showMessageDiv()}>
                     {" "}
                     <AiFillMessage /> Message
-                    <MessageSeller/>
+                    <MessageSeller />
                   </button>
-                  <button onClick={()=>setShowMapMobile(true)} id='hideInWeb73'>
+                  <button onClick={() => setShowMapMobile(true)} id='hideInWeb73'>
                     {" "}
                     <FaLocationArrow /> Location
                   </button>
@@ -79,24 +107,9 @@ const StoreDetailsMain = () => {
               </div>
 
               <div className='recommendedProductDIv mobilpadding'>
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
-                <ProductCardCopy />
+              {storeProducts.map((product) => (
+                  <ProductCardCopy key={product._id} product={product} />
+                ))}
               </div>
             </div>
           </div>
@@ -137,7 +150,7 @@ const StoreDetailsMain = () => {
           {" "}
           <BottomNavigation />
         </div>
-         {showMapMobile &&<StoreLocationOnMobile closeMap={setShowMapMobile}/> }
+        {showMapMobile && <StoreLocationOnMobile closeMap={setShowMapMobile} />}
       </Template>
     </>
   );
