@@ -11,15 +11,17 @@ import GoogleMap from "../map/GoogleMap";
 import BottomNavigation from "../reUsable/BottomNavigation";
 import StoreLocationOnMobile from "./storeLocationOnMobile";
 import { useState, useEffect } from "react";
-import MessageSeller from "../../styles/exploreStore/MessageSeller";
+import MessageSeller from "./MessageSeller";
 import { useLocation } from "react-router-dom";
 import { fetchStoreProductsEnpoint } from "../../api/StoreAPI";
-const StoreDetailsMain = () => {
+
+const StoreDetailsMain = ({socket}) => {
   const { state } = useLocation();
 
   const [showMapMobile, setShowMapMobile] = useState(false);
   const [storeDetails, setStoreDetails] = useState({});
   const [storeProducts, setStoreProducts] = useState([]);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     setStoreDetails(state.store);
@@ -48,6 +50,11 @@ const StoreDetailsMain = () => {
   const showMessageDiv = () => {
     const messageDiv = document.querySelector(".dropDownMessageDiv");
     messageDiv.classList.toggle("showDropDownMessageDiv");
+  };
+
+  const sendMessageToSeller = () => {
+    socket.emit("message", { message, room: storeDetails._id, senderInfo: {consumerID:"6461407a687db5eed524a9a4", fullName:"Madrid nka", profileImage:"", lastMessage:message}, storeOwnerID: storeDetails.webstoreUser });
+
   };
   return (
     <>
@@ -86,6 +93,7 @@ const StoreDetailsMain = () => {
                 </div>
               </div>
               <div className='MessageAndSearch231'>
+              
                 <div>
                   <button>
                     <MdCall /> Call
@@ -93,12 +101,13 @@ const StoreDetailsMain = () => {
                   <button onClick={() => showMessageDiv()}>
                     {" "}
                     <AiFillMessage /> Message
-                    <MessageSeller />
+                   
                   </button>
                   <button onClick={() => setShowMapMobile(true)} id='hideInWeb73'>
                     {" "}
                     <FaLocationArrow /> Location
                   </button>
+                  <MessageSeller message={message} setMessage={setMessage} sendMessage={sendMessageToSeller} />
                 </div>
                 <div>
                   <BiSearch color='gray' />

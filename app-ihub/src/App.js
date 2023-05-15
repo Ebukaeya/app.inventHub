@@ -18,12 +18,17 @@ import CartMain from "./components/cart/CartMain";
 import CheckOutPage from "./components/checkOut/CheckOut.jsx";
 import MyOrderMain from "./components/MyOrders/MyOrderMain";
 import MyOrderListDetail from "./components/MyOrders/MyOrderLisrDetail";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import MessagesPage from "./components/messages/MessagesPage";
 import MessageDetailPage from "./components/messages/MessageDetailPage";
+import {io} from "socket.io-client";
 
 function App() {
   const [tabletScreen, setTabletScreen] = useState(false);
+
+const socket = useMemo(() => io(process.env.REACT_APP_SOCKET_ROOT, {
+    transports: ["websocket"], /* auth can be provided in the future */
+  }), []);
 
   useEffect(() => {
     updateViewPort();
@@ -33,7 +38,15 @@ function App() {
     } else {
       setTabletScreen(false);
     }
+    socketConnection();
   }, []);
+
+  const socketConnection = () => {
+    socket.on("connect", () => {
+      console.log("connected to socket");
+      socket.emit("createRoom", "userID"+Math.random()*1000);
+    });
+  };
 
   window.onresize = () => {
     updateViewPort();
@@ -67,7 +80,7 @@ function App() {
         <Route path='/products' element={<ExploreProducts />} />
         <Route path='/products/category/:productCategory' element={<ExploreProductCategory />} />
         <Route path='/product/:productID' element={<ProductDetailsMain />} />
-        <Route path='/explorestores/store/:storeID' element={<StoreDetailsMain />} />
+        <Route path='/explorestores/store/:storeID' element={<StoreDetailsMain socket={socket} />} />
         <Route path='/explorestores' element={<ExploreStoreMain />} />
         <Route path='/cart' element={<CartMain />} />
         <Route path='/cart/check-out' element={<CheckOutPage />} />
@@ -100,5 +113,6 @@ function App() {
     </> */
   );
 }
+
 
 export default App;

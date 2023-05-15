@@ -24,6 +24,7 @@ const ExploreStoreMain = () => {
       if(response.ok){
         let data = await response.json();
         setStoreData(data);
+        console.log(data);
       
       }
      
