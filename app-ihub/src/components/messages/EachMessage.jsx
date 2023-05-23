@@ -1,13 +1,12 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setSelectedConversation } from "../../slices/messageSlice";
-import { useEffect,useState } from "react";
+import { useEffect, useState } from "react";
 
-const EachMessage = ({ isTabletScreen, chat, selectedConversation }) => {
-const [selectedChatClass, setSelectedChatClass] = useState("")
+const EachMessage = ({ isTabletScreen, chat, selectedConversation,socket }) => {
+  const [selectedChatClass, setSelectedChatClass] = useState("");
 
   useEffect(() => {
-
     if (selectedConversation && selectedConversation.business.id === chat.business.id) {
       setSelectedChatClass("selecetedMessage");
     } else {
@@ -18,7 +17,7 @@ const [selectedChatClass, setSelectedChatClass] = useState("")
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const selectedMessage = (e) => {
-   /*  let targetDiv = e.target;
+    /*  let targetDiv = e.target;
     let targetDivParentChildren = targetDiv.parentElement.children;
     Array.from(targetDivParentChildren).forEach((child) => {
       child.classList.remove("selecetedMessage");
@@ -32,8 +31,8 @@ const [selectedChatClass, setSelectedChatClass] = useState("")
       storeOwnerID: chat.business.storeOwnerID,
     }); */
 
-    dispatch(setSelectedConversation(chat))
-    isTabletScreen && navigate("/messages/eachMessage"); /* pass the selected chat across */
+    dispatch(setSelectedConversation(chat));
+    isTabletScreen && navigate("/messages/eachMessage"  , {state:"helo"}); /* pass the selected chat across */
   };
 
   return (
@@ -42,7 +41,7 @@ const [selectedChatClass, setSelectedChatClass] = useState("")
         onClick={(e) => {
           selectedMessage(e);
         }}
-        className={'EachMessageCompDiv ' + selectedChatClass}
+        className={"EachMessageCompDiv " + selectedChatClass}
       >
         <img src={chat.business.profileImage} />
         <div>
@@ -50,6 +49,7 @@ const [selectedChatClass, setSelectedChatClass] = useState("")
           <p>{chat.business.lastMessage}</p>
         </div>
       </div>
+      
     </>
   );
 };

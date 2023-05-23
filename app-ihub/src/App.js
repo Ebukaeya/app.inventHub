@@ -110,7 +110,7 @@ function App() {
         <Route path='/my-orders' element={<MyOrderMain />} />
         {tabletScreen && <Route path='/my-orders/:orderID' element={<MyOrderListDetail />} />}
         <Route path='/messages' element={<MessagesPage screenType={tabletScreen} socket={socket} />} />
-        {tabletScreen && <Route path='/messages/:chatID' element={<MessageDetailPage />} />}
+        {tabletScreen && <Route path='/messages/:chatID' element={<MessageDetailPage socket={socket}  />} />}
         <Route path='/wishlist' element={<WishList />} />
         <Route path='/signin' element={<SignIn />} />
         <Route path='/signup' element={<SignUp />} />

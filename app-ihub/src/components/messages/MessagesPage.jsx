@@ -10,6 +10,7 @@ import MessageComp from "./MessageComp";
 import { setSelectedConversation, dropSelectedMessage } from "../../slices/messageSlice";
 
 const MessagesPage = ({ screenType, socket }) => {
+  console.log(socket);
   const [chatList, setChatList] = useState([]);
 
   const { profile } = useSelector((state) => state.profile);
@@ -27,7 +28,7 @@ const MessagesPage = ({ screenType, socket }) => {
       socket.off("updatedChat");
       socket.off("userConnected");
       socket.off("userDisconnected");
-      dispatch(dropSelectedMessage());
+      /* dispatch(dropSelectedMessage()); */ /* droponly on web */
     };
   }, []);
 
@@ -115,7 +116,7 @@ const MessagesPage = ({ screenType, socket }) => {
               {/* each message */}
 
               {chatList.map((chat) => (
-                <EachMessage key={chat._id} chat={chat} isTabletScreen={screenType} selectedConversation={selectedConversation} />
+                <EachMessage key={chat._id} chat={chat} isTabletScreen={screenType} selectedConversation={selectedConversation} socket={socket} />
               ))}
 
               {/* <EachMessage isTabletScreen={screenType} /> */}

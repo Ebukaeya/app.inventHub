@@ -12,7 +12,7 @@ import BottomNavigation from "../reUsable/BottomNavigation";
 import StoreLocationOnMobile from "./storeLocationOnMobile";
 import { useState, useEffect } from "react";
 import MessageSeller from "./MessageSeller";
-import { useLocation, useNavigate} from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { fetchStoreProductsEnpoint } from "../../api/StoreAPI";
 import { useSelector } from "react-redux";
 
@@ -57,9 +57,9 @@ const StoreDetailsMain = ({ socket }) => {
     if (profile) {
       const messageDiv = document.querySelector(".dropDownMessageDiv");
       messageDiv.classList.toggle("showDropDownMessageDiv");
-    }else{
-      alert("Please login to send message")
-      navigate("/signin", { state: { currentPath: window.location.href} })
+    } else {
+      alert("Please login to send message");
+      navigate("/signin", { state: { currentPath: window.location.href } });
     }
   };
 
@@ -67,7 +67,7 @@ const StoreDetailsMain = ({ socket }) => {
     socket.emit("message", {
       message,
       room: storeDetails._id,
-      senderInfo: { consumerID: profile._id, fullName:profile.fullName, profileImage: profile.imageUrl, lastMessage: message },
+      senderInfo: { consumerID: profile._id, fullName: profile.fullName, profileImage: profile.imageUrl, lastMessage: message },
       storeOwnerID: storeDetails.webstoreUser,
       businessName: storeDetails.storeName,
       businessImage: storeDetails.storeImage,
