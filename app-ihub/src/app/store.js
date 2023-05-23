@@ -5,11 +5,13 @@ import { encryptTransform } from "redux-persist-transform-encrypt";
 import cartItemReducer from "../slices/cartSlice.js";
 import profileReducer from "../slices/profileSlice.js";
 import storeDataReducer from "../slices/StoresDataSlice.js";
+import selectedConversationReducer from "../slices/messageSlice.js";
 
 const reducers = combineReducers({
   cart: cartItemReducer,
   profile: profileReducer,
   storeData: storeDataReducer,
+  selectedConversation: selectedConversationReducer,
 });
 
 const persistConfig = {

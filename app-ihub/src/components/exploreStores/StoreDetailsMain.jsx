@@ -12,16 +12,22 @@ import BottomNavigation from "../reUsable/BottomNavigation";
 import StoreLocationOnMobile from "./storeLocationOnMobile";
 import { useState, useEffect } from "react";
 import MessageSeller from "./MessageSeller";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate} from "react-router-dom";
 import { fetchStoreProductsEnpoint } from "../../api/StoreAPI";
+import { useSelector } from "react-redux";
 
-const StoreDetailsMain = ({socket}) => {
+const StoreDetailsMain = ({ socket }) => {
   const { state } = useLocation();
 
   const [showMapMobile, setShowMapMobile] = useState(false);
   const [storeDetails, setStoreDetails] = useState({});
   const [storeProducts, setStoreProducts] = useState([]);
   const [message, setMessage] = useState("");
+
+  const { profile } = useSelector((state) => state.profile);
+  const navigate = useNavigate();
+
+  console.log(profile);
 
   useEffect(() => {
     setStoreDetails(state.store);
@@ -48,13 +54,24 @@ const StoreDetailsMain = ({socket}) => {
   };
 
   const showMessageDiv = () => {
-    const messageDiv = document.querySelector(".dropDownMessageDiv");
-    messageDiv.classList.toggle("showDropDownMessageDiv");
+    if (profile) {
+      const messageDiv = document.querySelector(".dropDownMessageDiv");
+      messageDiv.classList.toggle("showDropDownMessageDiv");
+    }else{
+      alert("Please login to send message")
+      navigate("/signin", { state: { currentPath: window.location.href} })
+    }
   };
 
   const sendMessageToSeller = () => {
-    socket.emit("message", { message, room: storeDetails._id, senderInfo: {consumerID:"6461407a687db5eed524a9a4", fullName:"Madrid nka", profileImage:"", lastMessage:message}, storeOwnerID: storeDetails.webstoreUser });
-
+    socket.emit("message", {
+      message,
+      room: storeDetails._id,
+      senderInfo: { consumerID: profile._id, fullName:profile.fullName, profileImage: profile.imageUrl, lastMessage: message },
+      storeOwnerID: storeDetails.webstoreUser,
+      businessName: storeDetails.storeName,
+      businessImage: storeDetails.storeImage,
+    });
   };
   return (
     <>
@@ -65,9 +82,13 @@ const StoreDetailsMain = ({socket}) => {
               <div className='storeIntroHeaderCont12'>
                 <div>
                   <div className='storeAvatarDiv123'>
-                    <img src={
-                      storeDetails.storeImage?storeDetails.storeImage:'https://res.cloudinary.com/ebuka1122/image/upload/v1656021029/samples/Ihub-Consumer-App/images_zpwci4.jpg'
-                    } />
+                    <img
+                      src={
+                        storeDetails.storeImage
+                          ? storeDetails.storeImage
+                          : "https://res.cloudinary.com/ebuka1122/image/upload/v1656021029/samples/Ihub-Consumer-App/images_zpwci4.jpg"
+                      }
+                    />
                   </div>
                   <div>
                     <div>
@@ -93,7 +114,6 @@ const StoreDetailsMain = ({socket}) => {
                 </div>
               </div>
               <div className='MessageAndSearch231'>
-              
                 <div>
                   <button>
                     <MdCall /> Call
@@ -101,7 +121,6 @@ const StoreDetailsMain = ({socket}) => {
                   <button onClick={() => showMessageDiv()}>
                     {" "}
                     <AiFillMessage /> Message
-                   
                   </button>
                   <button onClick={() => setShowMapMobile(true)} id='hideInWeb73'>
                     {" "}
@@ -116,7 +135,7 @@ const StoreDetailsMain = ({socket}) => {
               </div>
 
               <div className='recommendedProductDIv mobilpadding'>
-              {storeProducts.map((product) => (
+                {storeProducts.map((product) => (
                   <ProductCardCopy key={product._id} product={product} />
                 ))}
               </div>

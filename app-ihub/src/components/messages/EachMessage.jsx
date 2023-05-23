@@ -1,15 +1,39 @@
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setSelectedConversation } from "../../slices/messageSlice";
+import { useEffect,useState } from "react";
 
-const EachMessage = ({ isTabletScreen }) => {
+const EachMessage = ({ isTabletScreen, chat, selectedConversation }) => {
+const [selectedChatClass, setSelectedChatClass] = useState("")
+
+  useEffect(() => {
+
+    if (selectedConversation && selectedConversation.business.id === chat.business.id) {
+      setSelectedChatClass("selecetedMessage");
+    } else {
+      setSelectedChatClass("");
+    }
+  }, [selectedConversation]);
+
   const navigate = useNavigate();
+  const dispatch = useDispatch();
   const selectedMessage = (e) => {
-    let targetDiv = e.target;
+   /*  let targetDiv = e.target;
     let targetDivParentChildren = targetDiv.parentElement.children;
     Array.from(targetDivParentChildren).forEach((child) => {
       child.classList.remove("selecetedMessage");
     });
-    targetDiv.classList.add("selecetedMessage");
-    isTabletScreen && navigate("/messages/eachMessage");
+    targetDiv.classList.add("selecetedMessage"); */
+    /* setSelectedChat({
+      profileImage: chat.business.profileImage,
+      name: chat.business.NameOfBusiness,
+      messages: chat.chats,
+      roomID: chat.business.id,
+      storeOwnerID: chat.business.storeOwnerID,
+    }); */
+
+    dispatch(setSelectedConversation(chat))
+    isTabletScreen && navigate("/messages/eachMessage"); /* pass the selected chat across */
   };
 
   return (
@@ -18,12 +42,12 @@ const EachMessage = ({ isTabletScreen }) => {
         onClick={(e) => {
           selectedMessage(e);
         }}
-        className='EachMessageCompDiv'
+        className={'EachMessageCompDiv ' + selectedChatClass}
       >
-        <img src='https://res.cloudinary.com/ebuka1122/image/upload/v1656416015/samples/Ihub-Consumer-App/download_fq6jxy.jpg' />
+        <img src={chat.business.profileImage} />
         <div>
-          <p>Ebuka M Eya India</p>
-          <p>Hi, I am interested in your product jdjndiinsisd jkwnsd</p>
+          <p>{chat.business.NameOfBusiness} </p>
+          <p>{chat.business.lastMessage}</p>
         </div>
       </div>
     </>

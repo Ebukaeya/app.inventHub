@@ -2,22 +2,14 @@ import "../../styles/signUp.css";
 import { signUpUrl, updateCartUrl } from "../../api/consumerApi";
 import { setProfile } from "../../slices/profileSlice";
 import { IoIosArrowBack } from "react-icons/io";
-import {
-  BsPerson,
-  BsEnvelope,
-  BsShieldLock,
-  BsEyeSlash,
-  BsEye,
-  BsCheck2,
-  BsArrowRight,
-} from "react-icons/bs";
+import { BsPerson, BsEnvelope, BsShieldLock, BsEyeSlash, BsEye, BsCheck2, BsArrowRight } from "react-icons/bs";
 import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import { useState, useEffect } from "react";
 import DeliveryAddress from "./DeliveryAddress";
 import { useSelector, useDispatch } from "react-redux";
 import BounceLoader from "react-spinners/ClipLoader";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 
 const SignUp = () => {
   const [fullname, setFullname] = useState("");
@@ -33,16 +25,19 @@ const SignUp = () => {
   const cart = useSelector((state) => state.cart);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   useEffect(() => {
     if (fullname && email && password && isEmailUnique && !invalidEmail) {
-      setIsFormFilled(true);  
-    }else {setIsFormFilled(false)}
+      setIsFormFilled(true);
+    } else {
+      setIsFormFilled(false);
+    }
   }, [fullname, email, password]);
 
   const checkEmail = () => {
     let mailFormat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
-   if (email.match(mailFormat)) {
+    if (email.match(mailFormat)) {
       setInvalidEmail(false);
       /* check if email is already registered */
     } else setInvalidEmail(true);
@@ -51,13 +46,15 @@ const SignUp = () => {
   const goToNextPage = () => {
     const currentPage = document.querySelector(".signUpPage1");
     const nextPage = document.querySelector(".deliveryAddressPage2");
-    const wrapper = document.querySelector("Div.signUpDivWrapper");
-    currentPage.style.transform = "translateX(-100vw)";
-    nextPage.style.transform = "translateX(-100vw)";
+    const wrapper = document.querySelector("Div.signInContainer");
+    let width = wrapper.offsetWidth + 16;
+    currentPage.style.opacity = "0";
+    currentPage.style.transform = "translateX(-" + width  + "px)";
+    nextPage.style.transform = "translateX(-" + width + "px)";
     setProceedToPayment(true);
   };
 
-  const updateUserCart = async (id) => {
+  /*   const updateUserCart = async (id) => {
     try {
       let response = await fetch(updateCartUrl + id, {
         method: "PUT",
@@ -78,9 +75,9 @@ const SignUp = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }; */
 
-  const handleSignUp = async () => {
+    const handleSignUp = async () => {
     setLoading(true);
     const newUser = {
       fullName: fullname,
@@ -104,7 +101,8 @@ const SignUp = () => {
         setIsEmailUnique(true);
         dispatch(setProfile(data));
         localStorage.setItem("token", data.token)
-        updateUserCart(data._id);
+        goToNextPage();
+        
       } else {
         setLoading(false);
         setIsEmailUnique(false);
@@ -112,15 +110,14 @@ const SignUp = () => {
     } catch (error) {
       console.log(error);
     }
-  };
+  }; 
 
   return (
     <>
-      <div style={{ overflow: "hidden", width: "100vw" }}>
-        <div className="signUpDivWrapper">
-          <div className="signUpPage1">
-            <div className="mycontainer">
-              <div className="NavBarProdP">
+      <div className='signInWrapper122'>
+        <div style={{ display: "flex", alignItems: "center", boxSizing: "border-box", gap: "16px" }} className='signInContainer'>
+          <div className='signUpPage1'>
+            {/* <div className="NavBarProdP">
                 <div style={{ display: "flex", alignItems: "center" }}>
                   <IoIosArrowBack
                     size={30}
@@ -128,94 +125,92 @@ const SignUp = () => {
                   />
                   <p>Back</p>
                 </div>
+              </div> */}
+            <h1 className='signUpHeadding'>Create an Account</h1>
+            <div className='signUpform'>
+              <div className='inputFormdiv'>
+                <div>
+                  <BsPerson color='gray' size={18} />
+                  <input onChange={(e) => setFullname(e.target.value)} value={fullname} className='inputFormELement' type='text' placeholder='Full Name' />
+                </div>
               </div>
-              <h1 className="signUpHeadding">Create an Account</h1>
-              <div className="signUpform">
-                <div className="inputFormdiv">
-                  <div>
-                    <BsPerson size={18} />
-                    <input
-                      onChange={(e) => setFullname(e.target.value)}
-                      value={fullname}
-                      className="inputFormELement"
-                      type="text"
-                      placeholder="Full Name"
-                    />
-                  </div>
+              <div className='inputFormdiv'>
+                <div>
+                  <BsEnvelope color='gray' size={16} />
+                  <input
+                    onChange={(e) => {
+                      setEmail(e.target.value);
+                      setIsEmailUnique(true);
+                    }}
+                    value={email}
+                    className='inputFormELement'
+                    type='email'
+                    placeholder='Email'
+                    required={true}
+                  />
                 </div>
-                <div className="inputFormdiv">
-                  <div>
-                    <BsEnvelope size={16} />
-                    <input
-                      onChange={(e) => {setEmail(e.target.value); setIsEmailUnique(true)}}
-                      value={email}
-                      className="inputFormELement"
-                      type="email"
-                      placeholder="Email"
-                      required={true}
-                    />
-                  </div>
-                  <div style={{ color: "rgb(36, 187, 129);" }}>
-                    {!invalidEmail && <BsCheck2 />}
-                  </div>
+                <div style={{ color: "rgb(36, 187, 129);" }}>{!invalidEmail && <BsCheck2 />}</div>
+              </div>
+              {invalidEmail && <p className='WrongEmail'>Provide a valid email</p>}
+              {!isEmailUnique && <p className='WrongEmail'>User already exist</p>}
+              <div className='inputFormdiv'>
+                <div>
+                  <BsShieldLock color='gray' size={18} />
+                  <input
+                    onClick={checkEmail}
+                    onFocus={checkEmail}
+                    onChange={(e) => setPassword(e.target.value)}
+                    value={password}
+                    className='inputFormELement'
+                    type={showPassword ? "text" : "Password"}
+                    placeholder='Password'
+                  />
                 </div>
-                {invalidEmail && (
-                  <p className="WrongEmail">Provide a valid email</p>
-                )}
-                {!isEmailUnique && (
-                  <p className="WrongEmail">User already exist</p>
-                )}
-                <div className="inputFormdiv">
-                  <div>
-                    <BsShieldLock size={18} />
-                    <input
-                      onClick={checkEmail}
-                      onFocus={checkEmail}
-                      onChange={(e) => setPassword(e.target.value)}
-                      value={password}
-                      className="inputFormELement"
-                      type={showPassword ? "text" : "Password"}
-                      placeholder="Password"
-                    />
-                  </div>
 
-                  {showPassword ? (
-                    <div>
-                      <BsEye onClick={() => setShowPassword(false)} />
-                    </div>
-                  ) : (
-                    <div>
-                      <BsEyeSlash onClick={() => setShowPassword(true)} />
-                    </div>
-                  )}
-                </div>
+                {showPassword ? (
+                  <div>
+                    <BsEye onClick={() => setShowPassword(false)} />
+                  </div>
+                ) : (
+                  <div>
+                    <BsEyeSlash onClick={() => setShowPassword(true)} />
+                  </div>
+                )}
               </div>
-              <div className="proceedButton">
-                <button
-                  style={{
-                    backgroundColor: isFormFilled ? "" : "rgb(206, 205, 205)",
-                  }}
-                  disabled={isFormFilled ? false : true}
-                  onClick={handleSignUp}
-                >
-                  Proceed <BsArrowRight />{" "}
-                  {loading && (
-                    <BounceLoader color="#1CCCE9" size={18} loading={true} />
-                  )}
-                </button>
-              </div>
-              <div className="hrLineSignUP"></div>
-              <p>Sign up with:</p>
-              <div className="socailsSignUpDiv">
+              <p className="agreeOnRegulations364">By signing up you agree to the <b>terms</b> and <b>regulation </b> of this platform</p>
+            </div>
+            <div className='proceedButton'>
+              <button
+                style={{
+                  backgroundColor: isFormFilled ? "" : "rgb(206, 205, 205)",
+                }}
+                disabled={isFormFilled ? false : true}
+                onClick={handleSignUp}
+              >
+                Proceed <BsArrowRight /> {loading && <BounceLoader color='#1CCCE9' size={18} loading={true} />}
+              </button>
+            </div>
+            <div className='hrLineSignUP'>
+              <div className='shortHline'></div> <p>Or sign up with</p> <div className='shortHline'></div>
+            </div>
+
+            <div className='socailsSignUpDiv'>
+              <div>
                 <FcGoogle size={40} />
+              </div>
+              <div>
+                {" "}
                 <FaFacebookF size={40} color={"rgb(23,115,234)"} />
               </div>
             </div>
-            <div className="signinButton">
-              <button onClick={e=>navigate("/sign-in")}>Sign in </button>
+
+            <div className='signinButton'>
+              {/*   <button onClick={e=>navigate("/sign-in")}>Sign in </button> */}
+              <p>Already has an account, then click sign in</p>
+              <p>Sign in</p>
             </div>
           </div>
-          <DeliveryAddress proceed={proceedToPayment} />
+          <DeliveryAddress proceed={proceedToPayment} redirectPath={state?.path} />
         </div>
       </div>
     </>

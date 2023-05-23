@@ -2,7 +2,6 @@ import logo from "./logo.svg";
 import "./App.css";
 import HomePage from "./components/HomePage";
 
-
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import WishList from "./components/wishlist/WishList";
@@ -21,30 +20,54 @@ import MyOrderListDetail from "./components/MyOrders/MyOrderLisrDetail";
 import { useState, useEffect, useMemo } from "react";
 import MessagesPage from "./components/messages/MessagesPage";
 import MessageDetailPage from "./components/messages/MessageDetailPage";
-import {io} from "socket.io-client";
+import { io } from "socket.io-client";
+import SignIn from "./components/signin/SignIn";
+import { useSelector } from "react-redux";
 
 function App() {
   const [tabletScreen, setTabletScreen] = useState(false);
+  const { profile } = useSelector((state) => state.profile);
 
-const socket = useMemo(() => io(process.env.REACT_APP_SOCKET_ROOT, {
-    transports: ["websocket"], /* auth can be provided in the future */
-  }), []);
+  const socket = useMemo(
+    () =>
+      io(process.env.REACT_APP_SOCKET_ROOT, {
+        transports: ["websocket"] /* auth can be provided in the future */,
+      }),
+    []
+  );
+
+  const consumerSocket = useMemo(
+    () =>
+      io(process.env.REACT_APP_CONSUMERSERVER_ROOT, {
+        transports: ["websocket"] /* auth can be provided in the future */,
+      }),
+    []
+  );
 
   useEffect(() => {
     updateViewPort();
-  /*   zoomOutOnFocusOut(); */
+    /*   zoomOutOnFocusOut(); */
     if (window.innerWidth <= 768) {
       setTabletScreen(true);
     } else {
       setTabletScreen(false);
     }
-    socketConnection();
+    profile && socketConnectionWebstoreServer();
+   
+    profile && socketConnectionConsumerServer();
   }, []);
 
-  const socketConnection = () => {
+  const socketConnectionWebstoreServer = () => {
     socket.on("connect", () => {
       console.log("connected to socket");
-      socket.emit("createRoom", "userID"+Math.random()*1000);
+      socket.emit("createRoom", profile._id);
+    });
+  };
+
+  const socketConnectionConsumerServer = () => {
+    consumerSocket.on("connect", () => {
+      console.log("connected to socket");
+      consumerSocket.emit("createRoom", profile._id);
     });
   };
 
@@ -63,7 +86,7 @@ const socket = useMemo(() => io(process.env.REACT_APP_SOCKET_ROOT, {
     console.log(viewport);
   };
 
-/*   const zoomOutOnFocusOut = () => {
+  /*   const zoomOutOnFocusOut = () => {
     let inputTags = document.querySelectorAll("input, textarea, select");
     inputTags.forEach((inputTag) => {
       inputTag.addEventListener("focusout", () => {
@@ -86,24 +109,14 @@ const socket = useMemo(() => io(process.env.REACT_APP_SOCKET_ROOT, {
         <Route path='/cart/check-out' element={<CheckOutPage />} />
         <Route path='/my-orders' element={<MyOrderMain />} />
         {tabletScreen && <Route path='/my-orders/:orderID' element={<MyOrderListDetail />} />}
-        <Route path='/messages' element={<MessagesPage screenType={tabletScreen} />} />
+        <Route path='/messages' element={<MessagesPage screenType={tabletScreen} socket={socket} />} />
         {tabletScreen && <Route path='/messages/:chatID' element={<MessageDetailPage />} />}
         <Route path='/wishlist' element={<WishList />} />
+        <Route path='/signin' element={<SignIn />} />
+        <Route path='/signup' element={<SignUp />} />
 
         {/* old */}
-        
-      
-      
-        
-       
-        
 
-       
-
-       
-        
-        
-      
         {/* <Route path='/Secure_payment/confirmation' element={<ConfirmedPayment />} /> */}
         <Route path='*' element={<div>404</div>} />
       </Routes>
@@ -113,6 +126,5 @@ const socket = useMemo(() => io(process.env.REACT_APP_SOCKET_ROOT, {
     </> */
   );
 }
-
 
 export default App;

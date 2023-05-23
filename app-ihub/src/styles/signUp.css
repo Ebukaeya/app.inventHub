@@ -1,25 +1,26 @@
 .signUpHeadding {
   text-align: center;
   font-size: 22px;
-  margin-top: 80px;
+  margin-top: 20px;
 }
 
 .signUpform {
-  margin: 30px 16px;
+  margin: 30px 0;
 }
 
 .inputFormdiv {
   display: flex;
 
   height: 40px;
-  border-bottom: 1px solid rgb(177, 177, 177);
+  border-bottom: 1px solid rgb(223, 223, 223);
   align-items: center;
   justify-content: space-between;
   margin-bottom: 22px;
 }
-.inputFormdiv > div {
+.inputFormdiv > div:first-of-type {
   display: flex;
   gap: 16px;
+  width: 80%;
 }
 .inputFormELement {
   flex-grow: 2;
@@ -43,7 +44,7 @@
 .proceedButton {
   display: flex;
   justify-content: flex-end;
-  margin-bottom: 70px;
+  margin: 0 0 50px 0;
 }
 
 .proceedButton > button {
@@ -58,22 +59,40 @@
   font-family: "Nunito Sans", sans-serif;
   height: 40px;
   letter-spacing: 1px;
+  cursor: pointer;
 }
 
 .hrLineSignUP {
-  border-bottom: 1px solid rgb(177, 177, 177);
-  margin: 0 14px 10px 14px;
+display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 40px;
+  margin: 0 0 10px 0;
+  box-sizing: border-box;
 }
-.hrLineSignUP + p {
+.hrLineSignUP > p {
   text-align: center;
   font-size: 14px;
+  color: rgb(117, 117, 117);
 }
 
 .socailsSignUpDiv {
   display: flex;
   justify-content: center;
   gap: 60px;
-  margin-top: 20px;
+  margin: 20px 0;
+  box-sizing: border-box;
+}
+.socailsSignUpDiv>div{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+ 
+  padding: 10px 20px;
+  border-radius: 6px;
+  border: 1px solid rgb(233, 233, 233);
+  cursor: pointer;
 }
 
 .signUpDivWrapper {
@@ -81,112 +100,115 @@
 }
 
 .signUpPage1 {
-  width: 100vw;
+  padding: 16px;
+  width: 100%;
   flex-shrink: 0;
   transition: transform 0.5s ease-in-out;
+  box-sizing: border-box;
 }
 .deliveryAddressPage2 {
-  width: 100vw;
-  height: 100vh;
-
+  width: 100%;
+  height: 100%;
+padding: 0 16px;
   flex-shrink: 0;
   transition: transform 0.5s ease-in-out;
+  box-sizing: border-box;
 }
 
-
-
-
-.ShippingTitle{
-    margin: 20px 0;
-    text-align: center;
-    font-size: 18px;
+.ShippingTitle {
+  margin: 20px 0;
+  text-align: center;
+  font-size: 18px;
 }
-
-.progressBarDefault{
-    margin: 0 20px 40px 0;
-    width: 100%;
-    
-    display: flex;
-    
-    justify-content: center;
-    gap: 10px;
+.labelAdress11 {
+  font-size: 14px;
+  color: rgb(117, 117, 117);
+  margin-bottom: 10px;
 
 }
 
-.FilledInput{
- width: 95%;
-    height: 30px;
-    border-radius: 4px;
-    border: 1px solid rgb(233, 233, 233);
-    padding-left: 10px;
-    margin-top: 6px;
-    margin-bottom: 24px;
-}
-.FilledInput:focus{
-    outline: none;
-    border: 1px solid rgb(201, 252, 228);
+.progressBarDefault {
+  margin: 0 20px 40px 0;
+  width: 100%;
+
+  display: flex;
+
+  justify-content: center;
+  gap: 10px;
 }
 
-.cityAndZipCodeDIv{
-    display: flex;
-    gap: 20px;
-    padding-right: 10px;
+.FilledInput {
+  width: 95%;
+  height: 40px;
+  border-radius: 4px;
+  border: 1px solid rgb(233, 233, 233);
+  padding-left: 10px;
+  margin-top: 6px;
+  margin-bottom: 24px;
+  font-family: "Nunito Sans", sans-serif;
+}
+.FilledInput:focus {
+  outline: none;
+  box-shadow: 1px 1px 1px 1px rgb(233, 233, 233);
 }
 
-.cartOverView{
-    position: fixed;
-    bottom: 70px;
-    right: 10px;
-    left: 10px;
-    height: 50px;
-    background-color: rgb(14,73,181);
-    border-radius: 4px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    gap: 14px;
-    font-family: "Nunito", sans-serif;
-    border: none;
-    font-size: 15px;
+.cityAndZipCodeDIv {
+  display: flex;
+  gap: 20px;
+  padding-right: 10px;
 }
 
-.cartOverView1{
-    position: fixed;
-    bottom: 10px;
-    right: 10px;
-    left: 10px;
-    height: 50px;
-    display: flex;
-    justify-content: flex-end;
+.cartOverView {
+  position: fixed;
+  bottom: 70px;
+  right: 10px;
+  left: 10px;
+  height: 50px;
+  background-color: rgb(14, 73, 181);
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  gap: 14px;
+  font-family: "Nunito", sans-serif;
+  border: none;
+  font-size: 15px;
 }
 
-.carOverViewMainButton{
-    background-color: rgb(14,73,181);
-    border-radius: 4px;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    color: white;
-    gap: 14px;
-    font-family: "Nunito", sans-serif;
-    transition: width 0.3s ease-in-out;
-
+.cartOverView1 {
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  left: 10px;
+  height: 50px;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.decraseCartOverView{
-width: 50px;
-border-radius: 50px;
+.carOverViewMainButton {
+  background-color: rgb(14, 73, 181);
+  border-radius: 4px;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  gap: 14px;
+  font-family: "Nunito", sans-serif;
+  transition: width 0.3s ease-in-out;
 }
 
+.decraseCartOverView {
+  width: 50px;
+  border-radius: 50px;
+}
 
-
-.priceOnCheck{
-    font-size: 35px;
-    font-weight: bold;
-    color: rgb(88, 132, 228);
+.priceOnCheck {
+  font-size: 35px;
+  font-weight: bold;
+  color: rgb(88, 132, 228);
 }
 
 input::-webkit-outer-spin-button,
@@ -196,103 +218,124 @@ input::-webkit-inner-spin-button {
 }
 
 /* Firefox */
-input[type=number] {
+input[type="number"] {
   -moz-appearance: textfield;
 }
 
-.paymeentInfoTab{
-width: 100%;
-height: 200px;
-background-color: firebrick;
-}
-.cardNumberInput{
-  font-family: "Nunito", sans-serif;
-letter-spacing: 1px;
-width: 75%;
-height: 40px;
-margin: 6px 0 16px  0;
-border-radius: 4px;
-border: 1px solid rgb(219, 226, 230);
-padding: 0 10px;
-display: flex;
-justify-content: space-evenly;
-align-items: center;
-box-sizing: border-box;
-}
-
-.cardNumberInput:focus{
-    outline: none;
-    box-shadow: 0px 1px 10px rgba(108, 152, 247, 0.2);
-}
-
-.cardNumberInput+div{
-    display: flex;
-    gap: 10px;
-    justify-content: space-between;
-}
-
-.cardNumberInput+div>div{
-    width:45%;
-   
-    box-sizing: border-box;
-}
-
-.cardNumberInput+div>div>input{
-    margin: 10px;
-    width: 90%;
-    height: 40px;
-    letter-spacing: 6px;
-    border: 1px solid rgb(219, 226, 230);
-    border-radius: 4px;
-    padding: 10px;
-    box-sizing: border-box;
-}
-.cardNumberInput+div>div>input:focus{
-    outline: none;
-    box-shadow: 0px 1px 10px rgba(108, 152, 247, 0.2);
-}
-
-.tokenAV{
-    margin-top: 16px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.tokenAV>p{
-    font-size: 0.8rem;
-    font-weight: bold;
-    color: rgb(77, 76, 76);
-}
-
-.radioBuBase{
-    width: 70px;
-    height: 34px;
-    border-radius: 40px;
-    background-color: rgb(199, 205, 216);
-    display: flex;
-    align-items: center;
-    padding: 0 3px;
-    box-sizing: border-box;
-    justify-content: flex-end;
-    cursor: pointer;
-}
-.radioBuBase>div{
-    width:30px;
-    height: 30px;
-    border-radius: 50%;
-    background-color: rgb(255, 255, 255);
-    transition: transform 0.5s ease-in-out;
-}
-
-.signinButton{
+.paymeentInfoTab {
   width: 100%;
+  height: 200px;
+  background-color: firebrick;
+}
+.cardNumberInput {
+  font-family: "Nunito", sans-serif;
+  letter-spacing: 1px;
+  width: 75%;
+  height: 40px;
+  margin: 6px 0 16px 0;
+  border-radius: 4px;
+  border: 1px solid rgb(219, 226, 230);
+  padding: 0 10px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  box-sizing: border-box;
+}
+
+.cardNumberInput:focus {
+  outline: none;
+  box-shadow: 0px 1px 10px rgba(108, 152, 247, 0.2);
+}
+
+.agreeOnRegulations364{
+  font-size: 0.75rem;
+}
+.agreeOnRegulations364>b{
+  color: rgb(14, 73, 181);
+  cursor: pointer;
+}
+
+.cardNumberInput + div {
+  display: flex;
+  gap: 10px;
+  justify-content: space-between;
+}
+
+.cardNumberInput + div > div {
+  width: 45%;
+
+  box-sizing: border-box;
+}
+
+.cardNumberInput + div > div > input {
+  margin: 10px;
+  width: 90%;
+  height: 40px;
+  letter-spacing: 6px;
+  border: 1px solid rgb(219, 226, 230);
+  border-radius: 4px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+.cardNumberInput + div > div > input:focus {
+  outline: none;
+  box-shadow: 0px 1px 10px rgba(108, 152, 247, 0.2);
+}
+
+.tokenAV {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tokenAV > p {
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: rgb(77, 76, 76);
+}
+
+.radioBuBase {
+  width: 70px;
+  height: 34px;
+  border-radius: 40px;
+  background-color: rgb(199, 205, 216);
+  display: flex;
+  align-items: center;
+  padding: 0 3px;
+  box-sizing: border-box;
+  justify-content: flex-end;
+  cursor: pointer;
+}
+.radioBuBase > div {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgb(255, 255, 255);
+  transition: transform 0.5s ease-in-out;
+}
+
+.signinButton {
   display: flex;
   justify-content: center;
-  margin: 20px 0;
+  align-items: center;
+  margin: 50px 0;
+  gap: 30px;
+}
+.signinButton > p:first-of-type {
+  font-size: 0.8rem;
+
+  color: rgb(77, 76, 76);
+}
+.signinButton > p:first-of-type + p {
+  font-size: 0.9rem;
+  font-weight: bold;
+
+  color: rgb(14, 73, 181);
+  cursor: pointer;
 }
 
-.signinButton>button{
+.signinButton > button {
   width: 80%;
   height: 40px;
   border-radius: 8px;
@@ -301,5 +344,28 @@ box-sizing: border-box;
   word-spacing: 2px;
   letter-spacing: 1px;
   background-color: #ffffff;
-  box-shadow: 0px 1px 20px rgba(54, 152, 233, 0.2);
+  cursor: pointer;
+  color: rgb(14, 73, 181);
+  /*  box-shadow: 0px 1px 20px rgba(54, 152, 233, 0.2); */
+}
+
+.signupBtnMainDiv33{
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.signupBtnMainDiv33>button{
+  font-size: 1rem;
+  width: 100%;
+  height: 40px;
+  border-radius: 40px;
+  border: none;
+  font-family: "Nunito", sans-serif;
+  word-spacing: 2px;
+  
+  background-color: rgb(14, 73, 181);
+  cursor: pointer;
+  color: white;
+  /*  box-shadow: 0px 1px 20px rgba(54, 152, 233, 0.2); */
 }
