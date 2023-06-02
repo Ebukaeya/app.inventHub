@@ -34,7 +34,7 @@ const EachItemToPurchase = ({ product }) => {
   );
 };
 
-const CheckOutPage = () => {
+const CheckOutPage = ({socket}) => {
   /* on page mount, the location object must contain state.products which is an array */
 
   const [purchasedItems, setPurchasedItems] = useState([]);
@@ -42,6 +42,7 @@ const CheckOutPage = () => {
   const [paymentMethod, setPaymentMethod] = useState(null);
   const [pickUpInStore, setPickUpInStore] = useState(false);
   const [totalbreakDown, setTotalbreakDown] = useState();
+  const [showConfirmation, setShowConfirmation] = useState(false);
 
   const location = useLocation();
   const {profile} = useSelector(state => state.profile)
@@ -76,13 +77,30 @@ const CheckOutPage = () => {
     };
 
     try {
-      let response = fetch(makePurchaseFromCheckOutUrl, {
+      let response = await fetch(makePurchaseFromCheckOutUrl, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(payload),
       })
+     
+      if(response.ok){
+        let {_,payload}= await response.json()
+        
+       let {purchasedItems,...rest} = payload
+        setShowConfirmation(true) /* to display success page with details */
+        console.log(purchasedItems);
+        let notifyedStores=[]
+        purchasedItems.forEach(item=>{
+          if(!notifyedStores.includes(item.storeID)){
+            console.log(socket);
+             socket.emit('newOrderReceived',{room:item.storeID}) 
+            notifyedStores.push(item.storeID)
+          }
+        })
+
+      }
       
     } catch (error) {
       console.log(error);
