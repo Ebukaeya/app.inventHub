@@ -9,18 +9,22 @@ import PaymentTab from "../payment/PaymentTab";
 import Cardpayment from "../payment/CardPayment";
 import { AiFillDelete } from "react-icons/ai";
 import SwitchButton from "../payment/SwitchButton";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
+import { useState, useLayoutEffect } from "react";
+import { useSelector } from "react-redux";
+import "../../styles/cart.css";
+import { makePurchaseFromCheckOutUrl } from "../../api/StoreAPI";
 
-const EachItemToPurchase = () => {
+const EachItemToPurchase = ({ product }) => {
   return (
     <>
       <div className='eachOrderItem83'>
         <div>
-          <span>x3</span>
-          <span>Apple watch nitendo</span>
+          <span> x {product.purchasedQuantity}</span>
+          <span>{product.name}</span>
         </div>
         <div>
-          <span>$6473.99</span>
+          <span>$ {product.purchasedQuantity * product.unitPrice}</span>
           <span>
             <AiFillDelete />
           </span>
@@ -31,15 +35,68 @@ const EachItemToPurchase = () => {
 };
 
 const CheckOutPage = () => {
+  /* on page mount, the location object must contain state.products which is an array */
 
-      const navigate = useNavigate();
+  const [purchasedItems, setPurchasedItems] = useState([]);
+  const [shippingAddress, setShippingAddress] = useState(null);
+  const [paymentMethod, setPaymentMethod] = useState(null);
+  const [pickUpInStore, setPickUpInStore] = useState(false);
+  const [totalbreakDown, setTotalbreakDown] = useState();
+
+  const location = useLocation();
+  const {profile} = useSelector(state => state.profile)
+
+  useLayoutEffect(() => {
+    const { state } = location;
+    if (state) {
+      setPurchasedItems(state.products);
+
+      const subTotal = state.products.reduce(
+        (acc, product) => {
+          return { subtotal: acc.subtotal + (product.purchasedQuantity * product.unitPrice), deliveryFee: acc.deliveryFee + product.deliveryFee };
+        },
+        { subtotal: 0, deliveryFee: 0 }
+      );
+      setTotalbreakDown({ ...subTotal });
+    }
+   
+  }, []);
+
+
+  const registerPayment = async () => {
+    let payload = {
+      paymentID: "123456789", /* from third party payment*/
+      purchasedItems,
+      shippingAddress,
+      paymentMethod,
+      pickUpInStore,
+      totalbreakDown,
+      profile,
+      totalPaid: totalbreakDown.subtotal + totalbreakDown.deliveryFee,
+    };
+
+    try {
+      let response = fetch(makePurchaseFromCheckOutUrl, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload),
+      })
+      
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const navigate = useNavigate();
   return (
     <>
       <Template>
         <div className='CartMainWrapper2'>
           <div className='CartContainer836'>
             <div>
-              <div onClick={()=> window.history.back()} className='backToCart33'>
+              <div onClick={() => window.history.back()} className='backToCart33'>
                 {" "}
                 <AiOutlineArrowLeft /> <h4> Back</h4>
               </div>
@@ -57,34 +114,28 @@ const CheckOutPage = () => {
                 <div className='shippingaddressEnter1'>
                   <p className='labelTI12'>Shipping address</p>
                   <div>
-                    <input type='text' placeholder='Enter your address' />
+                    <input value={shippingAddress} onChange={(e) => setShippingAddress(e.target.value)} type='text' placeholder='Enter your address' />
                     <BsFillPenFill color='gray' />
                   </div>
                 </div>
                 <h4> Payment information</h4>
-                <PaymentTab />
-                <Cardpayment />
+                <PaymentTab updatePaymentMethod={setPaymentMethod} />
+                {paymentMethod === "paystack" ? (
+                  <Cardpayment />
+                ) : paymentMethod === "paypal" ? (
+                  <div className='paypalPayment'>paypal </div>
+                ) : (
+                  <div className='bitcoinPayment'>bitcoin</div>
+                )}
               </div>
             </div>
 
             <div>
               <h5 style={{ marginBottom: "16px" }}>Order summary</h5>
-              <div >
-                    <EachItemToPurchase />
-                    <EachItemToPurchase />
-                    <EachItemToPurchase />
-                    <EachItemToPurchase />
-                    <EachItemToPurchase />
-                    <EachItemToPurchase />
-                    <EachItemToPurchase />
-                    <EachItemToPurchase />
-                    <EachItemToPurchase />
-                    <EachItemToPurchase />
-                    <EachItemToPurchase />
-                    <EachItemToPurchase />
-                    <EachItemToPurchase />
-                    
-                
+              <div>
+                {purchasedItems.map((product) => (
+                  <EachItemToPurchase key={product._id} product={product} />
+                ))}
               </div>
               <hr />
               <div className='tokenAV'>
@@ -95,7 +146,7 @@ const CheckOutPage = () => {
               <p className='discountApplied11'>20% discount applied</p>
               <div className='SubTotalDv84'>
                 <p>Subtotal</p>
-                <p>$4000.00</p>
+                <p>$ {totalbreakDown?.subtotal}</p>
               </div>
               <div className='priceBreakDowncart2'>
                 <p>Discount</p>
@@ -103,7 +154,7 @@ const CheckOutPage = () => {
               </div>
               <div className='priceBreakDowncart2'>
                 <p>Delivery Fee</p>
-                <p>$4000.00</p>
+                <p>$ {totalbreakDown?.deliveryFee}</p>
               </div>
               <div className='priceBreakDowncart2'>
                 <p>Tax</p>
@@ -111,11 +162,11 @@ const CheckOutPage = () => {
               </div>
               <div className='SubTotalDv84 total34'>
                 <p>Total</p>
-                <p>$4000.00</p>
+                <p>$ {totalbreakDown?.deliveryFee+totalbreakDown?.subtotal}</p>
               </div>
               <div className='checkOutButtonDiv'>
-                <button>Confirm payment</button>
-                <button onClick={()=>navigate("/products")} >Continue shopping</button>
+                <button onClick={registerPayment}>Confirm payment</button>
+                <button onClick={() => navigate("/products")}>Continue shopping</button>
               </div>
             </div>
           </div>

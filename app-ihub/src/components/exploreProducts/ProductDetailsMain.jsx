@@ -5,8 +5,31 @@ import { BsStarHalf, BsStarFill, BsPlusLg, BsTruck } from "react-icons/bs";
 import { BiMinus } from "react-icons/bi";
 import ProductCardCopy from "./ProductCardCopy";
 import { FaAngleLeft } from "react-icons/fa";
+import { useLocation, useNavigate } from "react-router-dom";
+import { useState, useLayoutEffect } from "react";
 
 const ProductDetailsMain = () => {
+  const [imageShowing, setImageShowing] = useState();
+  const [quantity, setQuantity] = useState(1);
+
+  const { state } = useLocation();
+  const { product, store } = state;
+  const navigate = useNavigate();
+  console.log(product, store);
+  /* check if state is passed, otherwise fetch the product and store it belogns to and also products in the same category */
+
+  useLayoutEffect(() => {
+    if (!state) {
+      /* fetch product and store(will be part of product object) it belongs*/
+    } else {
+      setImageShowing(product?.productImage[0]);
+    }
+    /* fetch related products */
+  }, []);
+  {
+    console.log(product.quantity - product.damagedAmount);
+  }
+
   return (
     <>
       <Template>
@@ -18,73 +41,113 @@ const ProductDetailsMain = () => {
           <div className='productDetailsWrapper123'>
             <div className='productImageShow5'>
               <div className='pDDetails1232'>
-                <img
-                  className='pddetailImage684'
-                  src='https://res.cloudinary.com/ebuka1122/image/upload/v1677526350/Ihub-product-images/qeateh2lkpfd95jhkscq.png'
-                />
+                <img className='pddetailImage684' src={imageShowing} />
               </div>
               <div className='pDDetails1232AllImage '>
                 <div className='selectedPicture384'>
+                  <img onClick={() => setImageShowing(product?.productImage[0])} className='pddetailImage684' src={product.productImage[0]} />
+                </div>
+                <div>
                   <img
+                    onClick={() => setImageShowing(product?.productImage[1])}
                     className='pddetailImage684'
-                    src='https://res.cloudinary.com/ebuka1122/image/upload/v1677526350/Ihub-product-images/qeateh2lkpfd95jhkscq.png'
+                    src={
+                      product?.productImage[1] ? product?.productImage[1] : "https://www.apple.com/v/airpods-max/d/images/overview/hero__dvsxv8smkkgi_large.jpg"
+                    }
                   />
                 </div>
                 <div>
                   <img
+                    onClick={() => setImageShowing(product?.productImage[2])}
                     className='pddetailImage684'
-                    src='https://res.cloudinary.com/ebuka1122/image/upload/v1680784342/Ihub-product-images/x9ibi5oztcgqwm7p0yty.png'
+                    src={
+                      product?.productImage[2] ? product?.productImage[2] : "https://www.apple.com/v/airpods-max/d/images/overview/hero__dvsxv8smkkgi_large.jpg"
+                    }
                   />
                 </div>
-                <div>1</div>
-                <div>1</div>
+                <div>
+                  <img
+                    onClick={() => setImageShowing(product?.productImage[3])}
+                    className='pddetailImage684'
+                    src={
+                      product?.productImage[3] ? product?.productImage[3] : "https://www.apple.com/v/airpods-max/d/images/overview/hero__dvsxv8smkkgi_large.jpg"
+                    }
+                  />
+                </div>
               </div>
             </div>
             <div className='productDetailD27'>
               <div className='ToFlexInMobileJC'>
                 <div>
-                  <h2 className='productTitle737D'>AirPods-Max</h2>
-                  <p>Apple</p>
-                  <ReactStars size={12} count={5} value={4} isHalf={true} halfIcon={<BsStarHalf />} filledIcon={<BsStarFill />} />
+                  <h2 className='productTitle737D'> {product.name} </h2>
+                  <p>{product.brand}</p>
+                  <ReactStars
+                    size={12}
+                    count={5}
+                    value={product?.rating ? product?.rating : 4}
+                    isHalf={true}
+                    halfIcon={<BsStarHalf />}
+                    filledIcon={<BsStarFill />}
+                  />
                 </div>
                 <div>
-                  <h3 className='priceTagPrdtDetail374'>$ 4000.00 </h3>
+                  <h3 className='priceTagPrdtDetail374'>$ {product?.unitPrice}</h3>
                   {/*  <span style={{ color: "gray", fontWeight: "500" }}> (exc. VAT)</span>
                   <p className='deliveryFeeDivud'>
                     delivery fee: <b>£ 60</b>{" "}
                   </p> */}
                   <div className='billButton'>
-                    <span>
+                    <span
+                      onClick={() => {
+                        quantity > 1 && setQuantity((prev) => prev - 1);
+                      }}
+                    >
                       {" "}
                       <BiMinus size={26} />
                     </span>
-                    <p>12</p>
-                    <span>
+                    <p>{quantity}</p>
+                    <span
+                      onClick={() => {
+                        quantity < parseInt(product.quantity) - parseInt(product.damagedAmount ? product.damagedAmount : 0) && setQuantity((prev) => prev + 1);
+                      }}
+                    >
                       {" "}
                       <BsPlusLg />
                     </span>
                   </div>
-                  <span>100 in stock</span>
+                  <span>{product.damagedAmount ? parseInt(product.quantity) - parseInt(product.damagedAmount) : product.quantity} in stock</span>
                 </div>
               </div>
-              <div className='chooseSizeDIvRcondi'>
-                <h4>Choose size</h4>
-                <select className='sizeToChosseDrop23'>
-                  <option value='' disabled selected hidden>
-                    Select bank
-                  </option>
-                </select>
-              </div>
+              {product.size && (
+                <div className='chooseSizeDIvRcondi'>
+                  <h4>Choose size</h4>
+                  <select className='sizeToChosseDrop23'>
+                    {/* map available sizes */}
+                    <option value='' disabled selected hidden>
+                      Select size
+                    </option>
+                  </select>
+                </div>
+              )}
 
               <div className='button-toAddtoCartOrbiy'>
-                <button className='buyNoe28u3'>Buy Now</button>
+                <button
+                  onClick={() => {
+                    navigate("/cart/check-out", { state: { products: [{ ...product, purchasedQuantity: quantity, purchasedSize: "large" }] } });
+                  }}
+                  className='buyNoe28u3'
+                >
+                  Buy Now
+                </button>
                 <button className='buyNoe28u34'>Add to Cart</button>
               </div>
               <div className='deliveryDiv34'>
                 <BsTruck color='#FFD700' size={24} />
                 <div>
                   <p className='deliveryText534'>Delivery</p>
-                  <p>Delivered in 4 days at £ 20</p>
+                  <p>
+                    Delivered in {product.deliveryTime} days at £ {product.deliveryFee}
+                  </p>
                   <p>See policy</p>
                 </div>
               </div>
@@ -100,23 +163,19 @@ const ProductDetailsMain = () => {
           </div>
           <div className='productDescription'>
             <h3 className='headingsInproductCO'>Product Description</h3>
-            <p>
-              {" "}
-              lorem kmkfd kdw kwrckmwmrefm wjrfrwn jwrnf cjwnrfjwrfjrnrr vjrvrnrjfew rjr dfejr rjf jruf nwrnf jnrf wfrfcwr fjcr fjcnrrf rfnjnrjffwijrf jn3wnrf
-              jrnf jnrf jnrf jr jr fjn. <br></br> wkenkoiwef kf if3 kr
-            </p>
+            <p> {product.productDescription}</p>
           </div>
           <div className='soldByStoreDiv'>
             <h5>Sold by :</h5>
             <div className='bforeFlex43'>
               <div className='flexingSoldByStore74'>
                 <div className='storeImageDiv12'>
-                  <img src='https://res.cloudinary.com/ebuka1122/image/upload/v1677526350/Ihub-product-images/qeateh2lkpfd95jhkscq.png' alt='storeImage' />
+                  <img src={store.storeImage} alt='storeImage' />
                 </div>
                 <div>
-                  <p className='storeNameTile'>Apple Store Inc.</p>
-                  <p>Nordre telkaj 12 st.tv 2450 sydhavn ej je j ej je , Denmark</p>
-                  <ReactStars size={12} count={5} value={4} isHalf={true} halfIcon={<BsStarHalf />} filledIcon={<BsStarFill />} />
+                  <p className='storeNameTile'>{store.storeName}</p>
+                  <p>{store.storeAddress}</p>
+                  <ReactStars size={12} count={5} value={store.averageRating} isHalf={true} halfIcon={<BsStarHalf />} filledIcon={<BsStarFill />} />
                 </div>
               </div>
               <div>

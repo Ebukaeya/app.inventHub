@@ -4,24 +4,27 @@ import { BsStarHalf, BsStarFill, BsPlus } from "react-icons/bs";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useNavigate } from "react-router-dom";
 
-const ProductCardCopy = ({ product }) => {
+
+
+const ProductCardCopy = ({ product, payload }) => {
+   /* let {store} = payload; */
   const navigate = useNavigate();
   return (
     <>
       <div className='productCopy12'>
-        <div onClick={()=>navigate(`/product/${"Watch"}`)} className='productCopyImage'>
-          <img src='https://res.cloudinary.com/ebuka1122/image/upload/v1677526350/Ihub-product-images/qeateh2lkpfd95jhkscq.png' className='productCopyImage' />
+        <div onClick={()=>navigate(`/product/${product._id}`, {state:{store:payload.store, product}} )} className='productCopyImage'>
+          <img src={product?.productImage[0]} className='productCopyImage' />
         </div>
         <div className='Productinfo122'>
           <div className='productCopyNamePr'>
-            <span>Product Name, IPXB</span>
+            <span>{product?.name}</span>
             <span>
               {" "}
-              <p className='currencyTop12'>$</p> 4600{" "}
+              <p className='currencyTop12'>$</p> {product?.unitPrice}{" "}
             </span>
           </div>
-          <p className='soldByStoreName'>Sold by: Eya stores</p>
-          <ReactStars size={12} count={5} value={4} isHalf={true} halfIcon={<BsStarHalf />} filledIcon={<BsStarFill />} />
+          <p className='soldByStoreName'>Sold by: {payload?.store.storeName}</p>
+          <ReactStars size={12} count={5} value={product?.rating?product?.rating:4} isHalf={true} halfIcon={<BsStarHalf />} filledIcon={<BsStarFill />} />
           <button className='addToCartProduct12Btn'>
             <BsPlus /> Add to cart
           </button>

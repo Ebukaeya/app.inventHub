@@ -2,6 +2,7 @@ import Template from "../Template";
 import EachCartItem from "./EachCartItem";
 import { BsTruck } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import "../../styles/cart.css"
 
 const CartMain = () => {
 

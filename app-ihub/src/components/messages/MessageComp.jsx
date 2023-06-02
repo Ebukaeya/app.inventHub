@@ -61,7 +61,7 @@ const MessageComp = ({ refreshChatList, socket, selectedChat, profile, setSelect
           <img src={selectedConversation.business.profileImage} />
           <div>
             <p className='NameMessageDetail'> {selectedConversation.business.NameOfBusiness} </p>
-            {selectedConversation.business.isOnline ? <p>online</p> : <p style={{ color: "red" }}>offline</p>}
+            {selectedConversation.business.isOnline ? <p>online</p> : <p style={{ color: "red" }}></p>}
           </div>
         </div>
         <div className='messageContentDiv'>

@@ -5,3 +5,5 @@
  export const fetchStoresEnpoint = `${root}/getStores`; 
 
  export const fetchStoreProductsEnpoint = `${root}/getStoreProducts/`; /* + storeID */
+
+ export const makePurchaseFromCheckOutUrl = `${root}/makePurchaseFromCheckOutUrl/`; /* + storeID */

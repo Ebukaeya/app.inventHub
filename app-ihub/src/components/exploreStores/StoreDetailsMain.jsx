@@ -136,7 +136,7 @@ const StoreDetailsMain = ({ socket }) => {
 
               <div className='recommendedProductDIv mobilpadding'>
                 {storeProducts.map((product) => (
-                  <ProductCardCopy key={product._id} product={product} />
+                  <ProductCardCopy key={product._id} product={product} payload={state} />
                 ))}
               </div>
             </div>
