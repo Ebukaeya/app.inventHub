@@ -62,6 +62,10 @@ function App() {
       console.log("connected to socket");
       socket.emit("createRoom", profile._id);
     });
+
+    socket.on("updateOrderStatus", ({message,room})=>{
+      profile._id === room && alert(message)
+    })
   };
 
   const socketConnectionConsumerServer = () => {
