@@ -3,24 +3,69 @@ import { IoIosArrowBack, IoIosHeart } from "react-icons/io";
 import { BiDotsVerticalRounded, BiMinus } from "react-icons/bi";
 import ReactStars from "react-rating-stars-component";
 import DisputeWindow from "./disputeWindow/DisputeWindow";
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import { Link } from "react-router-dom";
+import { resolveDisputeUrl } from "../../api/StoreAPI";
 
-const EachOrder = ({closeItemDetails}) => {
+const EachOrder = ({ closeItemDetails, item, selectedOrder,socket,refetchOrder,setSelectedOrder }) => {
   const [openModal, setOpenModal] = useState(false);
   const [pendingOrder, setPendingOrder] = useState(true);
   const [dispute, setDispute] = useState(null);
-  const [disputeStatus, setDisputeStatus] = useState(null);
+  const [disputeStatus, setDisputeStatus] = useState(null); /* when dispute status is resolved */
   const [isDisputeWindowClosed, setIsDisputeWindowClosed] = useState(null); // must turn off all the state when window is closed
+  const [disputeWindow, setDisputeWindow] = useState(null); // in days or hours
+
+  useLayoutEffect(() => {
+    computeDisputeWindow(selectedOrder.orderDate, item);
+    /* check the delivery status of this item */
+    if (item.deliveryStatus === "delivered") {
+    }
+
+    
+    return () => {};
+  }, []);
+
+  const computeDisputeWindow = (orderDate, item) => {
+    /* add 7 days to the order date */
+    let dateDisuteWindowWillClose = new Date(orderDate).getTime() + 1 * 24 * 60 * 60 * 1000;
+    let currentDate = new Date().getTime();
+    let difference = dateDisuteWindowWillClose - currentDate;
+    let days = Math.floor(difference / (1000 * 60 * 60 * 24));
+    let hours = Math.floor(difference / (1000 * 60 * 60));
+    let minutes = Math.ceil(difference / (1000 * 60));
+   
+    console.log(days <= 0,minutes <= 0, item.deliveryStatus!=="dispute");
+    if (days <= 0 && hours > 1) {
+      setDisputeWindow(`${hours} hours`);
+      item.deliveryStatus === "delivered" && orderIsSuppliedSim();
+      item.deliveryStatus === "dispute" && itemOnDispute();
+      item.deliveryStatus === "resolved" && resolveDispute();
+    } else if (days <= 0 && hours <= 1  && minutes>0) {
+      setDisputeWindow(`${minutes} minutes`);
+      item.deliveryStatus === "delivered" && orderIsSuppliedSim();
+      item.deliveryStatus === "dispute" && itemOnDispute();
+      item.deliveryStatus === "resolved" && resolveDispute();
+    } else if (days <= 0 && minutes <= 0) {
+      
+      item.deliveryStatus!=="dispute"  &&  disputeWindowClosedSim();
+      
+    } else {
+      setDisputeWindow(`${days} days`);
+      item.deliveryStatus === "delivered" && orderIsSuppliedSim();
+      item.deliveryStatus === "dispute" && itemOnDispute();
+      item.deliveryStatus === "resolved" && resolveDispute();
+    }
+
+  };
 
   const openDisputeWindow = () => {
     let body = document.querySelector("body");
     body.style.overflow = "hidden";
     setOpenModal(true);
   };
-  const updateDisputeReason = (dispute) => {
+  const updateDisputeReason = (disputeReason) => {
     setPendingOrder(false);
-    setDispute(dispute);
+    setDispute(disputeReason);
     setOpenModal(false);
   };
 
@@ -31,12 +76,21 @@ const EachOrder = ({closeItemDetails}) => {
     let year = date.getFullYear();
     return `${day}-${month}-${year}`;
   };
+/* when item is on dispute */
+
+const itemOnDispute = () => {
+  setPendingOrder(false);
+  setDispute(true);
+  setDisputeStatus(null);
+};
+
 
   const resolveDispute = () => {
     console.log("resolve dispute");
     setPendingOrder(false);
     setDispute(null);
     setDisputeStatus("resolved");
+   
     console.log(disputeStatus);
   };
 
@@ -58,11 +112,41 @@ const EachOrder = ({closeItemDetails}) => {
     setIsDisputeWindowClosed(true);
   };
 
+  const resolveDisputeSimFun = async() => {
+
+    try {
+      let response = await fetch(resolveDisputeUrl, {
+        method:"PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          linkedPayoutID: item.linkedPayoutID,
+          productID: item._id,
+          consumerOrderID: selectedOrder.consumerOrderID,
+          idToQueryStoreReceievedOrder: selectedOrder.consumerOrderID+"STORE"+item.storeID
+        }),
+      });
+
+      if( response.ok){
+        socket.emit('disputeResolved',{room:item.storeID,item:item.name})
+        refetchOrder && refetchOrder();
+        let {message, updatedOrder} = await response.json();
+        setSelectedOrder(updatedOrder)
+        resolveDispute();
+      }
+      
+    } catch (error) {
+      console.log(error);
+    }
+
+  };
+
   return (
     <>
       <div className='EachOrderContainer11'>
         <div className='NavBarProdP122'>
-          <div style={{ display: "flex", alignItems: "center", cursor:"pointer" }}>
+          <div style={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
             <IoIosArrowBack size={30} onClick={() => closeItemDetails(false)} />
           </div>
           <div>
@@ -73,14 +157,14 @@ const EachOrder = ({closeItemDetails}) => {
           <div>
             <div className='itemDetailImageDiv'>
               <img
-                src='https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60'
+                src={item.productImage[0]}
                 alt=''
               />
             </div>
-            <p>Iphone 11 pro in da djn djt</p>
+            <p>{item.name} </p>
             <div className='producTPageSTore'>
-              <p>Fresh Mart stores</p>
-              <p>No.22 Nordre talkaj Denmark bfje fjv fvewrf vwjrfv erwjver vjerv</p>
+              <p>{item.storeName} </p>
+              <p>{item.storeAddress}</p>
             </div>
           </div>
         </div>
@@ -89,12 +173,12 @@ const EachOrder = ({closeItemDetails}) => {
         {pendingOrder && (
           <div className='DisputeDiv'>
             <div onClick={openDisputeWindow}>Dispute</div>
-            {openModal && <DisputeWindow closeModel={setOpenModal} updateDispute={updateDisputeReason} />}
-            <div>Dispute window will close in 7 days</div>
+            {openModal && <DisputeWindow closeModel={setOpenModal} updateDispute={updateDisputeReason} item={item} consumerOrderID={selectedOrder.consumerOrderID} socket={socket} refetchOrder={refetchOrder} setSelectedOrder={setSelectedOrder} />}
+            <div>Dispute window will close in {disputeWindow} </div>
           </div>
         )}
 
-        {/* state 2 dispute raised */}
+        {/* state 2 dispute is raised */}
         {dispute && (
           <div className='DisputeRaisedDiv'>
             <div>
@@ -102,11 +186,11 @@ const EachOrder = ({closeItemDetails}) => {
               <div>Dispute</div>
               <p>Dispute raised on {getCurrentDate()}</p>
             </div>
-            <div onClick={resolveDispute}>Resolve</div>
+            <div style={{cursor:"pointer"}} onClick={resolveDisputeSimFun}>Resolve</div>
           </div>
         )}
 
-        {/* state 3 dispute resolved */}
+        {/* state 3 dispute is resolved */}
         {disputeStatus && (
           <div className='RoslvedDisputeDiv'>
             <div>
@@ -128,10 +212,12 @@ const EachOrder = ({closeItemDetails}) => {
           <div className='RoslvedDisputeDiv'>
             <div>
               {" "}
-              <div id='orderIsSupplied' onClick={() => disputeWindowClosedSim()}>
-                Dispute
+              
+              <div id='orderIsSupplied' onClick={() => openDisputeWindow()}>
+                Dispute 
               </div>
-              <p>Dispute window will close in 7 days</p>
+              {openModal && <DisputeWindow closeModel={setOpenModal} updateDispute={updateDisputeReason} item={item} consumerOrderID={selectedOrder.consumerOrderID} socket={socket} refetchOrder={refetchOrder} setSelectedOrder={setSelectedOrder}/>}
+              <p>Dispute window will close in {disputeWindow}</p>
             </div>
             <div>
               <Link className='linkreset' to={"/"}>
@@ -147,7 +233,7 @@ const EachOrder = ({closeItemDetails}) => {
             <div>
               {" "}
               <div>Dispute</div>
-              <p>Dispute window close after 7 days</p>
+              <p>Dispute window closed after 7 days</p>
             </div>
             <div>
               <Link className='linkreset' to={"/"}>
@@ -167,7 +253,7 @@ const EachOrder = ({closeItemDetails}) => {
           <p>Order Details</p>
           <div>
             <p>Order date</p>
-            <p>15, August 2021</p>
+            <p>{selectedOrder.orderDate.split("T")[0]}</p>
           </div>
           <div>
             <p>Order ID</p>
@@ -183,15 +269,15 @@ const EachOrder = ({closeItemDetails}) => {
           </div>
           <div>
             <p>Quantity</p>
-            <p>1</p>
+            <p> {item.purchasedQuantity} </p>
           </div>
           <div>
             <p>Unit Price</p>
-            <p>Kr. 200</p>
+            <p>Kr. {item.unitPrice}</p>
           </div>
           <div>
             <p>Total Price</p>
-            <p>Kr. 200</p>
+            <p>Kr. {item.purchasedQuantity*item.unitPrice}</p>
           </div>
         </div>
         <div className='buttonDivDR'>
@@ -199,7 +285,6 @@ const EachOrder = ({closeItemDetails}) => {
           <button>Download Receipt</button>
         </div>
       </div>
-      
     </>
   );
 };

@@ -12,3 +12,7 @@ export const uploadImageUrl = /* "http://localhost:5002/users/uploadimage/" */ `
 export const updateUserProfile = /* "http://localhost:5002/users/updateprofile/" */ `${api}/users/updateprofile/`; 
 
 export const fetchChatListUrl = /* "http://localhost:5002/users/getchatlist/" */ `${api}chats/getchatlist/`; /* + user ID */
+
+
+/* my order page */
+export const fetchMyOrdersUrl =  `${api}myorders/fetchOrders/`; /* + user ID */

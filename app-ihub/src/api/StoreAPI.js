@@ -7,3 +7,6 @@
  export const fetchStoreProductsEnpoint = `${root}/getStoreProducts/`; /* + storeID */
 
  export const makePurchaseFromCheckOutUrl = `${root}/makePurchaseFromCheckOutUrl/`; /* + storeID */
+
+ export const raiseDisputeUrl = `${root}/raiseDispute/`;
+ export const resolveDisputeUrl = `${root}/resolveDispute/`;

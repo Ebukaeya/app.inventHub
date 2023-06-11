@@ -123,6 +123,7 @@
   height: 100%;
   margin-top: 4px;
   padding: 0 2px 60px 0;
+  flex:1.5;
 }
 .verticalScrollingDiv12::-webkit-scrollbar {
   width: 1.5px;

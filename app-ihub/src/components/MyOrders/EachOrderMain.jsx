@@ -1,23 +1,35 @@
 import { useNavigate } from "react-router-dom";
 import { AiOutlineRight } from "react-icons/ai";
-const EachOrderMain = (props) => {
+import { useState ,useEffect } from "react";
+const EachOrderMain = ({ order, setSelectedOrder, selectedOrder }) => {
+
+  const [isSelected, setIsSelected] = useState(false); // this is to change the border color of the selected order
   const navigate = useNavigate();
+
+  useEffect(() => {
+    if (order && selectedOrder && order._id === selectedOrder._id) {
+      setIsSelected(true);
+    } else {
+      setIsSelected(false);
+    }
+  }, [selectedOrder]);
+
   return (
     <>
-      <div className='eachOrderMainItemList'>
+      <div onClick={() => setSelectedOrder(order)} className={isSelected?"eachOrderMainItemList selectedEachOrder ":"eachOrderMainItemList"}>  {/* selectedEachOrder */}
         <div className='priceHeaderDiv33'>
           <div>
             <p className='caption4r'>Date</p>
-            <p className='caption293e'> 2023.04.05</p>
+            <p className='caption293e'> {order.orderDate.split("T")[0]} </p>
           </div>
           <div>
             <p className='caption4r'>Total price</p>
-            <p className='caption293e'>$4000.00</p>
+            <p className='caption293e'>$ {order.totalBreakDown.totalPaid} </p>
           </div>
           <div className='flexingContainer21'>
             <div>
               <p className='caption4r'>Order status</p>
-              <p className='caption293e'>Delivered</p>
+              <p className='caption293e'> {order.orderStatus} </p>
             </div>
             <p>
               <AiOutlineRight size={12} color='gray' />
@@ -27,24 +39,15 @@ const EachOrderMain = (props) => {
         <div className='orderImageDisplayDiv345'>
           <div className='OrderImageDivRow2'>
             <div>
-              <img src='https://res.cloudinary.com/ebuka1122/image/upload/v1656026265/samples/Ihub-Consumer-App/images_xvpyq7.jpg' />
-            </div>
-            <div>
-              <img src='https://res.cloudinary.com/ebuka1122/image/upload/v1655939583/samples/Ihub-Consumer-App/images_o9oqbm.jpg' />
-            </div>
-            <div>
-              <img src='https://res.cloudinary.com/ebuka1122/image/upload/v1656026265/samples/Ihub-Consumer-App/images_xvpyq7.jpg' />
-            </div>
-            <div>
-              <img src='https://res.cloudinary.com/ebuka1122/image/upload/v1656026265/samples/Ihub-Consumer-App/images_xvpyq7.jpg' />
-            </div>
-            <div>
-              <img src='https://res.cloudinary.com/ebuka1122/image/upload/v1656026265/samples/Ihub-Consumer-App/images_xvpyq7.jpg' />
+              {order.purchasedItems.slice(0, 3).map((item) => {
+                return <img src={item.productImage[0]} />;
+              })}
             </div>
           </div>
-          <span>+ 5</span>
+          {order.purchasedItems.length > 4 &&  <span>+ {order.purchasedItems.length-4} </span>}
+         
         </div>
-        <div onClick={() => navigate("kfhe8fuvjefi")} className='hideOnWeb22'></div>
+        <div onClick={() => navigate("kfhe8fuvjefi", {state: {order} })} className='hideOnWeb22'></div>
       </div>
     </>
   );

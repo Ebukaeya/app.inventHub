@@ -111,8 +111,8 @@ function App() {
         <Route path='/explorestores' element={<ExploreStoreMain />} />
         <Route path='/cart' element={<CartMain />} />
         <Route path='/cart/check-out'  element={<CheckOutPage socket={socket} />} />
-        <Route path='/my-orders' element={<MyOrderMain />} />
-        {tabletScreen && <Route path='/my-orders/:orderID' element={<MyOrderListDetail />} />}
+        <Route path='/my-orders' element={<MyOrderMain profile={profile} socket={socket} />} />
+        {tabletScreen && <Route path='/my-orders/:orderID' element={<MyOrderListDetail socket={socket}  />} />}
         <Route path='/messages' element={<MessagesPage screenType={tabletScreen} socket={socket} />} />
         {tabletScreen && <Route path='/messages/:chatID' element={<MessageDetailPage socket={socket}  />} />}
         <Route path='/wishlist' element={<WishList />} />

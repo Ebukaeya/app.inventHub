@@ -1,7 +1,8 @@
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import { useState } from "react";
+import { raiseDisputeUrl } from "../../../api/StoreAPI";
 
-const DisputeWindow = ({ closeModel, updateDispute }) => {
+const DisputeWindow = ({ closeModel, updateDispute, item,consumerOrderID,socket,refetchOrder,setSelectedOrder}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [disputeReason, setDisputeReason] = useState({
     reason: "",
@@ -18,6 +19,7 @@ const DisputeWindow = ({ closeModel, updateDispute }) => {
 
   const updateDisputeReason = () => {
     if (disputeReason.reason) {
+      raiseDispute();
       updateDispute(disputeReason.reason);
       setIsOpen(false);
       enableVPScroll();
@@ -28,6 +30,40 @@ const DisputeWindow = ({ closeModel, updateDispute }) => {
     let body = document.querySelector("body");
     body.style.overflow = "auto";
   };
+
+ const raiseDispute = async() => {
+
+  try {
+    let response = await fetch(raiseDisputeUrl, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        linkedPayoutID:item.linkedPayoutID,
+        disputeReason:disputeReason.reason,
+        productID:item._id,
+        consumerOrderID,
+        idToQueryStoreReceievedOrder:consumerOrderID+"STORE"+ item.storeID, /* to query store received order "STORE" was added inbetween to split when necessary */
+      }),
+    });
+    if(response.ok){
+      socket.emit('newDisputeRaised',{room:item.storeID,item:item.name,disputeReason:disputeReason.reason})
+      /* refetch item */
+      refetchOrder()
+      let {message, updatedOrder} = await response.json();
+      console.log(message,updatedOrder,"dispute raised");
+      setSelectedOrder(updatedOrder)
+    }
+
+    
+  } catch (error) {
+    console.log(error,"raising dispute error");
+  }
+
+
+ };
+
   return (
     <>
       <div className="DisputeWindowWrapper">

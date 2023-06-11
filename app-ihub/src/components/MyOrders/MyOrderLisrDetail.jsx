@@ -2,13 +2,24 @@ import Template from "../Template";
 import EachOrder from "./EachOrder";
 import { MyOrderDetails } from "./MyOrderMain";
 import SingleOrder from "./SingleOrder";
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import {FaAngleLeft} from "react-icons/fa";
+import { useLocation } from "react-router-dom";
 
 
-const MyOrderListDetail = (props) => {
+
+const MyOrderListDetail = ({socket}) => {
   const [filter, setFilter] = useState("All");
   const [showEachOrderDetails, setShowEachOrderDetails] = useState(false);
+  const [selectedOrder, setSelectedOrder] = useState(null);
+
+  const {state} = useLocation(); /* selectedOrde in view */
+  console.log(state.order, "state in my order list detail");
+
+  useLayoutEffect(() => {
+    setSelectedOrder(state.order)
+  }, []);
+
   const showFilter = () => {
     let filter = document.querySelector(".Orderfilter");
     filter.classList.toggle("showFilter");
@@ -81,24 +92,12 @@ const MyOrderListDetail = (props) => {
               </div>
             </div>
             <div className='anchorMargiv844'>
-              <SingleOrder openModal={setShowEachOrderDetails} />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
-              <SingleOrder />
+              
+
+              {selectedOrder && selectedOrder.purchasedItems.map((item, index) => <SingleOrder key={index} item={item} selectedOrder={selectedOrder} socket={socket} setSelectedOrder={setSelectedOrder} />)
+              }
+             
+            
             </div>
 
             <div className='OrderDetailsTotal'>

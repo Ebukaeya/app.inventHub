@@ -1,50 +1,29 @@
 import Template from "../Template";
 import "../../styles/myorder.css";
 import { BiSearch } from "react-icons/bi";
-import { useState } from "react";
+import { useState, useLayoutEffect } from "react";
 import EachOrderMain from "./EachOrderMain";
 import SingleOrder from "./SingleOrder";
-import EachOrder from "./EachOrder";
 import BottomNavigation from "../reUsable/BottomNavigation";
+import { fetchMyOrdersUrl } from "../../api/consumerApi";
 
-
-export const MyOrderDetails = ({openModal}) => {
-
-     
+export const MyOrderDetails = ({  selectedOrder,socket,refetchOrder,setSelectedOrder }) => {
   return (
     <>
       <div className='myOrderList122'>
         <div className='RorderTitle'>
-          <p>15 items</p>
+          <p>{selectedOrder.purchasedItems.length>1?`${selectedOrder.purchasedItems.length}  items`:`${selectedOrder.purchasedItems.length} item`}  </p>
           <div>
             {" "}
-            <p style={{ color: "rgb(0, 128, 248)", fontWeight: "600" }}> 07, Mar, 2023</p>
+            <p style={{ color: "rgb(0, 128, 248)", fontWeight: "600" }}> {selectedOrder.orderDate.split("T")[0]}</p>
           </div>
         </div>
-        <div className="anchorMargiv844">
-              <SingleOrder openModal={openModal} />
-              <SingleOrder openModal={openModal} />
-              <SingleOrder openModal={openModal} />
-              <SingleOrder openModal={openModal} />
-              <SingleOrder openModal={openModal} />
-              <SingleOrder openModal={openModal} />
-              <SingleOrder openModal={openModal} />
-              <SingleOrder openModal={openModal} />
-              <SingleOrder openModal={openModal} />
-              <SingleOrder openModal={openModal} />
-              <SingleOrder openModal={openModal} />
-              <SingleOrder openModal={openModal} />
-              <SingleOrder openModal={openModal} />
-              <SingleOrder openModal={openModal} />
-              <SingleOrder openModal={openModal} />
-        </div>
-       
-        
-       
+        <div className='anchorMargiv844'>{selectedOrder && selectedOrder.purchasedItems.map((item) => <SingleOrder key={item._id}  item={item} selectedOrder={selectedOrder} socket={socket} refetchOrder={refetchOrder}  setSelectedOrder={setSelectedOrder}/>)}</div>
+
         <div className='OrderDetailsTotal'>
           <div>
             <p>Total Order</p>
-            <p>£ 9999.9</p>
+            <p>£ {selectedOrder.totalBreakDown.totalPaid}</p>
           </div>
         </div>
       </div>
@@ -52,18 +31,43 @@ export const MyOrderDetails = ({openModal}) => {
   );
 };
 
-const MyOrderMain = () => {
+const MyOrderMain = ({ profile,socket }) => {
   const [filter, setFilter] = useState("All");
   const [showEachOrderDetails, setShowEachOrderDetails] = useState(false);
+  const [myOrderList, setMyOrderList] = useState(null);
+  const [selectedOrder, setSelectedOrder] = useState(null);
+
+  useLayoutEffect(() => {
+    fetchMyOrders();
+  }, []);
+
   const showFilter = () => {
     let filter = document.querySelector(".Orderfilter");
     filter.classList.toggle("showFilter");
   };
 
+  const fetchMyOrders = async () => {
+    try {
+      let response = await fetch(fetchMyOrdersUrl + profile._id, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          /* Authorization: `Bearer ${profile.token}`, */
+        },
+      });
+      if (response.ok) {
+        let data = await response.json();
+        console.log(data, "my order list");
+        setMyOrderList(data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <Template>
-        <h4 className="titleMyorder873">My Orders</h4>
+        <h4 className='titleMyorder873'>My Orders</h4>
         <div className='searchDivFilter12'>
           <div>
             <BiSearch color='gray' />
@@ -120,34 +124,20 @@ const MyOrderMain = () => {
         </div>
         <div className='myOrderPageWrapper343'>
           <div className='myOrderEachOrderDiv122'>
-            <EachOrderMain />
-
-            <EachOrderMain />
-            <EachOrderMain />
-            <EachOrderMain />
-            <EachOrderMain />
-            <EachOrderMain />
-            <EachOrderMain />
-            <EachOrderMain />
-            <EachOrderMain />
-            <EachOrderMain />
-            <EachOrderMain />
-            <EachOrderMain />
-            <EachOrderMain />
-            <EachOrderMain />
-            <EachOrderMain />
+            {myOrderList &&
+              myOrderList
+                .slice()
+                .reverse()
+                .map((order) => {
+                  return <EachOrderMain key={order._id} order={order} setSelectedOrder={setSelectedOrder} selectedOrder={selectedOrder} />;
+                })}
           </div>
-          <MyOrderDetails openModal={setShowEachOrderDetails} />
-        </div>
-       { showEachOrderDetails && <div className='OrderItemDetails83Wrapper'>
-          <div>
-            <EachOrder closeItemDetails={setShowEachOrderDetails} />
-          </div>
-        </div>}
-        <div>
-            <BottomNavigation/>
+          {selectedOrder ? <MyOrderDetails openModal={setShowEachOrderDetails} selectedOrder={selectedOrder} socket={socket} refetchOrder={fetchMyOrders} setSelectedOrder={setSelectedOrder} />  : <div className='myOrderList122'>empty</div>}
         </div>
        
+        <div>
+          <BottomNavigation />
+        </div>
       </Template>
     </>
   );
