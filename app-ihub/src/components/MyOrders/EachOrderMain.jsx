@@ -1,8 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { AiOutlineRight } from "react-icons/ai";
-import { useState ,useEffect } from "react";
+import { useState, useEffect } from "react";
 const EachOrderMain = ({ order, setSelectedOrder, selectedOrder }) => {
-
   const [isSelected, setIsSelected] = useState(false); // this is to change the border color of the selected order
   const navigate = useNavigate();
 
@@ -16,7 +15,9 @@ const EachOrderMain = ({ order, setSelectedOrder, selectedOrder }) => {
 
   return (
     <>
-      <div onClick={() => setSelectedOrder(order)} className={isSelected?"eachOrderMainItemList selectedEachOrder ":"eachOrderMainItemList"}>  {/* selectedEachOrder */}
+      <div onClick={() => setSelectedOrder(order)} className={isSelected ? "eachOrderMainItemList selectedEachOrder " : "eachOrderMainItemList"}>
+        {" "}
+        {/* selectedEachOrder */}
         <div className='priceHeaderDiv33'>
           <div>
             <p className='caption4r'>Date</p>
@@ -38,16 +39,17 @@ const EachOrderMain = ({ order, setSelectedOrder, selectedOrder }) => {
         </div>
         <div className='orderImageDisplayDiv345'>
           <div className='OrderImageDivRow2'>
-            <div>
-              {order.purchasedItems.slice(0, 3).map((item) => {
-                return <img src={item.productImage[0]} />;
-              })}
-            </div>
+            {order.purchasedItems.slice(0, 3).map((item) => {
+              return (
+                <div>
+                  <img src={item.productImage[0]} />
+                </div>
+              );
+            })}
           </div>
-          {order.purchasedItems.length > 4 &&  <span>+ {order.purchasedItems.length-4} </span>}
-         
+          {order.purchasedItems.length > 4 && <span>+ {order.purchasedItems.length - 4} </span>}
         </div>
-        <div onClick={() => navigate("kfhe8fuvjefi", {state: {order} })} className='hideOnWeb22'></div>
+        <div onClick={() => navigate("kfhe8fuvjefi", { state: { order } })} className='hideOnWeb22'></div>
       </div>
     </>
   );

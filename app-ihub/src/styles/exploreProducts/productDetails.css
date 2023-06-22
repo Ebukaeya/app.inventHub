@@ -36,8 +36,9 @@
   border-radius: 16px;
 }
 .pddetailImage684 {
-  height: 94%;
-  width: 98%;
+   height: 94%; 
+  width: 100%;
+  aspect-ratio: 1/1;
   object-fit: contain;
 }
 .pDDetails1232AllImage {

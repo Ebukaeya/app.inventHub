@@ -42,6 +42,8 @@ const MessageDetailPage = ({socket}) => {
       storeOwnerID: selectedConversation.business.storeOwnerID,
     });
 
+    setMessage("");
+
     /* refreshChatList(); */
   };
 

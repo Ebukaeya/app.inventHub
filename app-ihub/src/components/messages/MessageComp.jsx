@@ -51,7 +51,7 @@ const MessageComp = ({ refreshChatList, socket, selectedChat, profile, setSelect
       businessImage: selectedConversation.business.profileImage,
       storeOwnerID: selectedConversation.business.storeOwnerID,
     });
-
+    setMessage("");
     refreshChatList();
   };
   return (

@@ -6,16 +6,23 @@ import { BiMinus } from "react-icons/bi";
 import ProductCardCopy from "./ProductCardCopy";
 import { FaAngleLeft } from "react-icons/fa";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState, useLayoutEffect } from "react";
+import { useState, useLayoutEffect, useEffect } from "react";
+import { addToCartUrl } from "../../api/consumerApi";
+import { useSelector, useDispatch } from "react-redux";
+import { setProfile } from "../../slices/profileSlice";
 
 const ProductDetailsMain = () => {
   const [imageShowing, setImageShowing] = useState();
   const [quantity, setQuantity] = useState(1);
+  const [sizeSelected, setSizeSelected] = useState(null);
+  const [colorSelected, setColorSelected] = useState(null);
+  const [itemAddedToCart, setItemAddedToCart] = useState(false);
 
   const { state } = useLocation();
   const { product, store } = state;
   const navigate = useNavigate();
-  console.log(product, store);
+  const { profile } = useSelector((state) => state.profile);
+  const dispatch = useDispatch();
   /* check if state is passed, otherwise fetch the product and store it belogns to and also products in the same category */
 
   useLayoutEffect(() => {
@@ -25,10 +32,53 @@ const ProductDetailsMain = () => {
       setImageShowing(product?.productImage[0]);
     }
     /* fetch related products */
+
+    /* check if product is in cart */
+    let productInCart = profile?.cart?.find((item) => item.product._id === product._id);
+    console.log(productInCart);
+    if (productInCart) {
+      setItemAddedToCart(true);
+    }
   }, []);
-  {
-    console.log(product.quantity - product.damagedAmount);
-  }
+
+  useEffect(() => {
+    /* check if product is in cart */
+    let productInCart = profile?.cart?.find((item) => item.product._id === product._id);
+    console.log(productInCart);
+    if (productInCart) {
+      setItemAddedToCart(true);
+    }
+  }, [profile]);
+
+  const fetchProduct = async () => {};
+
+  const addToCart = async () => {
+    let payload = {
+      product,
+      quantity,
+      size: sizeSelected,
+      color: colorSelected,
+    };
+
+    try {
+      let response = await fetch(addToCartUrl + "646c700bb367e1b674bc434c", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(payload),
+      });
+
+      if (response.ok) {
+        let { _, user } = await response.json();
+        console.log(user);
+        dispatch(setProfile(user));
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   return (
     <>
@@ -139,7 +189,15 @@ const ProductDetailsMain = () => {
                 >
                   Buy Now
                 </button>
-                <button className='buyNoe28u34'>Add to Cart</button>
+                {itemAddedToCart ? (
+                  <button  style={{ opacity: "0.7", color: "gray", cursor: "default" }} className='buyNoe28u34'>
+                    Item in cart
+                  </button>
+                ) : (
+                  <button onClick={addToCart} className='buyNoe28u34'>
+                    Add to Cart
+                  </button>
+                )}
               </div>
               <div className='deliveryDiv34'>
                 <BsTruck color='#FFD700' size={24} />

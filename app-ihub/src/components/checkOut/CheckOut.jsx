@@ -51,6 +51,7 @@ const CheckOutPage = ({socket}) => {
     const { state } = location;
     if (state) {
       setPurchasedItems(state.products);
+      console.log(state.products);
 
       const subTotal = state.products.reduce(
         (acc, product) => {

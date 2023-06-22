@@ -142,12 +142,12 @@
   /* justify-content: space-between; */
   flex: 1;
   row-gap: 30px;
-  padding: 8px 0;
+  padding: 8px 2px;
 }
 .productCopy12 {
   min-width: 200px;
   width: 23%;
-  max-width: 23%;
+  max-width: 215px;
   height: 314px;
   background-color: #ffffff;
   flex-shrink: 0;
@@ -159,7 +159,8 @@
   
 }
 .productCopy12:hover {
-  transform: scale(1.05);
+ 
+  transform: scale(1.01);
   
 }
 .addToFavouriteWish{
@@ -189,6 +190,8 @@
 }
 .productCopyImage >img{
   object-fit: contain;
+  height: 94%;
+  border-radius: 4px;
 }
 .Productinfo122 {
   height: 30%;

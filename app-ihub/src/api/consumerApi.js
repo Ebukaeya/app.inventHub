@@ -16,3 +16,8 @@ export const fetchChatListUrl = /* "http://localhost:5002/users/getchatlist/" */
 
 /* my order page */
 export const fetchMyOrdersUrl =  `${api}myorders/fetchOrders/`; /* + user ID */
+
+/* add to cart */
+
+export const addToCartUrl = `${api}cart/addtocart/`; /* + user ID */
+export const removeFromCartUrl = `${api}cart/removefromcart/`; /* + user ID */

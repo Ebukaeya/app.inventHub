@@ -39,6 +39,15 @@ const MyOrderMain = ({ profile,socket }) => {
 
   useLayoutEffect(() => {
     fetchMyOrders();
+
+    socket.on("updateOrderStatus", ({message,room,updatedOrder})=>{
+      if(profile._id === room){
+        console.log(updatedOrder);
+        alert(message)
+        fetchMyOrders();
+      }
+    })
+    
   }, []);
 
   const showFilter = () => {

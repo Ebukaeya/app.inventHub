@@ -50,7 +50,8 @@
 }
 .storeAvatarDiv123 > img {
   width: 97%;
-  height: 90%;
+  height: 97%;
+  aspect-ratio: 1/1;
   object-fit: contain;
   border-radius: 10px;
 }

@@ -20,8 +20,9 @@ const MessagesPage = ({ screenType, socket }) => {
   useEffect(() => {
     getChatList();
     socket.on("updatedChat", (data) => {
-      console.log("updatedChat", data);
-      setChatList(data.chats);
+      getChatList();
+      console.log("refetching", data);
+      /* setChatList(data.chats); */
     });
 
     return () => {
@@ -72,6 +73,7 @@ const MessagesPage = ({ screenType, socket }) => {
   useEffect(() => {
     socket.on("updatedChat", (data) => {
       console.log("updatedChat", data);
+      getChatList();
       if (selectedConversation) {
         selectedConversation.conversationID === data.currentConversation.conversationID && dispatch(setSelectedConversation(data.currentConversation));
       }

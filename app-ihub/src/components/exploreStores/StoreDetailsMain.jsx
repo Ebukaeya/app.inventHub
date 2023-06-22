@@ -15,6 +15,7 @@ import MessageSeller from "./MessageSeller";
 import { useLocation, useNavigate } from "react-router-dom";
 import { fetchStoreProductsEnpoint } from "../../api/StoreAPI";
 import { useSelector } from "react-redux";
+import {FaAngleLeft} from "react-icons/fa";
 
 const StoreDetailsMain = ({ socket }) => {
   const { state } = useLocation();
@@ -76,6 +77,10 @@ const StoreDetailsMain = ({ socket }) => {
   return (
     <>
       <Template>
+      <div onClick={() => window.history.back()} style={{ display: "flex", gap: "4px", alignItems: "center", margin: "8px 2px", cursor: "pointer" }}>
+            {" "}
+            <FaAngleLeft /> <span>Back</span>
+          </div>
         <div className='StoreDetailsWrappperMain23'>
           <div className='verticalScrollingDiv12'>
             <div className='storeDetailsContain22'>
@@ -138,6 +143,7 @@ const StoreDetailsMain = ({ socket }) => {
                 {storeProducts.map((product) => (
                   <ProductCardCopy key={product._id} product={product} payload={state} />
                 ))}
+                
               </div>
             </div>
           </div>
