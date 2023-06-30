@@ -3,16 +3,34 @@ import { MdVerified, MdLocationPin, MdOutlineStarPurple500 } from "react-icons/m
 import { FiBox, FiHeart } from "react-icons/fi";
 import { RiUserFollowLine } from "react-icons/ri";
 import { useNavigate } from "react-router-dom";
+import { updateOnlineVisitorsUrl } from "../../api/StoreAPI";
 
-const EachStoreCard = ({store}) => {
+const EachStoreCard = ({ store }) => {
   const navigate = useNavigate();
 
   const handleStoreClick = () => {
-      navigate(`store/${store._id}`, {state: {store}});
+    updateOnlineVisitors();
+    navigate(`store/${store._id}`, { state: { store } });
+  };
+
+  const updateOnlineVisitors = async () => {
+    try {
+      const response = await fetch(updateOnlineVisitorsUrl + store._id, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({webstoreUserID: store.webstoreUser}),
+        
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <>
-      <div onClick={()=>handleStoreClick()} className='eachStoreCard12Div'>
+      <div onClick={() => handleStoreClick()} className='eachStoreCard12Div'>
         <div className='StoreImageDiv122'>
           <img src='https://lifelonglearning.dtu.dk/wp-content/uploads/2022/02/iStock-1326009446-scaled.jpg' />
           <div className='locationOfstoreFloating6'>Abakaliki</div>
