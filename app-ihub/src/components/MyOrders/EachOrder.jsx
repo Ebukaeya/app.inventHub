@@ -16,6 +16,7 @@ const EachOrder = ({ closeItemDetails, item, selectedOrder,socket,refetchOrder,s
   const [disputeWindow, setDisputeWindow] = useState(null); // in days or hours
 
   useLayoutEffect(() => {
+    console.log( "item in each order");
     computeDisputeWindow(selectedOrder.orderDate, item);
     /* check the delivery status of this item */
     if (item.deliveryStatus === "delivered") {
@@ -27,7 +28,7 @@ const EachOrder = ({ closeItemDetails, item, selectedOrder,socket,refetchOrder,s
 
   const computeDisputeWindow = (orderDate, item) => {
     /* add 7 days to the order date */
-    let dateDisuteWindowWillClose = new Date(orderDate).getTime() + 1 * 24 * 60 * 60 * 1000;
+    let dateDisuteWindowWillClose = new Date(orderDate).getTime() + 7 * 24 * 60 * 60 * 1000;
     let currentDate = new Date().getTime();
     let difference = dateDisuteWindowWillClose - currentDate;
     let days = Math.floor(difference / (1000 * 60 * 60 * 24));
@@ -36,20 +37,25 @@ const EachOrder = ({ closeItemDetails, item, selectedOrder,socket,refetchOrder,s
    
     console.log(days <= 0,minutes <= 0, item.deliveryStatus!=="dispute");
     if (days <= 0 && hours > 1) {
+      console.log("hours");
       setDisputeWindow(`${hours} hours`);
       item.deliveryStatus === "delivered" && orderIsSuppliedSim();
       item.deliveryStatus === "dispute" && itemOnDispute();
       item.deliveryStatus === "resolved" && resolveDispute();
     } else if (days <= 0 && hours <= 1  && minutes>0) {
+      console.log("minutes");
       setDisputeWindow(`${minutes} minutes`);
       item.deliveryStatus === "delivered" && orderIsSuppliedSim();
       item.deliveryStatus === "dispute" && itemOnDispute();
       item.deliveryStatus === "resolved" && resolveDispute();
     } else if (days <= 0 && minutes <= 0) {
+      console.log(days, hours, minutes);
+      console.log("window closed");
       
-      item.deliveryStatus!=="dispute"  &&  disputeWindowClosedSim();
+      item.deliveryStatus!=="dispute" ? disputeWindowClosedSim(): itemOnDispute();
       
     } else {
+      console.log("days");
       setDisputeWindow(`${days} days`);
       item.deliveryStatus === "delivered" && orderIsSuppliedSim();
       item.deliveryStatus === "dispute" && itemOnDispute();
@@ -79,6 +85,7 @@ const EachOrder = ({ closeItemDetails, item, selectedOrder,socket,refetchOrder,s
 /* when item is on dispute */
 
 const itemOnDispute = () => {
+  console.log("item is on dispute");
   setPendingOrder(false);
   setDispute(true);
   setDisputeStatus(null);

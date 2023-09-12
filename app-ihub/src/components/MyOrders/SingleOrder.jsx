@@ -4,6 +4,7 @@ import { useState } from "react";
 
 const SingleOrder = ({  item ,selectedOrder,socket,refetchOrder,setSelectedOrder}) => {
   const [showEachOrderDetails, setShowEachOrderDetails] = useState(false);
+  console.log(item, "item in single order");
   return (
     <>
       <div onClick={() => setShowEachOrderDetails(true)} className='bulkOrderDiv newPos'>
