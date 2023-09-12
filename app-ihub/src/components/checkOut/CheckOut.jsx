@@ -96,7 +96,7 @@ const CheckOutPage = ({socket}) => {
         purchasedItems.forEach(item=>{
           if(!notifyedStores.includes(item.storeID)){
             console.log(socket);
-             socket.emit('newOrderReceived',{room:item.storeID}) 
+             socket.emit('newOrderReceived',{room:item.storeID, storeName:item.storeName,webstoreUserID:item.webstoreUserID, itemName:item.name, productImage:item.productImage[0]}) 
             notifyedStores.push(item.storeID)
           }
         })

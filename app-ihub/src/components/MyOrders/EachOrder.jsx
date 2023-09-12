@@ -136,7 +136,7 @@ const itemOnDispute = () => {
       });
 
       if( response.ok){
-        socket.emit('disputeResolved',{room:item.storeID,item:item.name})
+        socket.emit('disputeResolved',{room:item.storeID,item:item.name, webstoreUserID:item.webstoreUserID, productImage:item.productImage[0], storeName:item.storeName})
         refetchOrder && refetchOrder();
         let {message, updatedOrder} = await response.json();
         setSelectedOrder(updatedOrder)

@@ -48,7 +48,7 @@ const DisputeWindow = ({ closeModel, updateDispute, item,consumerOrderID,socket,
       }),
     });
     if(response.ok){
-      socket.emit('newDisputeRaised',{room:item.storeID,item:item.name,disputeReason:disputeReason.reason})
+      socket.emit('newDisputeRaised',{room:item.storeID,item:item.name,disputeReason:disputeReason.reason, storeName:item.storeName,webstoreUserID:item.webstoreUserID, productImage:item.productImage[0]})
       /* refetch item */
       refetchOrder()
       let {message, updatedOrder} = await response.json();
